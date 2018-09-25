@@ -37,11 +37,12 @@ class Agencia {
 private:
 	string agencia;
 
+	// Limite de caracters que agencia pode ter e os codigos ASCII que podem compor agencia
 	const static int ASCII_0 = 48;
 	const static int ASCII_9 = 57;
 	const static int LIMITE = 5;
 
-	// Metodo responsável por validacao
+	// Metodo de validacao
 	void validar(string) throw (invalid_argument);
 public:
 	// Metodos de acesso
@@ -62,7 +63,7 @@ private:
 	const static int ASCII_9 = 57;
 	const static int LIMITE = 3;
 
-	// Metodo responsável pela validacao
+	// Metodo de validacao
 
 	void validar(string) throw (invalid_argument);
 public:
@@ -82,28 +83,29 @@ private:
 	const static int LIMITE_MIN = 1;
 	const static int LIMITE_MAX = 9;
 
-	// Metodo responsável pela validacao
+	// Metodo de validacao
 
 	void validar(int) throw(invalid_argument);
 
 public:
 	// Metodos de acesso
 
-	void setCapacidadeDeAcomadacao(int) throw(invalid_argument);
+	void setCapacidade(int) throw(invalid_argument);
 
-	int getCapacidadeDeAcomodacao() const {
+	int getCapacidade() const {
 		return CapacidadeDeAcomodacaoNum;
 	}
 };
 
 class Diaria {
 private:
-	float ValorDiaria;
+	float valorDiaria;
 
+	// Limite dos valores da diaria
 	const float DIARIA_PRECO_MIN = 1.00;
 	const float DIARIA_PRECO_MAX = 10000.00;
 
-	// Metodo resposável pela validacao
+	// Metodo de validacao
 
 	void validar(float) throw (invalid_argument);
 public:
@@ -112,7 +114,7 @@ public:
 	void setDiaria(float) throw (invalid_argument);
 
 	float getDiaria() const {
-		return ValorDiaria;
+		return valorDiaria;
 	}
 };
 
@@ -129,7 +131,7 @@ private:
 	const static int ANO_MIN = 2000;
 	const static int ANO_MAX = 2099;
 
-	// Metodo resposável pela validacao
+	// Metodo de validacao
 
 	void validar(int, string, int) throw(invalid_argument);
 public:
@@ -171,7 +173,11 @@ class Estado {
 private:
 	string estado;
 
-	// Metodo para validar o estado
+	// Limite de tamanho de estado
+
+	const static int LIMITE = 2;
+
+	// Metodo de valdiacao
 
 	void validar(string) throw(invalid_argument);
 
@@ -190,11 +196,12 @@ class Identificador {
 private:
 	string identificador;
 
+	// Limite do tamanho minimo do identificador e dos caractere ASCII que podem compor ele.
 	const static int LIMITE = 5;
 	const static int ASCII_a = 97;
 	const static int ASCII_z = 122;
 
-	// Metodo para validar indentificador
+	// Metodo de validacao
 
 	void validar(string) throw(invalid_argument);
 
@@ -213,7 +220,7 @@ class Nome {
 private:
 	string nome;
 
-	// Definicoes de limites para os caracteres do nome em codigo ASCII
+	// Definicoes de limites para os caracteres do nome em codigo ASCII 
 
 	const static int ASCII_a = 97;
 	const static int ASCII_z = 122;
@@ -222,7 +229,7 @@ private:
 	const static int SPACO = 32;
 	const static int PONTO = 46;
 
-	// Metodo para validar nome
+	// Metodo de validacao
 
 	void validar(string) throw(invalid_argument);
 

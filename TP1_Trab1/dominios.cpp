@@ -7,7 +7,7 @@ using namespace std;
 // Definições dos métodos
 
 void Agencia::validar(string agencia) throw (invalid_argument) {
-	if (agencia.size() != 5)
+	if (agencia.size() != LIMITE)
 		throw invalid_argument("Agencia invalida!");
 
 	for (std::string::iterator it = agencia.begin(); it != agencia.end(); it++) {
@@ -40,7 +40,7 @@ void CapacidadeAcomodacao::validar(int capacidadeAcomodacao) {
 		throw invalid_argument("Capacidade invalida.");
 }
 
-void CapacidadeAcomodacao::setCapacidadeDeAcomadacao(int capacidadeAcomodacao) {
+void CapacidadeAcomodacao::setCapacidade(int capacidadeAcomodacao) {
 	validar(capacidadeAcomodacao);
 	this->CapacidadeDeAcomodacaoNum = capacidadeAcomodacao;
 }
@@ -52,7 +52,7 @@ void Diaria::validar(float valorDiaria) {
 
 void Diaria::setDiaria(float valoDiaria) {
 	validar(valoDiaria);
-	this->ValorDiaria = valoDiaria;
+	this->valorDiaria = valoDiaria;
 }
 
 void Data::validar(int dia, string mes, int ano) {
@@ -106,7 +106,7 @@ void DataValidade::setDataDeValidade(int mes, int ano) {
 }
 
 void Estado::validar(string estado) {
-	if (estado.size() != 2)
+	if (estado.size() != LIMITE)
 		throw invalid_argument("Estado invalido!");
 	
 	if (estado == "AC");
