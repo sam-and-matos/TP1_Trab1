@@ -41,10 +41,10 @@ private:
 	const static int ASCII_9 = 57;
 	const static int LIMITE = 5;
 
-	// Método responsável por validação
+	// Metodo responsável por validacao
 	void validar(string) throw (invalid_argument);
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setAgencia(string) throw (invalid_argument);
 
@@ -62,11 +62,11 @@ private:
 	const static int ASCII_9 = 57;
 	const static int LIMITE = 3;
 
-	// Método responsável pela validação
+	// Metodo responsável pela validacao
 
 	void validar(string) throw (invalid_argument);
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setBanco(string) throw (invalid_argument);
 
@@ -75,19 +75,19 @@ public:
 	}
 };
 
-class CapacidadeDeAcomodacao {
+class CapacidadeAcomodacao {
 private:
 	int CapacidadeDeAcomodacaoNum;
 
 	const static int LIMITE_MIN = 1;
 	const static int LIMITE_MAX = 9;
 
-	// Método responsável pela validação
+	// Metodo responsável pela validacao
 
 	void validar(int) throw(invalid_argument);
 
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setCapacidadeDeAcomadacao(int) throw(invalid_argument);
 
@@ -103,11 +103,11 @@ private:
 	const float DIARIA_PRECO_MIN = 1.00;
 	const float DIARIA_PRECO_MAX = 10000.00;
 
-	// Método resposável pela validação
+	// Metodo resposável pela validacao
 
 	void validar(float) throw (invalid_argument);
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setDiaria(float) throw (invalid_argument);
 
@@ -129,11 +129,11 @@ private:
 	const static int ANO_MIN = 2000;
 	const static int ANO_MAX = 2099;
 
-	// Método resposável pela validação
+	// Metodo resposável pela validacao
 
 	void validar(int, string, int) throw(invalid_argument);
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setData(int, string, int) throw (invalid_argument);
 
@@ -148,7 +148,7 @@ public:
 	}
 };
 
-class DataDeValidade {
+class DataValidade {
 private:
 	int month, year;
 
@@ -171,12 +171,12 @@ class Estado {
 private:
 	string estado;
 
-	// Método para validar o estado
+	// Metodo para validar o estado
 
 	void validar(string) throw(invalid_argument);
 
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setEstado(string) throw(invalid_argument);
 
@@ -194,12 +194,12 @@ private:
 	const static int ASCII_a = 97;
 	const static int ASCII_z = 122;
 
-	// Método para validar indentificador
+	// Metodo para validar indentificador
 
 	void validar(string) throw(invalid_argument);
 
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setIdentificador(string) throw(invalid_argument);
 
@@ -213,21 +213,21 @@ class Nome {
 private:
 	string nome;
 
-	// Definicoes de limites para os caracteres do nome
+	// Definicoes de limites para os caracteres do nome em codigo ASCII
 
 	const static int ASCII_a = 97;
 	const static int ASCII_z = 122;
 	const static int ASCII_A = 65;
 	const static int ASCII_Z = 90;
-	const static char SPACO = ' ';
-	const static char PONTO = '.';
+	const static int SPACO = 32;
+	const static int PONTO = 46;
 
-	// Método para validar nome
+	// Metodo para validar nome
 
 	void validar(string) throw(invalid_argument);
 
 public:
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setNome(string) throw(invalid_argument);
 
@@ -237,7 +237,7 @@ public:
 
 };
 
-class NumeroCartaoDeCredito {
+class NumeroCartaoCredito {
 private:
 	string numero;
 
@@ -245,13 +245,13 @@ private:
 
 	const static int LIMITE = 16;
 
-	// Método de validaçao
+	// Metodo de validacao
 
 	void validar(string) throw (invalid_argument);
 
 public:
 
-	//Métodos de acesso
+	//Metodos de acesso
 
 	void setNumero(string) throw(invalid_argument);
 
@@ -272,13 +272,13 @@ public:
 	const static int ASCII_0 = 48;
 	const static int ASCII_9 = 57;
 
-	// Método de validaçao
+	// Metodo de validacao
 
 	void validar(string) throw(invalid_argument);
 
 public:
 
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setNumero(string) throw(invalid_argument);
 
@@ -303,12 +303,12 @@ private:
 	const static int ASCII_SIMB_MAX = 38;
 	const static char SIMBOLO_EXCESSAO = '"';
 
-	// Método para validaçao
+	// Metodo para validacao
 
 	void validar(string) throw(invalid_argument);
 public:
 
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setSenha(string) throw(invalid_argument);
 
@@ -318,17 +318,17 @@ public:
 
 };
 
-class TipoDeAcomodacao {
+class TipoAcomodacao {
 private:
 	string tipo;
 
-	// Método de validação
+	// Metodo de validacao
 
 	void validar(string) throw(invalid_argument);
 
 public:
 
-	// Métodos de acesso
+	// Metodos de acesso
 
 	void setAcomodacao(string) throw(invalid_argument);
 

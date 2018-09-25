@@ -35,12 +35,12 @@ void Banco::setBanco(string banco) throw(invalid_argument) {
 	this->banco = banco;
 }
 
-void CapacidadeDeAcomodacao::validar(int capacidadeAcomodacao) {
+void CapacidadeAcomodacao::validar(int capacidadeAcomodacao) {
 	if (capacidadeAcomodacao < LIMITE_MIN || capacidadeAcomodacao > LIMITE_MAX)
 		throw invalid_argument("Capacidade invalida.");
 }
 
-void CapacidadeDeAcomodacao::setCapacidadeDeAcomadacao(int capacidadeAcomodacao) {
+void CapacidadeAcomodacao::setCapacidadeDeAcomadacao(int capacidadeAcomodacao) {
 	validar(capacidadeAcomodacao);
 	this->CapacidadeDeAcomodacaoNum = capacidadeAcomodacao;
 }
@@ -91,7 +91,7 @@ void Data::setData(int dia, string mes, int ano) {
 	this->ano = ano;
 }
 
-void DataDeValidade::validar(int mes, int ano) {
+void DataValidade::validar(int mes, int ano) {
 	if (mes < MES_MIN || mes > MES_MAX)
 		throw invalid_argument("Mês invalido.");
 
@@ -99,7 +99,7 @@ void DataDeValidade::validar(int mes, int ano) {
 		throw invalid_argument("Ano invalido.");
 }
 
-void DataDeValidade::setDataDeValidade(int mes, int ano) {
+void DataValidade::setDataDeValidade(int mes, int ano) {
 	validar(mes, ano);
 	this->month = mes;
 	this->year = ano;
@@ -170,7 +170,7 @@ void Nome::validar(string nome) {
 	for (auto it = nome.begin(); it != nome.end(); it++) {
 		if ((int(*it) >= ASCII_a && int(*it) <= ASCII_z) || (int(*it) >= ASCII_A && int(*it) <= ASCII_Z))
 			aux = *it;
-		else if (*it == SPACO || *it == PONTO) {
+		else if (int(*it) == SPACO || int(*it) == PONTO) {
 			if (aux.empty())
 				throw invalid_argument("Nome invalido!");
 		}
@@ -183,7 +183,7 @@ void Nome::setNome(string nome) {
 	this->nome = nome;
 }
 
-void NumeroCartaoDeCredito::validar(string numero) {
+void NumeroCartaoCredito::validar(string numero) {
 	if (numero.size() != LIMITE)
 		throw invalid_argument("Numero de cartao invalido! Numero precisa conter 16 digitos(0-9)!");
 
@@ -191,7 +191,7 @@ void NumeroCartaoDeCredito::validar(string numero) {
 		throw invalid_argument("Numero de cartão invalido.");
 }
 
-void NumeroCartaoDeCredito::setNumero(string numero) {
+void NumeroCartaoCredito::setNumero(string numero) {
 	validar(numero);
 	this->numero = numero;
 }
@@ -279,7 +279,7 @@ void Senha::setSenha(string senha) {
 	this->senha = senha;
 }
 
-void TipoDeAcomodacao::validar(string tipo) {
+void TipoAcomodacao::validar(string tipo) {
 	if (tipo == "Apartamento");
 	else if (tipo == "Casa");
 	else if (tipo == "Flat");
@@ -287,7 +287,7 @@ void TipoDeAcomodacao::validar(string tipo) {
 		throw invalid_argument("Tipo de acomodação invalido!");
 }
 
-void TipoDeAcomodacao::setAcomodacao(string tipo) {
+void TipoAcomodacao::setAcomodacao(string tipo) {
 	validar(tipo);
 	this->tipo = tipo;
 }
