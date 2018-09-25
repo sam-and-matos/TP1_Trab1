@@ -59,6 +59,7 @@ class Banco {
 private:
 	string banco;
 
+	// Limite do tamanho da string e limite de caracters ASCII aceitos
 	const static int ASCII_0 = 48;
 	const static int ASCII_9 = 57;
 	const static int LIMITE = 3;
@@ -124,7 +125,7 @@ private:
 	string mes;
 	int ano;
 
-	// Definção dos limites para Dia e Ano
+	// Defincao dos limites para Dia e Ano
 
 	const static int DIA_MIN = 1;
 	const static int DIA_MAX = 31;
