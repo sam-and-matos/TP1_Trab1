@@ -117,11 +117,13 @@
   <ItemGroup>
     <ClInclude Include="dominios.h" />
     <ClInclude Include="entidades.h" />
+    <ClInclude Include="testes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dominios.cpp" />
     <ClCompile Include="entidades.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="testes.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

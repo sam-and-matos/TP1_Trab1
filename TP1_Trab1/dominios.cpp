@@ -1,10 +1,34 @@
 
 #include "dominios.h"
 
-
 using namespace std;
 
-// Definições dos métodos
+// Limite dos valores da diaria
+const static float DIARIA_PRECO_MIN = 1.00;
+const static float DIARIA_PRECO_MAX = 10000.00;
+
+// Definicao de funcoes fora das classes
+
+bool checkLuhn(string numero){
+	int nSum = 0;
+	int nDigits = numero.size();
+	int nParity = (nDigits - 1) % 2;
+	char cDigit[2] = "\0";
+	for (int i = nDigits; i > 0; i--)
+	{
+		cDigit[0] = numero.at(i - 1);
+		int nDigit = atoi(cDigit);
+
+		if (nParity == i % 2)
+			nDigit = nDigit * 2;
+
+		nSum += nDigit / 10;
+		nSum += nDigit % 10;
+	}
+	return 0 == nSum % 10;
+}
+
+// Definiï¿½ï¿½es dos mï¿½todos
 
 void Agencia::validar(string agencia) throw (invalid_argument) {
 	if (agencia.size() != LIMITE)
@@ -35,27 +59,27 @@ void Banco::setBanco(string banco) throw(invalid_argument) {
 	this->banco = banco;
 }
 
-void CapacidadeAcomodacao::validar(int capacidadeAcomodacao) {
+void CapacidadeAcomodacao::validar(int capacidadeAcomodacao) throw(invalid_argument) {
 	if (capacidadeAcomodacao < LIMITE_MIN || capacidadeAcomodacao > LIMITE_MAX)
 		throw invalid_argument("Capacidade invalida.");
 }
 
-void CapacidadeAcomodacao::setCapacidade(int capacidadeAcomodacao) {
+void CapacidadeAcomodacao::setCapacidade(int capacidadeAcomodacao) throw (invalid_argument) {
 	validar(capacidadeAcomodacao);
 	this->CapacidadeDeAcomodacaoNum = capacidadeAcomodacao;
 }
 
-void Diaria::validar(float valorDiaria) {
+void Diaria::validar(float valorDiaria) throw (invalid_argument) {
 	if (valorDiaria < DIARIA_PRECO_MIN || valorDiaria > DIARIA_PRECO_MAX)
 		throw invalid_argument("Valor da diaria invalido.");
 }
 
-void Diaria::setDiaria(float valoDiaria) {
-	validar(valoDiaria);
-	this->valorDiaria = valoDiaria;
+void Diaria::setDiaria(float valorDiaria) throw (invalid_argument) {
+	validar(valorDiaria);
+	this->valorDiaria = valorDiaria;
 }
 
-void Data::validar(int dia, string mes, int ano) {
+void Data::validar(int dia, string mes, int ano) throw (invalid_argument) {
 	
 	if (dia < DIA_MIN || dia > DIA_MAX)
 		throw invalid_argument("Dia invalido!");
@@ -78,34 +102,30 @@ void Data::validar(int dia, string mes, int ano) {
 
 	if (ano < ANO_MIN || ano > ANO_MAX)
 		throw invalid_argument("Ano invalido!");
-
-	
-
-
 }
 
-void Data::setData(int dia, string mes, int ano) {
+void Data::setData(int dia, string mes, int ano) throw (invalid_argument) {
 	validar(dia, mes, ano);
 	this->dia = dia;
 	this->mes = mes;
 	this->ano = ano;
 }
 
-void DataValidade::validar(int mes, int ano) {
+void DataValidade::validar(int mes, int ano) throw (invalid_argument) {
 	if (mes < MES_MIN || mes > MES_MAX)
-		throw invalid_argument("Mês invalido.");
+		throw invalid_argument("Mï¿½s invalido.");
 
 	if (ano < ANO_MIN || ano > ANO_MAX)
 		throw invalid_argument("Ano invalido.");
 }
 
-void DataValidade::setDataDeValidade(int mes, int ano) {
+void DataValidade::setDataDeValidade(int mes, int ano) throw (invalid_argument) {
 	validar(mes, ano);
 	this->month = mes;
 	this->year = ano;
 }
 
-void Estado::validar(string estado) {
+void Estado::validar(string estado) throw (invalid_argument) {
 	if (estado.size() != LIMITE)
 		throw invalid_argument("Estado invalido!");
 	
@@ -140,28 +160,28 @@ void Estado::validar(string estado) {
 		throw invalid_argument("Estado invalido!");
 }
 
-void Estado::setEstado(string estado) {
+void Estado::setEstado(string estado) throw (invalid_argument) {
 	validar(estado);
 	this->estado = estado;
 }
 
-void Identificador::validar(string identificador) {
+void Identificador::validar(string identificador) throw (invalid_argument) {
 	if (identificador.size() != LIMITE)
 		throw invalid_argument("Identificador invalido. Identificador precisa ter 5 caracteres(a-z)!");
 
 	
 	for (std::string::iterator it = identificador.begin(); it != identificador.end(); it++) {
 		if (int(*it) < ASCII_a || int(*it) > ASCII_z)
-			throw invalid_argument("Identificador invalido, somentes caracteres de a-z são validos!");
+			throw invalid_argument("Identificador invalido, somentes caracteres de a-z sï¿½o validos!");
 	}
 }
 
-void Identificador::setIdentificador(string identificador) {
+void Identificador::setIdentificador(string identificador) throw (invalid_argument) {
 	validar(identificador);
 	this->identificador = identificador;
 }
 
-void Nome::validar(string nome) {
+void Nome::validar(string nome) throw (invalid_argument) {
 	string aux;
 
 	if (nome.empty())
@@ -178,25 +198,25 @@ void Nome::validar(string nome) {
 
 }
 
-void Nome::setNome(string nome) {
+void Nome::setNome(string nome) throw (invalid_argument) {
 	validar(nome);
 	this->nome = nome;
 }
 
-void NumeroCartaoCredito::validar(string numero) {
+void NumeroCartaoCredito::validar(string numero) throw (invalid_argument) {
 	if (numero.size() != LIMITE)
 		throw invalid_argument("Numero de cartao invalido! Numero precisa conter 16 digitos(0-9)!");
 
 	if (!checkLuhn(numero))
-		throw invalid_argument("Numero de cartão invalido.");
+		throw invalid_argument("Numero de cartï¿½o invalido.");
 }
 
-void NumeroCartaoCredito::setNumero(string numero) {
+void NumeroCartaoCredito::setNumero(string numero) throw (invalid_argument) {
 	validar(numero);
 	this->numero = numero;
 }
 
-void NumeroContaCorrente::validar(string numero) {
+void NumeroContaCorrente::validar(string numero) throw (invalid_argument) {
 	if (numero.size() != LIMITE)
 		throw invalid_argument("Numero da conta invalido! Conta precisa ter 6 numeros 0-9");
 
@@ -206,12 +226,12 @@ void NumeroContaCorrente::validar(string numero) {
 	}
 }
 
-void NumeroContaCorrente::setNumero(string numero) {
+void NumeroContaCorrente::setNumero(string numero) throw (invalid_argument) {
 	validar(numero);
 	this->numero = numero;
 }
 
-void Senha::validar(string senha) {
+void Senha::validar(string senha) throw (invalid_argument) {
 	list<char> auxMaiuscula, auxMinuscula, auxSimbolo, auxNumero;
 
 	if (senha.size() != LIMITE)
@@ -274,20 +294,20 @@ void Senha::validar(string senha) {
 
 }
 
-void Senha::setSenha(string senha) {
+void Senha::setSenha(string senha) throw (invalid_argument) {
 	validar(senha);
 	this->senha = senha;
 }
 
-void TipoAcomodacao::validar(string tipo) {
+void TipoAcomodacao::validar(string tipo) throw (invalid_argument) {
 	if (tipo == "Apartamento");
 	else if (tipo == "Casa");
 	else if (tipo == "Flat");
 	else
-		throw invalid_argument("Tipo de acomodação invalido!");
+		throw invalid_argument("Tipo de acomodaï¿½ï¿½o invalido!");
 }
 
-void TipoAcomodacao::setAcomodacao(string tipo) {
+void TipoAcomodacao::setAcomodacao(string tipo) throw (invalid_argument) {
 	validar(tipo);
 	this->tipo = tipo;
 }
