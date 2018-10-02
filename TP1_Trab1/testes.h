@@ -262,8 +262,8 @@ class TUIdentificador {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "20568";
-        string VALOR_INVALIDO = "224567";
+        string VALOR_VALIDO   = "teste";
+        string VALOR_INVALIDO = "test4567";
 
         // Refer�ncia para o objeto a ser testado.
 
@@ -296,8 +296,12 @@ class TUNome {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "NatalyaPetrovna";
-        string VALOR_INVALIDO = "SophieLimaAzevedo";   
+        string VALOR_VALIDO    = "Sophie Azevedo.";
+        string VALOR_INVALIDO1 = "Natalya Petrovna";   
+        string VALOR_INVALIDO2 = "."; 
+        string VALOR_INVALIDO3 = " ";
+        string VALOR_INVALIDO4 = ".Gabriel";
+        string VALOR_INVALIDO5 = "Melissa  Lima";
 
         // Refer�ncia para o objeto a ser testado.
 
@@ -330,8 +334,9 @@ class TUNumeroCartaoCredito {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "2020101033445678";
-        string VALOR_INVALIDO = "21679010301234567890";
+        string VALOR_VALIDO    = "4717415691789511";
+        string VALOR_INVALIDO1 = "2020101033445678";
+        string VALOR_INVALIDO2 = "21679010301234567890";
 
         // Refer�ncia para o objeto a ser testado.
 
@@ -398,8 +403,11 @@ class TUSenha {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "Ab0?Cd1!";
-        string VALOR_INVALIDO = "SouInvalido";
+        string VALOR_VALIDO    = "Ab0!Cd1&";
+        string VALOR_INVALIDO1 = "0$Invalido";
+        string VALOR_INVALIDO2 = "&!!234Ab";
+        string VALOR_INVALIDO3 = "Tg2#";
+        string VALOR_INVALIDO4 = "testes12";
 
         // Refer�ncia para o objeto a ser testado.
 
