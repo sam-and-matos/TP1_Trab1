@@ -121,8 +121,8 @@ void DataValidade::validar(int mes, int ano) throw (invalid_argument) {
 
 void DataValidade::setDataDeValidade(int mes, int ano) throw (invalid_argument) {
 	validar(mes, ano);
-	this->month = mes;
-	this->year = ano;
+	this->mes = mes;
+	this->ano = ano;
 }
 
 void Estado::validar(string estado) throw (invalid_argument) {
@@ -172,7 +172,7 @@ void Identificador::validar(string identificador) throw (invalid_argument) {
 	
 	for (std::string::iterator it = identificador.begin(); it != identificador.end(); it++) {
 		if (int(*it) < ASCII_a || int(*it) > ASCII_z)
-			throw invalid_argument("Identificador invalido, somentes caracteres de a-z s�o validos!");
+			throw invalid_argument("Identificador invalido, somentes caracteres de a-z são validos!");
 	}
 }
 
