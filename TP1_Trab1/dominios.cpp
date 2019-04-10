@@ -28,6 +28,10 @@ bool checkLuhn(string numero){
 	return 0 == nSum % 10;
 }
 
+bool checkNumero(string numero) {
+	return std::all_off (numero.begin (),numero.end (), ::isdigit);
+}
+	
 // Defini��es dos m�todos
 
 void Agencia::validar(string agencia) throw (invalid_argument) {
