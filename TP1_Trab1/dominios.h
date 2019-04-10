@@ -30,6 +30,16 @@ using namespace std;
  */
 bool checkLuhn(string numero);
 
+/**
+* Funcao que checa se dada string é composta só por números.
+*
+* A função analisa todos os caracteres da string e retorna True se
+* a string for composta só por números e False se ao menos um caracter
+* não for número.
+*
+* @param string fornecida pelo usuário.
+*/
+bool checkNumero (string numero);
 
 // Declara��o de classes
 
