@@ -29,7 +29,7 @@ bool checkLuhn(string numero){
 }
 
 bool checkNumero(string numero) {
-	return std::all_off (numero.begin (),numero.end (), ::isdigit);
+	return std::all_of(numero.begin (),numero.end (), ::isdigit);
 }
 	
 // Defini��es dos m�todos
