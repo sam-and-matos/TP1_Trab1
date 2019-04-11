@@ -122,8 +122,8 @@ void DataValidade::validar(int mes, int ano) throw (invalid_argument) {
 
 void DataValidade::setDataDeValidade(int mes, int ano) throw (invalid_argument) {
 	validar(mes, ano);
-	this->month = mes;
-	this->year = ano;
+	this->mes = mes;
+	this->ano = ano;
 }
 
 void Estado::validar(string estado) throw (invalid_argument) {
@@ -173,7 +173,7 @@ void Identificador::validar(string identificador) throw (invalid_argument) {
 	
 	for (std::string::iterator it = identificador.begin(); it != identificador.end(); it++) {
 		if (int(*it) < ASCII_a || int(*it) > ASCII_z)
-			throw invalid_argument("Identificador invalido, somentes caracteres de a-z s�o validos!");
+			throw invalid_argument("Identificador invalido, somentes caracteres de a-z são validos!");
 	}
 }
 
@@ -185,18 +185,24 @@ void Identificador::setIdentificador(string identificador) throw (invalid_argume
 void Nome::validar(string nome) throw (invalid_argument) {
 	string aux;
 
+	if (nome.size() != LIMITE)
+		throw invalid_argument("Nome invalido!");
+
 	if (nome.empty())
 		throw invalid_argument("Nome invalido.");
 
 	for (auto it = nome.begin(); it != nome.end(); it++) {
 		if ((int(*it) >= ASCII_a && int(*it) <= ASCII_z) || (int(*it) >= ASCII_A && int(*it) <= ASCII_Z))
 			aux = *it;
-		else if (int(*it) == SPACO || int(*it) == PONTO) {
-			if (aux.empty())
+		else if (int(*it) == PONTO) {
+			if (aux.empty() || aux == " ")
+				throw invalid_argument("Nome invalido!");
+		}
+		else if (int(*it) == SPACO) {
+			if (aux == " ")
 				throw invalid_argument("Nome invalido!");
 		}
 	}
-
 }
 
 void Nome::setNome(string nome) throw (invalid_argument) {
@@ -274,7 +280,7 @@ void Senha::validar(string senha) throw (invalid_argument) {
 				auxMaiuscula.push_front(*it);
 			}
 		}
-		else if (int(*it) >= ASCII_0 && int(*it) <= ASCII_0) {
+		else if (int(*it) >= ASCII_0 && int(*it) <= ASCII_9) {
 			if (auxNumero.empty())
 				auxNumero.push_front(*it);
 			else {
