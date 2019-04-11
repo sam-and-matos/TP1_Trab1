@@ -53,7 +53,7 @@ void CodigoApresentacao::validar(string cd_apresentacao) throw (invalid_argument
 		throw invalid_argument("Codigo de Apresentacao invalido! Codigo tem que ter 4 digitos.")
 }
 
-void CodigoApresentacao::setCodigoApresetacao(string cd_apresentacao) throw(invalid_argument) {
+void CodigoApresentacao::setCodigoApresentacao(string cd_apresentacao) throw(invalid_argument) {
 	validar(cd_apresentacao);
 	this->codigo = cd_apresentacao;
 }

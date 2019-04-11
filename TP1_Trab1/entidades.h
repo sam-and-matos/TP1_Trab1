@@ -498,7 +498,7 @@ class ContaCorrente {
 		 * @see Banco
 		 * 
 		*/
-		void setBanco(const Banco &banco) {
+		void setCodigoApresentacao(const Banco &banco) {
 			this->banco = banco;
 		}
 

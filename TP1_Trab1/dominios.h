@@ -49,39 +49,30 @@ bool checkNumero (string numero);
 
 
 /** 
- *  Classe da agência.
+ *  Classe do Codigo de Evento.
  *  
- *  A classe descreve uma agência. Seus métodos validam a agência,
- *  criam essa agência e retornam a agência criada ao usuário.  
+ *  A classe descreve um codigo de evento. Seus métodos validam o codigo do evento,
+ *  criam esse codigo e retornam o codigo criado ao usuário.  
  */
 
 class CodigoEvento {
 	private:
 
-		string agencia; /**< string que contém o número da agência */
-
-		// Limite de caracters que agencia pode ter e os codigos ASCII que podem compor agencia
-
-		const static int ASCII_0 = '0'; /**< inteiro correspondente ao caracter "0" na tabela ASCII */
-		const static int ASCII_9 = '9'; /**< inteiro correspondente ao caracter "9" na tabela ASCII */
-		const static int LIMITE = 5; /**< inteiro correspondente ao limite de caracteres da string agencia */
-
 		string codigo;
 
-		// Limite do tamanho da string, i.e. quantidade de digitos.
-		const static int LIMITE = 5;
+		// Limite do tamanho minimo e máximo da string, i.e. quantidade de digitos.
+		const static int LIMITE = 3;
 
 		// Metodo de validacao
 		/**
-		 * Método para validação da agência.
+		 * Método para validação do codigo de evento.
 		 * 
 		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * agencia. Se ele for inválido, é lançada a exceção de argumento 
+		 * codigo. Se ele for inválido, é lançada a exceção de argumento 
 		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * tiver mais ou menos do que 5 caracteres, e também se seus valores
-		 * forem diferentes de 0 até 9 na tabela ASCII.
+		 * tiver mais ou menos do que 3 digitos.
 		 * 
-		 * @param agencia string que contém os números correspondente à agência. 
+		 * @param codigo string que contém o codigo correspondente ao evento. 
 		*/
 		void validar(string) throw (invalid_argument); 
 
@@ -90,33 +81,29 @@ class CodigoEvento {
 
 		
 		/**
-		 * Método para criação da agência.
+		 * Método para criação do codigo de evento.
 		 * 
-		 * Esse método invoca o outro método Agencia::validar() para validar
-		 * o valor fornecido pelo usuário para a string agencia. Se ele for 
-		 * válido, a agência é criada contendo aquele valor específico. Se 
-		 * ele não for válido, a agência não é criada. 
+		 * Esse método invoca o outro método CodigoEvento::validar() para validar
+		 * o valor fornecido pelo usuário para a string codigo. Se ele for 
+		 * válido, o codigo de evento é criado contendo aquele valor específico. Se 
+		 * ele não for válido, o codigo de evento não é criado. 
 		 * 
-		 * @param agencia string que contém os números correspondente à agência. 
+		 * @param codigo string que contém os números correspondente ao codigo de evento. 
 		 * 
-		 * @see Agencia::validar()
+		 * @see CodigoEvento::validar()
 		*/
-		void setAgencia(string) throw (invalid_argument);
+		void setCodigoEvento(string) throw (invalid_argument);
+
 
 		/**
-		 * Método para o acesso à agência.
+		 * Método para o acesso ao codigo do evento.
 		 * 
-		 * Esse método acessa a agência relacionada a ele no 
-		 * código principal e retorna o seu valor. 
+		 * Esse método acessa a evento relacionada a ele no 
+		 * código principal e retorna o seu codigo. 
 		 * 
-		 * @return valor da agência. 
+		 * @return valor do codigo de evento. 
 		 * 
 		*/
-		string getAgencia() const {
-			return agencia;
-
-
-		void setCodigoEvento(string) throw (invalid_argument);
 
 		string getCodigoEvento() const {
 			return codigo;
@@ -126,41 +113,32 @@ class CodigoEvento {
 
 
 /** 
- *  Classe do número banco.
+ *  Classe do Codigo da Apresentação.
  *  
- *  A classe descreve um número de banco. Seus métodos validam um 
- *  número de banco, criam esse número e retornam o número criado 
+ *  A classe descreve um codigo da apresentacao. Seus métodos validam um 
+ *  codigo, criam esse codigo e retornam o codigo criado 
  *  ao usuário.  
  */
-class Banco {
-	private:
-		string banco; /**< string que contém o número do banco */
-
-		// Limite do tamanho da string e limite de caracters ASCII aceitos
-		const static int ASCII_0 = '0'; /**< inteiro correspondente ao caracter "0" na tabela ASCII */
-		const static int ASCII_9 = '9'; /**< inteiro correspondente ao caracter "9" na tabela ASCII */
-		const static int LIMITE = 3; /**< inteiro correspondente ao limite de caracteres da string banco */
 
 class CodigoApresentacao {
 	private:
 		string codigo;
 
 		// Limite do tamanho da string, i.e. quantidade de digitos.
-		const static int LIMITE = 3;
+		const static int LIMITE = 4;
 
 
 		// Metodo de validacao
 		
 		/**
-		 * Método para validação do banco.
+		 * Método para validação do codigo da apresentação.
 		 * 
 		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * do número do banco. Se ele for inválido, é lançada a exceção de argumento 
+		 * codigo. Se ele for inválido, é lançada a exceção de argumento 
 		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * tiver mais ou menos do que 3 caracteres, e também se seus valores
-		 * forem diferentes de 0 até 9 na tabela ASCII.
+		 * tiver mais ou menos do que 4 digitos.
 		 * 
-		 * @param banco string que contém os números correspondente ao banco. 
+		 * @param codigo string que contém os números correspondente ao codigo da apresentação. 
 		*/
 		void validar(string) throw (invalid_argument);
 
@@ -169,26 +147,26 @@ class CodigoApresentacao {
 
 
 		/**
-		 * Método para criação do banco.
+		 * Método para criação do código de aparesentação.
 		 * 
-		 * Esse método invoca o outro método Banco::validar() para validar
-		 * o valor fornecido pelo usuário para a string banco. Se ele for 
-		 * válido, a string com o número do banco é criada contendo aquele 
-		 * valor específico. Se ele não for válido, a string não é criada. 
+		 * Esse método invoca o outro método CodigoApresentacao::validar() para validar
+		 * o valor fornecido pelo usuário para a string codigo. Se ele for 
+		 * válido, o objeto com o número do codigo de apresentação é criada contendo aquele 
+		 * valor específico. Se ele não for válido, o objeto não é criada. 
 		 * 
-		 * @param banco string que contém os números correspondente ao banco. 
+		 * @param codigo string que contém os números correspondente ao banco. 
 		 * 
-		 * @see Banco::validar()
+		 * @see CodigoApresentacao::validar()
 		*/
-		void setBanco(string) throw (invalid_argument);
+		void setCodigoApresentacao(string) throw (invalid_argument);
 
 		/**
-		 * Método para o acesso ao banco.
+		 * Método para o acesso ao codigo de apresentação.
 		 * 
-		 * Esse método acessa o número do banco relacionado a ele no 
-		 * código principalpassado e retorna o seu valor. 
+		 * Esse método acessa o número do codigo de apresentação relacionado a ele no 
+		 * código principal passado e retorna o seu valor. 
 		 * 
-		 * @return valor do número do banco. 
+		 * @return valor do codigo da apresentação. 
 		 * 
 		*/
 		string getBanco() const {
@@ -204,82 +182,59 @@ class CodigoApresentacao {
  *  número de capacidade de acomodação, criam esse número e retornam 
  *  o número criado ao usuário.   
  */
-class CapacidadeAcomodacao {
-	private:
-		int CapacidadeDeAcomodacaoNum; /**< inteiro que contém o valor correspondente 
-		à capacidade de acomodação */
 
-		const static int LIMITE_MIN = 1; /**< inteiro correspondente ao limite mínimo de 
-		algarismos do inteiro CapacidadeDeAcomodacaoNum */
-		const static int LIMITE_MAX = 9; /**< inteiro correspondente ao limite máximo de 
-		algarismos do inteiro CapacidadeDeAcomodacaoNum */
+class CodigoIngresso {
+	private:
+		string codigo; /**< string que contém o valor correspondente 
+		ao codigo de ingresso */
+
+		const static int LIMITE = 5;  /**< inteiro correspondente ao limite mínimo e máximo de 
+		digitos que a string codigo tem que ter. */
 
 		// Metodo de validacao
 
 		/**
-		 * Método para validação da capacidade de acomodação.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para o inteiro 
-		 * correspondente à capacidade de acomodação. Se ele for inválido, é 
-		 * lançada a exceção de argumento inválido. Se for válido, nada é 
-		 * feito. O valor será inválido se tiver menos de 1 algarismo ou mais 
-		 * de 9 algarismos.
-		 * 
-		 * @param capacidadeAcomodacao inteiro correspondente à capacidade de acomodação. 
+		 * Método para validação do código do ingresso.
+		 *
+		 * Esse método analisa o valor fornecido pelo usuário para a string
+		 * correspondente ao codigo do ingresso. Se ele for inválido, é
+		 * lançada a exceção de argumento inválido. Se for válido, nada é
+		 * feito. O valor será inválido se não tiver 5 digitos.
+		 *
+		 * @param codigo string correspondente ao código do ingresso.
 		*/
-		void validar(int) throw(invalid_argument);
-
-		void setCodigoApresetacao(string) throw (invalid_argument);
-
-		string getCodigoApresetacao() const {
-			return codigo;
-		}
-};
-
-class CodigoIngresso {
-	private:
-		string codigo;
-
-		// Limite do tamanho da string, i.e. quantidade de digitos.
-		const static int LIMITE_MIN = 1;
-
-		// Metodo de validacao
 
 		void validar(string) throw(invalid_argument);
-
 
 	public:
 		// Metodos de acesso
 
 
 		/**
-		 * Método para criação da capacidade de acomodação.
+		 * Método para criação do código do ingresso
 		 * 
-		 * Esse método invoca o outro método CapacidadeAcomodacao::validar() 
-		 * para validar o valor fornecido pelo usuário para o inteiro 
-		 * correspondente à capacidade de acomodação. Se ele for válido, a 
-		 * capacidade de acomodação é criada contendo aquele valor específico. 
-		 * Se ele não for válido, a capacidade de acomodação não é criada. 
+		 * Esse método invoca o outro método CodigoIngresso::validar() 
+		 * para validar o valor fornecido pelo usuário para a string 
+		 * correspondente ao código do ingresso. Se ele for válido, o 
+		 * código do ingresso é criado contendo aquele valor específico. 
+		 * Se ela não for válido, o código do ingresso não é criado. 
 		 * 
-		 * @param capacidadeAcomodacao inteiro correspondente à capacidade de acomodação. 
+		 * @param codigo string correspondente ao código do ingresso. 
 		 * 
-		 * @see CapacidadeAcomodacao::validar()
+		 * @see CodigoIngresso::validar()
 		*/
-		void setCapacidade(int) throw(invalid_argument);
-
-		/**
-		 * Método para o acesso à capacidade de acomodação.
-		 * 
-		 * Esse método acessa a capacidade de acomodação relacionada a ele no 
-		 * código principal e retorna o seu valor. 
-		 * 
-		 * @return valor da capacidade de acomodação. 
-		 * 
-		*/
-		int getCapacidade() const {
-			return CapacidadeDeAcomodacaoNum;
 
 		void setCodigoIngresso(string) throw(invalid_argument);
+
+		/**
+		 * Método para o acesso ao código do ingresso.
+		 * 
+		 * Esse método acessa o código do ingresso relacionado a ele no 
+		 * programa e retorna o seu valor. 
+		 * 
+		 * @return codigo número do código do ingresso. 
+		 * 
+		*/	
 
 		string getCodigoIngresso() const {
 			return codigo;
