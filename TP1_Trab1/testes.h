@@ -19,7 +19,7 @@ class TUAgencia {
 
         // Referência para o objeto a ser testado.
 
-        Agencia *agencia;
+        CodigoEvento *agencia;
 
         // Estado do teste.
 

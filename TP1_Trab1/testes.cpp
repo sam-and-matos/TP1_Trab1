@@ -8,7 +8,7 @@
 // Definições de métodos.
 
 void TUAgencia::setUp(){
-    agencia = new Agencia();
+    agencia = new CodigoEvento();
     estado = SUCESSO;
 }
 
