@@ -34,43 +34,40 @@ bool checkNumero(string numero) {
 	
 // Defini��es dos m�todos
 
-void Agencia::validar(string agencia) throw (invalid_argument) {
-	if (agencia.size() != LIMITE)
-		throw invalid_argument("Agencia invalida!");
-
-	for (std::string::iterator it = agencia.begin(); it != agencia.end(); it++) {
-		if (int(*it) < ASCII_0 || int(*it) > ASCII_9)
-			throw invalid_argument("Agencia invalida!");
-	}
+void CodigoEvento::validar(string cd_evento) throw (invalid_argument) {
+	if (!checNumero(cd_evento))
+		throw invalid_argument("Codigo de Evento invalido! Somente digitos sao aceitos.")
+	if (codigoevento.size() != LIMITE)
+		throw invalid_argument("Codigo de Evento invalido! Codigo tem que ter 3 digitos.")
 }
 
-void Agencia::setAgencia(string agencia) throw(invalid_argument) {
-	validar(agencia);
-	this->agencia = agencia;
+void CodigoEvento::setCodigoEvento(string cd_evento) throw(invalid_argument) {
+	validar(cd_evento);
+	this->codigo = cd_evento;
 }
 
-void Banco::validar(string banco) throw (invalid_argument) {
-	if (banco.size() != LIMITE)
-		throw invalid_argument("Banco invalido!");
-	for (auto it = banco.begin(); it != banco.end(); it++) {
-		if (int(*it) < ASCII_0 || int(*it) > ASCII_9)
-			throw invalid_argument("Banco invalido!");
-	}
+void CodigoApresentacao::validar(string cd_apresentacao) throw (invalid_argument) {
+	if (!checkNumero(cd_apresentacao))
+		throw invalid_argument("Codigo de Apresentacao invalido! Somente digitos sao aceitos.");
+	if (cd_apresentacao.size() != LIMITE)
+		throw invalid_argument("Codigo de Apresentacao invalido! Codigo tem que ter 4 digitos.")
 }
 
-void Banco::setBanco(string banco) throw(invalid_argument) {
-	validar(banco);
-	this->banco = banco;
+void CodigoApresentacao::setCodigoApresetacao(string cd_apresentacao) throw(invalid_argument) {
+	validar(cd_apresentacao);
+	this->codigo = cd_apresentacao;
 }
 
-void CapacidadeAcomodacao::validar(int capacidadeAcomodacao) throw(invalid_argument) {
-	if (capacidadeAcomodacao < LIMITE_MIN || capacidadeAcomodacao > LIMITE_MAX)
-		throw invalid_argument("Capacidade invalida.");
+void CodigoIngresso::validar(string cd_ingresso) throw(invalid_argument) {
+	if (!checkNumero(cd_ingresso))
+		throw invalid_argument("Codigo de Ingresso invalido! Somente digitos sao aceitos.")
+	if (cd_ingresso.size() != LIMITE)
+		throw invalid_argument("Codigo de Ingresso invalido! Codigo tem que ter 5 digitos.")
 }
 
-void CapacidadeAcomodacao::setCapacidade(int capacidadeAcomodacao) throw (invalid_argument) {
-	validar(capacidadeAcomodacao);
-	this->CapacidadeDeAcomodacaoNum = capacidadeAcomodacao;
+void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argument) {
+	validar(cd_ingresso);
+	this->codigo = cd_ingresso;
 }
 
 void Diaria::validar(float valorDiaria) throw (invalid_argument) {

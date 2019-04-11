@@ -9,7 +9,7 @@ using namespace std;
 
 // Declaração de classe.
 
-class TUAgencia {
+class TUCodigoEvento {
     private:
 
         // Definições de constantes para evitar numeros mágicos.
@@ -19,7 +19,7 @@ class TUAgencia {
 
         // Referência para o objeto a ser testado.
 
-        Agencia *agencia;
+        CodigoEvento *agencia;
 
         // Estado do teste.
 

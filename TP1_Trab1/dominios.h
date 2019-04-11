@@ -49,13 +49,12 @@ bool checkNumero (string numero);
  *  A classe descreve uma agência, e seus métodos validam a agência,
  *  criam essa agência e retornam a agência criada ao usuário.  
  */
-class Agencia {
-	private:
-		string agencia;
 
-		// Limite de caracters que agencia pode ter e os codigos ASCII que podem compor agencia
-		const static int ASCII_0 = 48;
-		const static int ASCII_9 = 57;
+class CodigoEvento {
+	private:
+		string codigo;
+
+		// Limite do tamanho da string, i.e. quantidade de digitos.
 		const static int LIMITE = 5;
 
 		// Metodo de validacao
@@ -64,21 +63,19 @@ class Agencia {
 	public:
 		// Metodos de acesso
 
-		void setAgencia(string) throw (invalid_argument);
+		void setCodigoEvento(string) throw (invalid_argument);
 
-		string getAgencia() const {
-			return agencia;
+		string getCodigoEvento() const {
+			return codigo;
 		}
 
 };
 
-class Banco {
+class CodigoApresentacao {
 	private:
-		string banco;
+		string codigo;
 
-		// Limite do tamanho da string e limite de caracters ASCII aceitos
-		const static int ASCII_0 = 48;
-		const static int ASCII_9 = 57;
+		// Limite do tamanho da string, i.e. quantidade de digitos.
 		const static int LIMITE = 3;
 
 		// Metodo de validacao
@@ -87,31 +84,31 @@ class Banco {
 	public:
 		// Metodos de acesso
 
-		void setBanco(string) throw (invalid_argument);
+		void setCodigoApresetacao(string) throw (invalid_argument);
 
-		string getBanco() const {
-			return banco;
+		string getCodigoApresetacao() const {
+			return codigo;
 		}
 };
 
-class CapacidadeAcomodacao {
+class CodigoIngresso {
 	private:
-		int CapacidadeDeAcomodacaoNum;
+		string codigo;
 
+		// Limite do tamanho da string, i.e. quantidade de digitos.
 		const static int LIMITE_MIN = 1;
-		const static int LIMITE_MAX = 9;
 
 		// Metodo de validacao
 
-		void validar(int) throw(invalid_argument);
+		void validar(string) throw(invalid_argument);
 
 	public:
 		// Metodos de acesso
 
-		void setCapacidade(int) throw(invalid_argument);
+		void setCodigoIngresso(string) throw(invalid_argument);
 
-		int getCapacidade() const {
-			return CapacidadeDeAcomodacaoNum;
+		string getCodigoIngresso() const {
+			return codigo;
 		}
 };
 

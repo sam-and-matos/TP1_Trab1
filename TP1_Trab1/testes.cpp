@@ -7,16 +7,16 @@
 
 // Definições de métodos.
 
-void TUAgencia::setUp(){
-    agencia = new Agencia();
+void TUCodigoEvento::setUp(){
+    agencia = new CodigoEvento();
     estado = SUCESSO;
 }
 
-void TUAgencia::tearDown(){
+void TUCodigoEvento::tearDown(){
     delete agencia;
 }
 
-void TUAgencia::testarCenarioSucesso(){
+void TUCodigoEvento::testarCenarioSucesso(){
     try{
         agencia->setAgencia(VALOR_VALIDO);
         if (agencia->getAgencia() != VALOR_VALIDO)
@@ -27,7 +27,7 @@ void TUAgencia::testarCenarioSucesso(){
     }
 }
 
-void TUAgencia::testarCenarioFalha(){
+void TUCodigoEvento::testarCenarioFalha(){
     try{
         agencia->setAgencia(VALOR_INVALIDO);
         estado = FALHA;
@@ -37,7 +37,7 @@ void TUAgencia::testarCenarioFalha(){
     }
 }
 
-int TUAgencia::run(){
+int TUCodigoEvento::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
