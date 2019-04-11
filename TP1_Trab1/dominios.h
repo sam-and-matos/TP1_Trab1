@@ -49,30 +49,31 @@ bool checkNumero (string numero);
 
 
 /** 
- *  Classe do Codigo de Evento.
+ *  Classe do código do evento.
  *  
- *  A classe descreve um codigo de evento. Seus métodos validam o codigo do evento,
- *  criam esse codigo e retornam o codigo criado ao usuário.  
+ *  A classe descreve um código do evento. Seus métodos validam o código do evento,
+ *  criam esse código e retornam o código criado ao usuário.  
  */
 
 class CodigoEvento {
 	private:
 
-		string codigo;
+		string codigo; /**< string que contém o valor correspondente 
+		ao código do evento */
 
-		// Limite do tamanho minimo e máximo da string, i.e. quantidade de digitos.
-		const static int LIMITE = 3;
+		const static int LIMITE = 3; /**< inteiro correspondente ao limite mínimo e máximo de 
+		digitos que a string codigo tem que ter. */
 
 		// Metodo de validacao
 		/**
-		 * Método para validação do codigo de evento.
+		 * Método para validação do código do evento.
 		 * 
 		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * codigo. Se ele for inválido, é lançada a exceção de argumento 
+		 * código. Se ele for inválido, é lançada a exceção de argumento 
 		 * inválido. Se for válido, nada é feito. O valor será inválido se 
 		 * tiver mais ou menos do que 3 digitos.
 		 * 
-		 * @param codigo string que contém o codigo correspondente ao evento. 
+		 * @param codigo string que contém o código correspondente ao evento. 
 		*/
 		void validar(string) throw (invalid_argument); 
 
@@ -81,14 +82,14 @@ class CodigoEvento {
 
 		
 		/**
-		 * Método para criação do codigo de evento.
+		 * Método para criação do código de evento.
 		 * 
 		 * Esse método invoca o outro método CodigoEvento::validar() para validar
-		 * o valor fornecido pelo usuário para a string codigo. Se ele for 
-		 * válido, o codigo de evento é criado contendo aquele valor específico. Se 
-		 * ele não for válido, o codigo de evento não é criado. 
+		 * o valor fornecido pelo usuário para a string código. Se ele for 
+		 * válido, o código de evento é criado contendo aquele valor específico. Se 
+		 * ele não for válido, o código de evento não é criado. 
 		 * 
-		 * @param codigo string que contém os números correspondente ao codigo de evento. 
+		 * @param codigo string que contém os números correspondente ao código de evento. 
 		 * 
 		 * @see CodigoEvento::validar()
 		*/
@@ -96,12 +97,12 @@ class CodigoEvento {
 
 
 		/**
-		 * Método para o acesso ao codigo do evento.
+		 * Método para o acesso ao código do evento.
 		 * 
 		 * Esse método acessa a evento relacionada a ele no 
-		 * código principal e retorna o seu codigo. 
+		 * código principal e retorna o seu código. 
 		 * 
-		 * @return valor do codigo de evento. 
+		 * @return valor do código de evento. 
 		 * 
 		*/
 
@@ -113,32 +114,33 @@ class CodigoEvento {
 
 
 /** 
- *  Classe do Codigo da Apresentação.
+ *  Classe do código da apresentação.
  *  
- *  A classe descreve um codigo da apresentacao. Seus métodos validam um 
- *  codigo, criam esse codigo e retornam o codigo criado 
+ *  A classe descreve um código da apresentacao. Seus métodos validam um 
+ *  código, criam esse código e retornam o código criado 
  *  ao usuário.  
  */
 
 class CodigoApresentacao {
 	private:
-		string codigo;
+		string codigo; /**< string que contém o valor correspondente 
+		ao código da apresentação*/
 
-		// Limite do tamanho da string, i.e. quantidade de digitos.
-		const static int LIMITE = 4;
+		const static int LIMITE = 4; /**< inteiro correspondente ao limite mínimo e máximo de 
+		digitos que a string código tem que ter. */
 
 
 		// Metodo de validacao
 		
 		/**
-		 * Método para validação do codigo da apresentação.
+		 * Método para validação do código da apresentação.
 		 * 
 		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * codigo. Se ele for inválido, é lançada a exceção de argumento 
+		 * código. Se ele for inválido, é lançada a exceção de argumento 
 		 * inválido. Se for válido, nada é feito. O valor será inválido se 
 		 * tiver mais ou menos do que 4 digitos.
 		 * 
-		 * @param codigo string que contém os números correspondente ao codigo da apresentação. 
+		 * @param codigo string que contém os números correspondente ao código da apresentação. 
 		*/
 		void validar(string) throw (invalid_argument);
 
@@ -150,8 +152,8 @@ class CodigoApresentacao {
 		 * Método para criação do código de aparesentação.
 		 * 
 		 * Esse método invoca o outro método CodigoApresentacao::validar() para validar
-		 * o valor fornecido pelo usuário para a string codigo. Se ele for 
-		 * válido, o objeto com o número do codigo de apresentação é criada contendo aquele 
+		 * o valor fornecido pelo usuário para a string código. Se ele for 
+		 * válido, o objeto com o número do código de apresentação é criada contendo aquele 
 		 * valor específico. Se ele não for válido, o objeto não é criada. 
 		 * 
 		 * @param codigo string que contém os números correspondente ao banco. 
@@ -161,35 +163,35 @@ class CodigoApresentacao {
 		void setCodigoApresentacao(string) throw (invalid_argument);
 
 		/**
-		 * Método para o acesso ao codigo de apresentação.
+		 * Método para o acesso ao código de apresentação.
 		 * 
-		 * Esse método acessa o número do codigo de apresentação relacionado a ele no 
+		 * Esse método acessa o número do código de apresentação relacionado a ele no 
 		 * código principal passado e retorna o seu valor. 
 		 * 
-		 * @return valor do codigo da apresentação. 
+		 * @return valor do código da apresentação. 
 		 * 
 		*/
-		string getBanco() const {
-			return banco;
+		string getCodigoApresentacao() const {
+			return codigo;
 		}
 };
 
 /** 
- *  Classe da capacidade de acomodação.
+ *  Classe do código do ingresso.
  *  
- *  A classe descreve o número da capacidade de acomodação de uma 
- *  determinada seção da hospedagem. Seus métodos validam um 
- *  número de capacidade de acomodação, criam esse número e retornam 
- *  o número criado ao usuário.   
+ *  A classe descreve o número do código do ingresso de um 
+ *  determinado evento. Seus métodos validam uma
+ *  string do código do ingresso, criam essa string e retornam 
+ *  o string criada ao usuário.   
  */
 
 class CodigoIngresso {
 	private:
 		string codigo; /**< string que contém o valor correspondente 
-		ao codigo de ingresso */
+		ao código de ingresso */
 
 		const static int LIMITE = 5;  /**< inteiro correspondente ao limite mínimo e máximo de 
-		digitos que a string codigo tem que ter. */
+		digitos que a string código tem que ter. */
 
 		// Metodo de validacao
 
@@ -197,7 +199,7 @@ class CodigoIngresso {
 		 * Método para validação do código do ingresso.
 		 *
 		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * correspondente ao codigo do ingresso. Se ele for inválido, é
+		 * correspondente ao código do ingresso. Se ele for inválido, é
 		 * lançada a exceção de argumento inválido. Se for válido, nada é
 		 * feito. O valor será inválido se não tiver 5 digitos.
 		 *
