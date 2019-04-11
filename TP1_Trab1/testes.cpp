@@ -7,16 +7,16 @@
 
 // Definições de métodos.
 
-void TUCodigoEvento::setUp(){
+void TUAgencia::setUp(){
     agencia = new CodigoEvento();
     estado = SUCESSO;
 }
 
-void TUCodigoEvento::tearDown(){
+void TUAgencia::tearDown(){
     delete agencia;
 }
 
-void TUCodigoEvento::testarCenarioSucesso(){
+void TUAgencia::testarCenarioSucesso(){
     try{
         agencia->setAgencia(VALOR_VALIDO);
         if (agencia->getAgencia() != VALOR_VALIDO)
@@ -27,7 +27,7 @@ void TUCodigoEvento::testarCenarioSucesso(){
     }
 }
 
-void TUCodigoEvento::testarCenarioFalha(){
+void TUAgencia::testarCenarioFalha(){
     try{
         agencia->setAgencia(VALOR_INVALIDO);
         estado = FALHA;
@@ -37,7 +37,7 @@ void TUCodigoEvento::testarCenarioFalha(){
     }
 }
 
-int TUCodigoEvento::run(){
+int TUAgencia::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
@@ -171,7 +171,7 @@ void TUData::tearDown(){
 void TUData::testarCenarioSucesso(){
     try{
         data->setData(VALOR_VALIDO_DIA, VALOR_VALIDO_MES, VALOR_VALIDO_ANO);
-        if (data->getData() != "20/fev/2002") // checar! 
+        if (data->getData() != "20/fev/2002")  
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -333,7 +333,35 @@ void TUNome::testarCenarioSucesso(){
 
 void TUNome::testarCenarioFalha(){
     try{
-        nome->setNome(VALOR_INVALIDO);
+        nome->setNome(VALOR_INVALIDO1);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+   try{
+        nome->setNome(VALOR_INVALIDO2);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+    try{
+        nome->setNome(VALOR_INVALIDO3);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+    try{
+        nome->setNome(VALOR_INVALIDO4);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+    try{
+        nome->setNome(VALOR_INVALIDO5);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -371,7 +399,14 @@ void TUNumeroCartaoCredito::testarCenarioSucesso(){
 
 void TUNumeroCartaoCredito::testarCenarioFalha(){
     try{
-        numeroCartaoCredito->setNumero(VALOR_INVALIDO);
+        numeroCartaoCredito->setNumero(VALOR_INVALIDO1);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+ try{
+        numeroCartaoCredito->setNumero(VALOR_INVALIDO2);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -447,7 +482,28 @@ void TUSenha::testarCenarioSucesso(){
 
 void TUSenha::testarCenarioFalha(){
     try{
-        senha->setSenha(VALOR_INVALIDO);
+        senha->setSenha(VALOR_INVALIDO1);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+    try{
+        senha->setSenha(VALOR_INVALIDO2);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+    try{
+        senha->setSenha(VALOR_INVALIDO3);
+        estado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+    try{
+        senha->setSenha(VALOR_INVALIDO4);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
