@@ -29,8 +29,24 @@ using namespace std;
  *  @param numero string que contém o número informado pelo usuário.  
  */
 bool checkLuhn(string numero);
+
  
 // Declaração de classes
+
+
+/**
+* Funcao que checa se dada string é composta só por números.
+*
+* A função analisa todos os caracteres da string e retorna True se
+* a string for composta só por números e False se ao menos um caracter
+* não for número.
+*
+* @param string fornecida pelo usuário.
+*/
+bool checkNumero (string numero);
+
+// Declara��o de classes
+
 
 /** 
  *  Classe da agência.
@@ -38,8 +54,10 @@ bool checkLuhn(string numero);
  *  A classe descreve uma agência. Seus métodos validam a agência,
  *  criam essa agência e retornam a agência criada ao usuário.  
  */
-class Agencia {
+
+class CodigoEvento {
 	private:
+
 		string agencia; /**< string que contém o número da agência */
 
 		// Limite de caracters que agencia pode ter e os codigos ASCII que podem compor agencia
@@ -47,6 +65,11 @@ class Agencia {
 		const static int ASCII_0 = '0'; /**< inteiro correspondente ao caracter "0" na tabela ASCII */
 		const static int ASCII_9 = '9'; /**< inteiro correspondente ao caracter "9" na tabela ASCII */
 		const static int LIMITE = 5; /**< inteiro correspondente ao limite de caracteres da string agencia */
+
+		string codigo;
+
+		// Limite do tamanho da string, i.e. quantidade de digitos.
+		const static int LIMITE = 5;
 
 		// Metodo de validacao
 		/**
@@ -64,6 +87,7 @@ class Agencia {
 
 	public:
 		// Metodos de acesso
+
 		
 		/**
 		 * Método para criação da agência.
@@ -90,8 +114,16 @@ class Agencia {
 		*/
 		string getAgencia() const {
 			return agencia;
+
+
+		void setCodigoEvento(string) throw (invalid_argument);
+
+		string getCodigoEvento() const {
+			return codigo;
+
 		}
 };
+
 
 /** 
  *  Classe do número banco.
@@ -108,6 +140,14 @@ class Banco {
 		const static int ASCII_0 = '0'; /**< inteiro correspondente ao caracter "0" na tabela ASCII */
 		const static int ASCII_9 = '9'; /**< inteiro correspondente ao caracter "9" na tabela ASCII */
 		const static int LIMITE = 3; /**< inteiro correspondente ao limite de caracteres da string banco */
+
+class CodigoApresentacao {
+	private:
+		string codigo;
+
+		// Limite do tamanho da string, i.e. quantidade de digitos.
+		const static int LIMITE = 3;
+
 
 		// Metodo de validacao
 		
@@ -126,6 +166,7 @@ class Banco {
 
 	public:
 		// Metodos de acesso
+
 
 		/**
 		 * Método para criação do banco.
@@ -188,8 +229,28 @@ class CapacidadeAcomodacao {
 		*/
 		void validar(int) throw(invalid_argument);
 
+		void setCodigoApresetacao(string) throw (invalid_argument);
+
+		string getCodigoApresetacao() const {
+			return codigo;
+		}
+};
+
+class CodigoIngresso {
+	private:
+		string codigo;
+
+		// Limite do tamanho da string, i.e. quantidade de digitos.
+		const static int LIMITE_MIN = 1;
+
+		// Metodo de validacao
+
+		void validar(string) throw(invalid_argument);
+
+
 	public:
 		// Metodos de acesso
+
 
 		/**
 		 * Método para criação da capacidade de acomodação.
@@ -217,6 +278,11 @@ class CapacidadeAcomodacao {
 		*/
 		int getCapacidade() const {
 			return CapacidadeDeAcomodacaoNum;
+
+		void setCodigoIngresso(string) throw(invalid_argument);
+
+		string getCodigoIngresso() const {
+			return codigo;
 		}
 };
 

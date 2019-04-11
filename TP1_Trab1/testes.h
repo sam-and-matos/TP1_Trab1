@@ -38,7 +38,11 @@ class TUAgencia {
 
         // Referência para o objeto a ser testado.
 
+
         Agencia *agencia; /**< instância da classe para a execução de testes unitários */
+
+        CodigoEvento *agencia;
+
 
         // Estado do teste.
 
