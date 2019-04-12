@@ -245,68 +245,12 @@ class CodigoIngresso {
 };
 
 /** 
- *  Classe do valor da diária.
- *  
- *  A classe descreve o valor de uma diária. Seus métodos validam o 
- *  valor da diária, criam esse valor e retornam o valor criado 
- *  ao usuário.  
- */
-class Diaria {
-	private:
-		float valorDiaria; /**< float que contém o valor da diária */
-
-		// Metodo de validacao
-
-		/**
-		 * Método para validação da diária.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para o float 
-		 * correspondente ao preço da diária. Se ele for inválido, é lançada 
-		 * a exceção de argumento inválido. Se for válido, nada é feito. O 
-		 * valor será inválido se for menor que o preço mínimo da diária (1.00), 
-		 * ou maior que o preço máximo (10000.00).
-		 * 
-		 * @param valorDiaria float correspondente ao preço diária. 
-		*/
-		void validar(float) throw (invalid_argument);
-
-	public:
-		// Metodos de acesso
-
-		/**
-		 * Método para criação da diária.
-		 * 
-		 * Esse método invoca o outro método Diaria::validar() para validar
-		 * o valor fornecido pelo usuário para o float valorDiaria. Se ele 
-		 * for válido, a diária é criada contendo aquele valor específico. 
-		 * Se ele não for válido, a diária não é criada. 
-		 * 
-		 * @param valorDiaria float correspondente ao preço diária.  
-		 * 
-		 * @see Diaria::validar()
-		*/
-		void setDiaria(float) throw (invalid_argument);
-
-		/**
-		 * Método para o acesso à diária.
-		 * 
-		 * Esse método acessa o valor da diária relacionado a ele no 
-		 * código principal e retorna o seu valor. 
-		 * 
-		 * @return valor da diária. 
-		 * 
-		*/
-		float getDiaria() const {
-			return valorDiaria;
-		}
-};
-
-/** 
  *  Classe da data.
  *  
  *  A classe descreve uma data. Seus métodos validam a data,
  *  criam essa data e retornam a data criada ao usuário.  
  */
+
 class Data {
 	private:
 		string data; /**< string que corresponde a data no formato dd/mm/yy */
