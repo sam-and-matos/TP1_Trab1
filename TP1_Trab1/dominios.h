@@ -265,7 +265,8 @@ class Data {
 		 * 
 		 * Esse método analisa o valor fornecido pelo usuário para a string fornecida 
 		 * pelo usuário para a data. Se essa for invalida segundo a Regular Expression 
-		 *{^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$}, é 
+		 * {^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$}, que representa a seguinte expressão:
+		 * dois digitos entre 1 e 31, dois digitos entre 1 e 12 e 2 digitos entre 00 e 99, é 
 		 * lançada a exceção de argumento inválido. Se for válido, nada é feito.
 		 * A data será válida se estiver no formado dd/mm/yy, onde dd é um valor entra 1 e 31
 		 * mm é um valor entre 1 e 12 e yy é um valor entre 00 e 99.
