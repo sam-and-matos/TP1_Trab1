@@ -46,7 +46,7 @@ bool checkLuhn(string numero);
 */
 bool checkNumero (string numero);
 
-// Declara��o de classes
+// Declaração de classes
 
 
 /** 
