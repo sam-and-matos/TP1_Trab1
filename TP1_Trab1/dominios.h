@@ -12,6 +12,7 @@
 
 #include <stdexcept>
 #include <string>
+#include <regex>
 #include <list>
 
 
@@ -308,33 +309,24 @@ class Diaria {
  */
 class Data {
 	private:
-		int dia; /**< inteiro que corresponde ao dia */
-		string mes; /**< string que corresponde ao mês */
-		int ano; /**< inteiro que corresponde ao ano */
-
+		string data; /**< string que corresponde a data no formato dd/mm/yy */
+		
 		// Defincao dos limites para Dia e Ano
 
-		const static int DIA_MIN = 1; /**< inteiro que corresponde ao dia mínimo */
-		const static int DIA_MAX = 31; /**< inteiro que corresponde ao dia máximo */
-		const static int ANO_MIN = 2000; /**< inteiro que corresponde ao ano mínimo */
-		const static int ANO_MAX = 2099; /**< inteiro que corresponde ao ano máximo */
+		const static string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$";
 
 		// Metodo de validacao
 		/**
 		 * Método para validação da data.
 		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para os inteiros
-		 * correspondentes ao dia e ao ano, e também analisa a string fornecida 
-		 * pelo usuário para o mês. Se esses parâmetros forem inválidos, é 
+		 * Esse método analisa o valor fornecido pelo usuário para a string fornecida 
+		 * pelo usuário para a data. Se essa for invalida segundo a Regular Expression 
+		 *{^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$}, é 
 		 * lançada a exceção de argumento inválido. Se for válido, nada é feito.
-		 * O dia será inválido se for menor do que 1 e maior do que 31; o mês
-		 * será inválido se for diferente de "jan", "fev", "mar", "abr", "mai",
-		 * "jun", "jul", "ago", "set", "out", "nov", "dez"; o ano será inválido
-		 * se for menor que 2000 ou maior que 2099.
+		 * A data será válida se estiver no formado dd/mm/yy, onde dd é um valor entra 1 e 31
+		 * mm é um valor entre 1 e 12 e yy é um valor entre 00 e 99.
 		 * 
-		 * @param dia inteiro que corresponde ao dia.
-		 * @param mes string que corresponde ao mês.
-		 * @param ano inteiro que corresponde ao ano.
+		 * @param data string que corresponde a data no formato dd/mm/yy.
 		 * 		   
 		*/
 		void validar(int, string, int) throw(invalid_argument);
@@ -345,15 +337,13 @@ class Data {
 		/**
 		 * Método para criação da data.
 		 * 
-		 * Esse método invoca o outro método Data::validar() para validar
-		 * o valor fornecido pelo usuário para o inteiro dia, a string mês
-		 * e o inteiro ano. Se eles forem válidos, a data é criada contendo 
-		 * aqueles valores específicos. Se eles não forem válidos, a data 
+		 * Esse método invoca o método Data::validar() para validar
+		 * o valor fornecido pelo usuário para a string data.
+		 * Se a string for válida, a data é criada contendo 
+		 * a string. Se eles não forem válidos, a data 
 		 * não é criada. 
 		 * 
-		 * @param dia inteiro que corresponde ao dia.
-		 * @param mes string que corresponde ao mês.
-		 * @param ano inteiro que corresponde ao ano.
+		 * @param data string que corresponde a data no formato dd/mm/yy.
 		 * 
 		 * @see Data::validar()
 		*/
@@ -365,16 +355,10 @@ class Data {
 		 * Esse método acessa a data relacionada a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return valor da data. 
+		 * @return string com o a data. 
 		 * 
 		*/
 		string getData() const {
-			string data;
-			data += std::to_string(dia);
-			data += '/';
-			data += mes;
-			data += '/';
-			data += std::to_string(ano);
 			return data;
 		}
 };
@@ -394,6 +378,7 @@ class DataValidade {
 		const static int MES_MAX = 12; /**< inteiro que corresponde ao dia máximo */
 		const static int ANO_MIN = 00; /**< inteiro que corresponde ao ano mínimo */
 		const static int ANO_MAX = 99; /**< inteiro que corresponde ao ano  máximo */
+		const static string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\/)\d{2}";
 		
 		// Metodos de validacao
 
