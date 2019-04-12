@@ -80,36 +80,15 @@ void Diaria::setDiaria(float valorDiaria) throw (invalid_argument) {
 	this->valorDiaria = valorDiaria;
 }
 
-void Data::validar(int dia, string mes, int ano) throw (invalid_argument) {
-	
-	if (dia < DIA_MIN || dia > DIA_MAX)
-		throw invalid_argument("Dia invalido!");
-
-	if (mes == "jan");
-	else if (mes == "fev");
-	else if (mes == "mar");
-	else if (mes == "abr");
-	else if (mes == "mai");
-	else if (mes == "jun");
-	else if (mes == "jul");
-	else if (mes == "ago");
-	else if (mes == "set");
-	else if (mes == "out");
-	else if (mes == "nov");
-	else if (mes == "dez");
-	else
-		throw invalid_argument("Mes invalido!");
-	
-
-	if (ano < ANO_MIN || ano > ANO_MAX)
-		throw invalid_argument("Ano invalido!");
+void Data::validar(string data) throw (invalid_argument) {
+	regex valida (REGEX_EXP); // Método para criar um objeto regex.
+	if (!regex_match(data,m))
+		throw invalid_argument("Data inválida!");
 }
 
-void Data::setData(int dia, string mes, int ano) throw (invalid_argument) {
-	validar(dia, mes, ano);
-	this->dia = dia;
-	this->mes = mes;
-	this->ano = ano;
+void Data::setData(string data) throw (invalid_argument) {
+	validar(data);
+	this->data = data;
 }
 
 void DataValidade::validar(int mes, int ano) throw (invalid_argument) {
