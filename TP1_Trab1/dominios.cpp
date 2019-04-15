@@ -34,6 +34,16 @@ bool checkNumero(string numero) {
 	
 // Defini��es dos m�todos
 
+void ClasseEvento::validar(string classe) throw(invalid_argument) {
+	if (!all_of(CL_EVENTO.begin(),CL_EVENTO.end(), classe)
+		throw invalid_argument("Clase do Evento invalida! Somento digitos de 1 a 4 são aceitos, onde: \n 1 - Teatro\n 2 - Esporte\n 3 - Show Nacional\n 4 - Show Internacional.")
+}
+
+void ClasseEvento::setClasseEvento(string classe) throw (invalid_argument) {
+	validar(classe);
+	this->classe = classe;
+}
+
 void CodigoEvento::validar(string cd_evento) throw (invalid_argument) {
 	if (!checNumero(cd_evento))
 		throw invalid_argument("Codigo de Evento invalido! Somente digitos sao aceitos.")
@@ -82,7 +92,7 @@ void Diaria::setDiaria(float valorDiaria) throw (invalid_argument) {
 
 void Data::validar(string data) throw (invalid_argument) {
 	regex valida (REGEX_EXP); // Método para criar um objeto regex.
-	if (!regex_match(data,m))
+	if (!regex_match(data,valida))
 		throw invalid_argument("Data inválida!");
 }
 
@@ -91,23 +101,49 @@ void Data::setData(string data) throw (invalid_argument) {
 	this->data = data;
 }
 
-void DataValidade::validar(int mes, int ano) throw (invalid_argument) {
-	if (mes < MES_MIN || mes > MES_MAX)
-		throw invalid_argument("M�s invalido.");
-
-	if (ano < ANO_MIN || ano > ANO_MAX)
-		throw invalid_argument("Ano invalido.");
+void DataValidade::validar(string dt_validade) throw (invalid_argument) {
+	regex valida(REGEX_EXP); // Método para criar um objeto regex.
+	if (!regex_match(dt_validade, valida))
 }
 
-void DataValidade::setDataDeValidade(int mes, int ano) throw (invalid_argument) {
-	validar(mes, ano);
-	this->mes = mes;
-	this->ano = ano;
+void DataValidade::setDataDeValidade(string dt_validade) throw (invalid_argument) {
+	validar(dt_validade);
+	this->dt_validade = dt_validade;
+}
+
+void Disponibilidade::validar(int disponibilidade) throw (invalid_argument) {
+	if (disponibilidade < LIMITE_MIN || disponibilidade > LIMITE_MAX)
+		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.")
+}
+
+void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_argument) {
+	validar(disponibilidade);
+	this->disponibilidade = disponibilidade;
+}
+
+void Disponibilidade::validar(int disponibilidade) throw (invalid_argument) {
+	if (disponibilidade < LIMITE_MIN || disponibilidade > LIMITE_MAX)
+		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.")
+}
+
+void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_argument) {
+	validar(disponibilidade);
+	this->disponibilidade = disponibilidade;
+}
+
+void FaixaEtaria::validar(string faixa_et) throw (invalid_argument) {
+	if (!all_of(LIM_FAIXA->begin(),LIM_FAIXA->end(), faixa_et)
+		throw invalid_argument("Faixa étaria invalida! Valor só pode ser: L, 10, 12, 14, 16 ou 18.")
+}
+
+void FaixaEtaria::setFaixaEtaria(string faixa_et) throw (invalid_argument) {
+	validar(faixa_et);
+	this->faixa_et = faixa_et;
 }
 
 void Estado::validar(string estado) throw (invalid_argument) {
 	if (estado.size() != LIMITE)
-		throw invalid_argument("Estado invalido!");
+		throw invalid_argument("Estado invalido! Somente as siglas do estado são aceitas.");
 	
 	if (estado == "AC");
 	else if (estado == "AL");
@@ -137,28 +173,12 @@ void Estado::validar(string estado) throw (invalid_argument) {
 	else if (estado == "SP");
 	else if (estado == "TO");
 	else
-		throw invalid_argument("Estado invalido!");
+		throw invalid_argument("Estado invalido! Não existe estado com essa sigla.");
 }
 
 void Estado::setEstado(string estado) throw (invalid_argument) {
 	validar(estado);
 	this->estado = estado;
-}
-
-void Identificador::validar(string identificador) throw (invalid_argument) {
-	if (identificador.size() != LIMITE)
-		throw invalid_argument("Identificador invalido. Identificador precisa ter 5 caracteres(a-z)!");
-
-	
-	for (std::string::iterator it = identificador.begin(); it != identificador.end(); it++) {
-		if (int(*it) < ASCII_a || int(*it) > ASCII_z)
-			throw invalid_argument("Identificador invalido, somentes caracteres de a-z são validos!");
-	}
-}
-
-void Identificador::setIdentificador(string identificador) throw (invalid_argument) {
-	validar(identificador);
-	this->identificador = identificador;
 }
 
 void Nome::validar(string nome) throw (invalid_argument) {

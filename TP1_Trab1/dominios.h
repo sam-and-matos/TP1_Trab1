@@ -31,10 +31,6 @@ using namespace std;
  */
 bool checkLuhn(string numero);
 
- 
-// Declaração de classes
-
-
 /**
 * Funcao que checa se dada string é composta só por números.
 *
@@ -48,6 +44,138 @@ bool checkNumero (string numero);
 
 // Declaração de classes
 
+
+/**
+ *  Classe da cidade.
+ *
+ *  A classe descreve o nome de uma cidade. Seus
+ *  métodos validam o nome da cidade, criam
+ *  essa cidade e retornam o nome da cidade ao usuário.
+ */
+class Cidade {
+private:
+	string numero; /**< string que contém o nome da cidade */
+
+	// Limite do minimo de numeros que a conta tem que ter e os valors do codigo ASCIIII dos 0 e do 9
+	const static int LIMITE = 15; /**< inteiro correspondente ao limite de caracteres da string cidade */
+
+	// Metodo de validacao
+
+	/**
+	 * Método para validação do número da conta corrente.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para a string
+	 * do número da conta corrente. Se ele for inválido, é lançada a
+	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
+	 * será inválido se tiver um número de caracteres diferente de 6, e/ou
+	 * se seus caracteres forem diferentes dos numéros de 0 a 9 na
+	 * tabela ASCII.
+	 *
+	 * @param numero string que contém os números correspondente ao
+	 * número da conta corrente.
+	 *
+	 * @see checkLuhn()
+	*/
+	void validar(string) throw(invalid_argument);
+
+public:
+
+	// Metodos de acesso
+
+	/**
+	 * Método para criação do número da conta corrente.
+	 *
+	 * Esse método invoca o outro método Cidade::validar()
+	 * para validar o valor fornecido pelo usuário para a string numero.
+	 * Se ele for válido, o número da conta corrente é criado contendo
+	 * aquele valor específico. Se ele não for válido, o número da conta
+	 * corrente não é criado.
+	 *
+	 * @param numero string que contém os números correspondente ao
+	 * número da conta corrente.
+	 *
+	 * @see Cidade::validar()
+	*/
+	void setCidade(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao número da conta corrente.
+	 *
+	 * Esse método acessa o número da conta corrente relacionada a ele no
+	 * código principal e retorna o seu valor.
+	 *
+	 * @return valor do número da conta corrente.
+	 *
+	*/
+	string getCidade() const {
+		return numero;
+	}
+};
+
+/**
+*Classe da classificação do evento.
+*
+* A classe descreve a classificação do evento de um
+* determinado evento.Seus métodos validam uma
+* string do classificação do evento, criam essa string e retornam
+* o string criada ao usuário.
+*/
+
+class ClasseEvento {
+private:
+	string classe; /**< string que contém o valor correspondente a classificação do evento */
+
+	const static string CL_EVENTO[] = { "1","2","3","4"};  /**< vetor de string contendo os possiveis valores da string classe. */
+
+	// Metodo de validacao
+
+	/**
+	 * Método para validação da classificação do evento.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para a string
+	 * correspondente a classificação do evento. Se ele for inválido, é
+	 * lançada a exceção de argumento inválido. Se for válido, nada é
+	 * feito. O valor será inválido se não tiver 5 digitos.
+	 *
+	 * @param classe string correspondente ao classificação do evento.
+	*/
+
+	void validar(string) throw(invalid_argument);
+
+public:
+	// Metodos de acesso
+
+
+	/**
+	 * Método para criação do classificação do evento
+	 *
+	 * Esse método invoca o outro método CodigoIngresso::validar()
+	 * para validar o valor fornecido pelo usuário para a string
+	 * correspondente a classificação do evento. Se ele for válido, o
+	 * classificação do evento é criado contendo aquele valor específico.
+	 * Se ela não for válido, o classificação do evento não é criado.
+	 *
+	 * @param classe string correspondente ao classificação do evento.
+	 *
+	 * @see CodigoIngresso::validar()
+	*/
+
+	void setClasseEvento(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao classificação do evento.
+	 *
+	 * Esse método acessa o classificação do evento relacionado a ele no
+	 * programa e retorna o seu valor.
+	 *
+	 * @return codigo número do classificação do evento.
+	 *
+	*/
+
+	string getClasseEvento() const {
+		return codigo;
+	}
+};
 
 /** 
  *  Classe do código do evento.
@@ -274,7 +402,7 @@ class Data {
 		 * @param data string que corresponde a data no formato dd/mm/yy.
 		 * 		   
 		*/
-		void validar(int, string, int) throw(invalid_argument);
+		void validar(string) throw(invalid_argument);
 
 	public:
 		// Metodos de acesso
@@ -292,7 +420,7 @@ class Data {
 		 * 
 		 * @see Data::validar()
 		*/
-		void setData(int, string, int) throw (invalid_argument);
+		void setData(string) throw (invalid_argument);
 
 		/**
 		 * Método para o acesso à data.
@@ -317,12 +445,8 @@ class Data {
  */
 class DataValidade {
 	private:
-		int mes, ano; /**< inteiros que corresponde ao dia e ao ano */
+		int dt_validade; /**< inteiros que corresponde ao dia e ao ano */
 		
-		const static int MES_MIN = 1; /**< inteiro que corresponde ao dia mínimo */
-		const static int MES_MAX = 12; /**< inteiro que corresponde ao dia máximo */
-		const static int ANO_MIN = 00; /**< inteiro que corresponde ao ano mínimo */
-		const static int ANO_MAX = 99; /**< inteiro que corresponde ao ano  máximo */
 		const static string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\/)\d{2}";
 		
 		// Metodos de validacao
@@ -340,7 +464,7 @@ class DataValidade {
 		 * @param ano inteiro que corresponde ao ano.
 		 * 		   
 		*/
-		void validar(int, int) throw(invalid_argument);
+		void validar(string) throw(invalid_argument);
 
 	public:
 
@@ -357,7 +481,7 @@ class DataValidade {
 		 * 
 		 * @see DataValidade::validar()
 		*/
-		void setDataDeValidade(int, int) throw(invalid_argument);
+		void setDataDeValidade(string) throw(invalid_argument);
 
 		/**
 		 * Método para o acesso à data de validade.
@@ -371,6 +495,66 @@ class DataValidade {
 		int getDataDeValidade(int, int) const {
 			return mes, ano;
 		}
+};
+
+/**
+ *  Classe do disponibilidade.
+ *
+ *  A classe descreve a disponibilidade para um evento. Seus métodos validam a disponibilidade,
+ *  criam esse disponibilidade e retornam a disponibilidade criada ao usuário.
+ */
+class Disponibilidade {
+private:
+	int disponibilidade; /**< string que contém o disponibilidade */
+
+	const static int LIMITE_MIN = 0; /**< inteiro correspondente ao limite minimo de disponibilidade */
+	const static int LIMITE_MAX = 250; /**< inteiro correspondente ao limite máximo de disponibilidade */
+
+
+	// Metodo de validacao
+	/**
+	 * Método para validação do disponibilidade.
+	 *
+	 * Esse método analisa a string fornecida pelo usuário para o
+	 * disponibilidade. Se ele for inválido, é lançada a exceção de
+	 * argumento inválido. Se for válido, nada é feito. O valor será
+	 * inválido se tiver caracteres diferentes dos de "a" até "z" na
+	 * tabela ASCII, e também se tiver um número de caracteres diferente
+	 * de 5 caracteres.
+	 *
+	 * @param disponibilidade int entre 0 e 250 correspondendo a disponibilidade.
+	*/
+	void validar(string) throw(invalid_argument);
+
+public:
+	// Metodos de acesso
+
+	/**
+	 * Método para criação da disponibilidade.
+	 *
+	 * Esse método invoca o outro método Disponibilidade::validar() para
+	 * validar o inteiro fornecido pelo usuário para a disponibilidade. Se
+	 * ela for válida, a disponibilidade é criada contendo o valor forneciso.
+	 * Se o valor não for valido, a disponibilidade não é criada.
+	 *
+	 * @param disponibilidade int enrta 0 e 250 correspondendo a disponibilidade.
+	 *
+	 * @see Disponibilidade::validar()
+	*/
+	void setDisponibilidade(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao disponibilidade.
+	 *
+	 * Esse método acessa o disponibilidade relacionada a ele no
+	 * código principal e retorna o seu valor.
+	 *
+	 * @return valor do disponibilidade.
+	 *
+	*/
+	int getDisponibilidade() const {
+		return disponibilidade;
+	}
 };
 
 /** 
@@ -436,102 +620,28 @@ class Estado {
 };
 
 /** 
- *  Classe do identificador.
+ *  Classe da faixa étaria.
  *  
- *  A classe descreve um identificador. Seus métodos validam o identificador,
- *  criam esse identificador e retornam o identificador criada ao usuário.  
+ *  A classe descreve um faixa étaria. Seus métodos validam o faixa étaria,
+ *  criam esse faixa étaria e retornam o faixa étaria criado ao usuário.  
  */
-class Identificador {
+class FaixaEtaria {
 	private:
-		string identificador; /**< string que contém o identificador */
+		string faixa_et; /**< string que contém o faixa étaria */
 
-		// Limite do tamanho minimo do identificador e dos caractere ASCII que podem compor ele.
-		const static int LIMITE = 5; /**< inteiro correspondente ao limite de caracteres da string identificador */
-		const static int ASCII_a = 'a'; /**< inteiro correspondente ao caracter "a" na tabela ASCII */
-		const static int ASCII_z = 'z'; /**< inteiro correspondente ao caracter "z" na tabela ASCII */
+		// Definicoes de limites para os caracteres do faixa étaria em codigo ASCII 
+
+		const static string LIM_FAIXA[] = { "L", "10", "12", "14", "16", "18" };
 
 		// Metodo de validacao
 		/**
-		 * Método para validação do identificador.
+		 * Método para validação do faixa étaria.
 		 * 
-		 * Esse método analisa a string fornecida pelo usuário para o
-		 * identificador. Se ele for inválido, é lançada a exceção de 
-		 * argumento inválido. Se for válido, nada é feito. O valor será
-		 * inválido se tiver caracteres diferentes dos de "a" até "z" na
-		 * tabela ASCII, e também se tiver um número de caracteres diferente
-		 * de 5 caracteres.
-		 * 
-		 * @param identificador string que contém as letras de "a" até "z" 
-		 * correspondente ao identificador. 
-		*/
-		void validar(string) throw(invalid_argument);
-
-	public:
-		// Metodos de acesso
-
-		/**
-		 * Método para criação do identificador.
-		 * 
-		 * Esse método invoca o outro método Identificador::validar() para 
-		 * validar a string fornecida pelo usuário para o identificador. Se 
-		 * ela for válida, o identificador é criado contendo aquela string 
-		 * específica. Se ela não for válida, a string não é criada. 
-		 * 
-		 * @param identificador string que contém as letras de "a" até "z" 
-		 * correspondente ao identificador. 
-		 * 
-		 * @see Identificador::validar()
-		*/
-		void setIdentificador(string) throw(invalid_argument);
-
-		/**
-		 * Método para o acesso ao identificador.
-		 * 
-		 * Esse método acessa o identificador relacionada a ele no 
-		 * código principal e retorna o seu valor. 
-		 * 
-		 * @return valor do identificador. 
-		 * 
-		*/
-		string getIdentificador() const {
-			return identificador;
-		}
-};
-
-/** 
- *  Classe do nome.
- *  
- *  A classe descreve um nome. Seus métodos validam o nome,
- *  criam esse nome e retornam o nome criado ao usuário.  
- */
-class Nome {
-	private:
-		string nome; /**< string que contém o nome */
-
-		// Definicoes de limites para os caracteres do nome em codigo ASCII 
-
-		const static int LIMITE = 15; /**< inteiro correspondente ao limite de caracteres da string nome */
-		const static int ASCII_a = 'a'; /**< inteiro correspondente ao caracter "a" na tabela ASCII */
-		const static int ASCII_z = 'z'; /**< inteiro correspondente ao caracter "z" na tabela ASCII */
-		const static int ASCII_A = 'A'; /**< inteiro correspondente ao caracter "A" na tabela ASCII */
-		const static int ASCII_Z = 'Z'; /**< inteiro correspondente ao caracter "Z" na tabela ASCII */
-		const static int SPACO = ' '; /**< inteiro correspondente ao caracter " " na tabela ASCII */
-		const static int PONTO = '.'; /**< inteiro correspondente ao caracter "." na tabela ASCII */
-
-		// Metodo de validacao
-		/**
-		 * Método para validação do nome.
-		 * 
-		 * Esse método analisa a string fornecida pelo usuário para o nome. 
+		 * Esse método analisa a string fornecida pelo usuário para a faixa étaria. 
 		 * Se ele for inválido, é lançada a exceção de argumento inválido. 
-		 * Se for válido, nada é feito. O valor será inválido se tiver 
-		 * caracteres diferentes dos de "a" até "z", de "A" até "Z" e de
-		 * "." e " " na tabela ASCII; se tiver um número de caracteres 
-		 * diferente de 15 caracteres; se tiver um "." sem ser precedido
-		 * de uma letra; se tiver um número no meio do nome.
+		 * Se for válido, nada é feito. Será valido caso seja: {L,10,12,14,16 e 18}. 
 		 * 
-		 * @param nome string que contém as letras de "a" até "z", de "A" até
-		 * "Z", " " e ".", correspondente ao nome. 
+		 * @param faixa_et string que contém a faixa étaria. 
 		 * 	
 		 */
 		void validar(string) throw(invalid_argument);
@@ -540,31 +650,30 @@ class Nome {
 		// Metodos de acesso
 
 		/**
-		 * Método para criação do nome.
+		 * Método para criação do faixa étaria.
 		 * 
-		 * Esse método invoca o outro método Nome::validar() para validar
-		 * a string nome fornecida pelo usuário. Se ela for válida, o nome
-		 * é criado contendo aquela string específica. Se ele não for válida, 
-		 * o nome não é criado. 
+		 * Esse método invoca o outro método FaixaEtaria::validar() para validar
+		 * a string faixa étaria fornecida pelo usuário. Se ela for válida, a faixa étaria
+		 * é criada contendo aquela string específica. Se ele não for válida, 
+		 * o faixa étaria não é criada. 
 		 * 
-		 * @param nome string que contém as letras de "a" até "z", de "A" até
-		 * "Z", " " e ".", correspondente ao nome. 
+		 * @param faixa_et string que contém a faixa étaria. 
 		 * 
-		 * @see Nome::validar()
+		 * @see FaixaEtaria::validar()
 		*/
-		void setNome(string) throw(invalid_argument);
+		void setFaixaEtaria(string) throw(invalid_argument);
 
 		/**
-		 * Método para o acesso ao nome.
+		 * Método para o acesso ao faixa étaria.
 		 * 
-		 * Esse método acessa o nome relacionado a ele no 
+		 * Esse método acessa o faixa étaria relacionado a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return valor do nome. 
+		 * @return valor do faixa étaria. 
 		 * 
 		*/
-		string getNome() const {
-			return nome;
+		string getFaixaEtaria() const {
+			return faixa_et;
 		}
 };
 
@@ -637,76 +746,6 @@ class NumeroCartaoCredito {
 };
 
 /** 
- *  Classe do número de conta corrente.
- *  
- *  A classe descreve uma número de conta corrente. Seus 
- *  métodos validam o número de conta corrente, criam 
- *  esse número e retornam o número de conta corrente criado 
- *  ao usuário.  
- */
-class NumeroContaCorrente {
-	private:
-		string numero; /**< string que contém o número da conta corrente */
-
-		// Limite do minimo de numeros que a conta tem que ter e os valors do codigo ASCIIII dos 0 e do 9
-		const static int LIMITE = 6; /**< inteiro correspondente ao limite de caracteres da string numero */
-		const static int ASCII_0 = '0'; /**< inteiro correspondente ao caracter "0" na tabela ASCII */
-		const static int ASCII_9 = '9'; /**< inteiro correspondente ao caracter "9" na tabela ASCII */
-
-		// Metodo de validacao
-
-		/**
-		 * Método para validação do número da conta corrente.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * do número da conta corrente. Se ele for inválido, é lançada a 
-		 * exceção de argumento inválido. Se for válido, nada é feito. O valor 
-		 * será inválido se tiver um número de caracteres diferente de 6, e/ou
-		 * se seus caracteres forem diferentes dos numéros de 0 a 9 na 
-		 * tabela ASCII.
-		 * 
-		 * @param numero string que contém os números correspondente ao 
-		 * número da conta corrente. 
-		 * 
-		 * @see checkLuhn()
-		*/
-		void validar(string) throw(invalid_argument);
-
-	public:
-
-		// Metodos de acesso
-
-		/**
-		 * Método para criação do número da conta corrente.
-		 * 
-		 * Esse método invoca o outro método NumeroContaCorrente::validar() 
-		 * para validar o valor fornecido pelo usuário para a string numero. 
-		 * Se ele for válido, o número da conta corrente é criado contendo 
-		 * aquele valor específico. Se ele não for válido, o número da conta 
-		 * corrente não é criado. 
-		 * 
-		 * @param numero string que contém os números correspondente ao 
-		 * número da conta corrente.  
-		 * 
-		 * @see NumeroContaCorrente::validar()
-		*/
-		void setNumero(string) throw(invalid_argument);
-
-		/**
-		 * Método para o acesso ao número da conta corrente.
-		 * 
-		 * Esse método acessa o número da conta corrente relacionada a ele no 
-		 * código principal e retorna o seu valor. 
-		 * 
-		 * @return valor do número da conta corrente. 
-		 * 
-		*/
-		string getNumero() const {
-			return numero;
-		}
-};
-
-/** 
  *  Classe da senha.
  *  
  *  A classe descreve uma senha. Seus métodos validam a senha,
@@ -716,18 +755,9 @@ class Senha{
 	private:
 		string senha; /**< string que contém a senha */
 		
-		// Limite de carcters que a senha deve ter bem 
-		// como os codigos ASCII dos caracteres permitidos
-		const static int LIMITE = 8; /**< inteiro correspondente ao limite de caracteres da string senha */
-		const static int ASCII_a = 'a'; /**< inteiro correspondente ao caracter "a" na tabela ASCII */
-		const static int ASCII_z = 'z'; /**< inteiro correspondente ao caracter "z" na tabela ASCII */
-		const static int ASCII_A = 'A'; /**< inteiro correspondente ao caracter "A" na tabela ASCII */
-		const static int ASCII_Z = 'Z'; /**< inteiro correspondente ao caracter "Z" na tabela ASCII */
-		const static int ASCII_0 = '0'; /**< inteiro correspondente ao caracter "0" na tabela ASCII */
-		const static int ASCII_9 = '9'; /**< inteiro correspondente ao caracter "9" na tabela ASCII */
-		const static int ASCII_SIMB_MIN = 33; /**< inteiro correspondente ao símbolo mínimo da tabela ASCII a ser usado */
-		const static int ASCII_SIMB_MAX = 38; /**< inteiro correspondente ao símbolo máximo da tabela ASCII a ser usado */
-		const static char SIMBOLO_EXCESSAO = '"'; /**< inteiro correspondente ao caracter de exceção " " " da tabela ASCII */
+		const static int LIMITE_CHAR = 1;
+		const static int LIMITE_TAM = 6;
+
 
 		// Metodo para validacao
 		/**
