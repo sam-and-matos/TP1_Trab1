@@ -1,5 +1,7 @@
 
 #include "dominios.h"
+#include <algorithm>
+#include <regex>
 
 using namespace std;
 
@@ -29,26 +31,39 @@ bool checkLuhn(string numero){
 }
 
 bool checkNumero(string numero) {
-	return std::all_of(numero.begin (),numero.end (), ::isdigit);
+	return all_of(numero.begin (),numero.end (), ::isdigit);
 }
 	
 // Defini��es dos m�todos
 
-void ClasseEvento::validar(string classe) throw(invalid_argument) {
-	if (!all_of(CL_EVENTO.begin(),CL_EVENTO.end(), classe)
-		throw invalid_argument("Clase do Evento invalida! Somento digitos de 1 a 4 são aceitos, onde: \n 1 - Teatro\n 2 - Esporte\n 3 - Show Nacional\n 4 - Show Internacional.")
+void Cidade::validar(string cidade) throw(invalid_argument) {
+	if (cidade.length() > LIMITE)
+		throw invalid_argument("Cidade invalida! Nome da cidade pode ter no máximo 15 caracteres.");
+	regex valida(REGEX_EXP);
+	if (!regex_match(cidade, valida))
+		throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
 }
 
-void ClasseEvento::setClasseEvento(string classe) throw (invalid_argument) {
+void Cidade::setCidade(string cidade) {
+	validar(cidade);
+	this->cidade = cidade;
+}
+
+void ClasseEvento::validar(int classe) throw(invalid_argument) {
+	if (classe <= VALOR_MIN || classe >= VALOR_MAX)
+		throw invalid_argument("Clase do Evento invalida! Somento digitos de 1 a 4 são aceitos, onde: \n 1 - Teatro\n 2 - Esporte\n 3 - Show Nacional\n 4 - Show Internacional.");
+}
+
+void ClasseEvento::setClasseEvento(int classe) throw (invalid_argument) {
 	validar(classe);
 	this->classe = classe;
 }
 
 void CodigoEvento::validar(string cd_evento) throw (invalid_argument) {
-	if (!checNumero(cd_evento))
-		throw invalid_argument("Codigo de Evento invalido! Somente digitos sao aceitos.")
-	if (codigoevento.size() != LIMITE)
-		throw invalid_argument("Codigo de Evento invalido! Codigo tem que ter 3 digitos.")
+	if (!checkNumero(cd_evento))
+		throw invalid_argument("Codigo de Evento invalido! Somente digitos sao aceitos.");
+	if (cd_evento.size() != LIMITE)
+		throw invalid_argument("Codigo de Evento invalido! Codigo tem que ter 3 digitos.");
 }
 
 void CodigoEvento::setCodigoEvento(string cd_evento) throw(invalid_argument) {
@@ -60,7 +75,7 @@ void CodigoApresentacao::validar(string cd_apresentacao) throw (invalid_argument
 	if (!checkNumero(cd_apresentacao))
 		throw invalid_argument("Codigo de Apresentacao invalido! Somente digitos sao aceitos.");
 	if (cd_apresentacao.size() != LIMITE)
-		throw invalid_argument("Codigo de Apresentacao invalido! Codigo tem que ter 4 digitos.")
+		throw invalid_argument("Codigo de Apresentacao invalido! Codigo tem que ter 4 digitos.");
 }
 
 void CodigoApresentacao::setCodigoApresentacao(string cd_apresentacao) throw(invalid_argument) {
@@ -70,9 +85,9 @@ void CodigoApresentacao::setCodigoApresentacao(string cd_apresentacao) throw(inv
 
 void CodigoIngresso::validar(string cd_ingresso) throw(invalid_argument) {
 	if (!checkNumero(cd_ingresso))
-		throw invalid_argument("Codigo de Ingresso invalido! Somente digitos sao aceitos.")
+		throw invalid_argument("Codigo de Ingresso invalido! Somente digitos sao aceitos.");
 	if (cd_ingresso.size() != LIMITE)
-		throw invalid_argument("Codigo de Ingresso invalido! Codigo tem que ter 5 digitos.")
+		throw invalid_argument("Codigo de Ingresso invalido! Codigo tem que ter 5 digitos.");
 }
 
 void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argument) {
@@ -80,14 +95,16 @@ void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argume
 	this->codigo = cd_ingresso;
 }
 
-void Diaria::validar(float valorDiaria) throw (invalid_argument) {
-	if (valorDiaria < DIARIA_PRECO_MIN || valorDiaria > DIARIA_PRECO_MAX)
-		throw invalid_argument("Valor da diaria invalido.");
+void CodigoIngresso::validar(string cd_ingresso) throw(invalid_argument) {
+	if (!checkNumero(cd_ingresso))
+		throw invalid_argument("Codigo de Ingresso invalido! Somente digitos sao aceitos.");
+	if (cd_ingresso.size() != LIMITE)
+		throw invalid_argument("Codigo de Ingresso invalido! Codigo tem que ter 5 digitos.");
 }
 
-void Diaria::setDiaria(float valorDiaria) throw (invalid_argument) {
-	validar(valorDiaria);
-	this->valorDiaria = valorDiaria;
+void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argument) {
+	validar(cd_ingresso);
+	this->codigo = cd_ingresso;
 }
 
 void Data::validar(string data) throw (invalid_argument) {
@@ -132,7 +149,7 @@ void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_arg
 }
 
 void FaixaEtaria::validar(string faixa_et) throw (invalid_argument) {
-	if (!all_of(LIM_FAIXA->begin(),LIM_FAIXA->end(), faixa_et)
+	if (!all_of(LIM_FAIXA->begin(),LIM_FAIXA->end(), faixa_et))
 		throw invalid_argument("Faixa étaria invalida! Valor só pode ser: L, 10, 12, 14, 16 ou 18.")
 }
 

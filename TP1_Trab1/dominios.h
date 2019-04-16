@@ -12,7 +12,6 @@
 
 #include <stdexcept>
 #include <string>
-#include <regex>
 #include <list>
 
 
@@ -54,27 +53,26 @@ bool checkNumero (string numero);
  */
 class Cidade {
 private:
-	string numero; /**< string que contém o nome da cidade */
+	string cidade; /**< string que contém o nome da cidade */
 
-	// Limite do minimo de numeros que a conta tem que ter e os valors do codigo ASCIIII dos 0 e do 9
 	const static int LIMITE = 15; /**< inteiro correspondente ao limite de caracteres da string cidade */
+	const string REGEX_EXP = "^((([A-Z]|[a-z]){1,}|[0-9]{1,})|((\w{1}\W{1}))|(([A-Z]*[a-z]*)[.]*)){1,15}$"; /**< Expressão regular para checar se a string tem ao menos
+																											 1 letra, não há espaços seguidos, ponto é precido por letra./
 
 	// Metodo de validacao
 
 	/**
-	 * Método para validação do número da conta corrente.
+	 * Método para validação do nome da cidade.
 	 *
 	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * do número da conta corrente. Se ele for inválido, é lançada a
+	 * nome da cidade. Se ele for inválido, é lançada a
 	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
-	 * será inválido se tiver um número de caracteres diferente de 6, e/ou
-	 * se seus caracteres forem diferentes dos numéros de 0 a 9 na
-	 * tabela ASCII.
+	 * será inválido se tiver mais que 15 caracteres, ter dois espaço seguidos,
+	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
+	 * de alfanúmericos,ponto(.) ou espaço.
 	 *
-	 * @param numero string que contém os números correspondente ao
-	 * número da conta corrente.
+	 * @param cidade string que contém o nome da cidade.
 	 *
-	 * @see checkLuhn()
 	*/
 	void validar(string) throw(invalid_argument);
 
@@ -108,7 +106,7 @@ public:
 	 *
 	*/
 	string getCidade() const {
-		return numero;
+		return cidade;
 	}
 };
 
@@ -123,9 +121,10 @@ public:
 
 class ClasseEvento {
 private:
-	string classe; /**< string que contém o valor correspondente a classificação do evento */
+	int classe; /**< string que contém o valor correspondente a classificação do evento */
 
-	const static string CL_EVENTO[] = { "1","2","3","4"};  /**< vetor de string contendo os possiveis valores da string classe. */
+	const static int VALOR_MIN = 1; /**< inteiro com o valor minimo para classe de evento. */
+	const static int VALOR_MAX = 4;  /**< inteiro com o valor máximo para classe de evento. */
 
 	// Metodo de validacao
 
@@ -140,7 +139,7 @@ private:
 	 * @param classe string correspondente ao classificação do evento.
 	*/
 
-	void validar(string) throw(invalid_argument);
+	void validar(int) throw(invalid_argument);
 
 public:
 	// Metodos de acesso
@@ -160,7 +159,7 @@ public:
 	 * @see CodigoIngresso::validar()
 	*/
 
-	void setClasseEvento(string) throw(invalid_argument);
+	void setClasseEvento(int) throw(invalid_argument);
 
 	/**
 	 * Método para o acesso ao classificação do evento.
@@ -172,8 +171,8 @@ public:
 	 *
 	*/
 
-	string getClasseEvento() const {
-		return codigo;
+	int getClasseEvento() const {
+		return classe;
 	}
 };
 
@@ -437,11 +436,11 @@ class CodigoEvento {
 };
 
 /**
- *  Classe do código do ingresso.
+ *  Classe do código de segurança.
  *
- *  A classe descreve o número do código do ingresso de um
+ *  A classe descreve o número do código de segurança de um
  *  determinado evento. Seus métodos validam uma
- *  string do código do ingresso, criam essa string e retornam
+ *  string do código de segurança, criam essa string e retornam
  *  o string criada ao usuário.
  */
 
@@ -456,14 +455,14 @@ private:
 	// Metodo de validacao
 
 	/**
-	 * Método para validação do código do ingresso.
+	 * Método para validação do código de segurança.
 	 *
 	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * correspondente ao código do ingresso. Se ele for inválido, é
+	 * correspondente ao código de segurança. Se ele for inválido, é
 	 * lançada a exceção de argumento inválido. Se for válido, nada é
 	 * feito. O valor será inválido se não tiver 5 digitos.
 	 *
-	 * @param codigo string correspondente ao código do ingresso.
+	 * @param codigo string correspondente ao código de segurança.
 	*/
 
 	void validar(string) throw(invalid_argument);
@@ -473,15 +472,15 @@ public:
 
 
 	/**
-	 * Método para criação do código do ingresso
+	 * Método para criação do código de segurança
 	 *
 	 * Esse método invoca o outro método CodigoIngresso::validar()
 	 * para validar o valor fornecido pelo usuário para a string
-	 * correspondente ao código do ingresso. Se ele for válido, o
-	 * código do ingresso é criado contendo aquele valor específico.
-	 * Se ela não for válido, o código do ingresso não é criado.
+	 * correspondente ao código de segurança. Se ele for válido, o
+	 * código de segurança é criado contendo aquele valor específico.
+	 * Se ela não for válido, o código de segurança não é criado.
 	 *
-	 * @param codigo string correspondente ao código do ingresso.
+	 * @param codigo string correspondente ao código de segurança.
 	 *
 	 * @see CodigoIngresso::validar()
 	*/
@@ -489,12 +488,12 @@ public:
 	void setCodigoIngresso(string) throw(invalid_argument);
 
 	/**
-	 * Método para o acesso ao código do ingresso.
+	 * Método para o acesso ao código de segurança.
 	 *
-	 * Esse método acessa o código do ingresso relacionado a ele no
+	 * Esse método acessa o código de segurança relacionado a ele no
 	 * programa e retorna o seu valor.
 	 *
-	 * @return codigo número do código do ingresso.
+	 * @return codigo número do código de segurança.
 	 *
 	*/
 
@@ -516,7 +515,7 @@ class Data {
 		
 		// Defincao dos limites para Dia e Ano
 
-		const static string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$";
+		static string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$";
 
 		// Metodo de validacao
 		/**
@@ -576,7 +575,7 @@ class Data {
  */
 class DataValidade {
 	private:
-		int dt_validade; /**< inteiros que corresponde ao dia e ao ano */
+		string dt_validade; /**< inteiros que corresponde ao dia e ao ano */
 		
 		const static string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\/)\d{2}";
 		
@@ -623,8 +622,8 @@ class DataValidade {
 		 * @return valor da data de validade. 
 		 * 
 		*/
-		int getDataDeValidade(int, int) const {
-			return mes, ano;
+		string getDataDeValidade() const {
+			return dt_validade;
 		}
 };
 
@@ -655,7 +654,7 @@ private:
 	 *
 	 * @param disponibilidade int entre 0 e 250 correspondendo a disponibilidade.
 	*/
-	void validar(string) throw(invalid_argument);
+	void validar(int) throw(invalid_argument);
 
 public:
 	// Metodos de acesso
@@ -672,7 +671,7 @@ public:
 	 *
 	 * @see Disponibilidade::validar()
 	*/
-	void setDisponibilidade(string) throw(invalid_argument);
+	void setDisponibilidade(int) throw(invalid_argument);
 
 	/**
 	 * Método para o acesso ao disponibilidade.
@@ -886,7 +885,6 @@ class Senha{
 	private:
 		string senha; /**< string que contém a senha */
 		
-		const static int LIMITE_CHAR = 1;
 		const static int LIMITE_TAM = 6;
 
 
