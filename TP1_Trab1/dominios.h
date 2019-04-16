@@ -12,8 +12,6 @@
 
 #include <stdexcept>
 #include <string>
-#include <list>
-
 
 using namespace std;
 
@@ -371,70 +369,6 @@ class CodigoIngresso {
 		}
 };
 
-/** 
- *  Classe da data.
- *  
- *  A classe descreve uma data. Seus métodos validam a data,
- *  criam essa data e retornam a data criada ao usuário.  
- */
-
-class CodigoEvento {
-	private:
-
-		string codigo; /**< string que contém o valor correspondente 
-		ao código do evento */
-
-		const static int LIMITE = 3; /**< inteiro correspondente ao limite mínimo e máximo de 
-		digitos que a string codigo tem que ter. */
-
-		// Metodo de validacao
-		/**
-		 * Método para validação do código do evento.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * código. Se ele for inválido, é lançada a exceção de argumento 
-		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * tiver mais ou menos do que 3 digitos.
-		 * 
-		 * @param codigo string que contém o código correspondente ao evento. 
-		*/
-		void validar(string) throw (invalid_argument); 
-
-	public:
-		// Metodos de acesso
-
-		
-		/**
-		 * Método para criação do código de evento.
-		 * 
-		 * Esse método invoca o outro método CodigoEvento::validar() para validar
-		 * o valor fornecido pelo usuário para a string código. Se ele for 
-		 * válido, o código de evento é criado contendo aquele valor específico. Se 
-		 * ele não for válido, o código de evento não é criado. 
-		 * 
-		 * @param codigo string que contém os números correspondente ao código de evento. 
-		 * 
-		 * @see CodigoEvento::validar()
-		*/
-		void setCodigoEvento(string) throw (invalid_argument);
-
-
-		/**
-		 * Método para o acesso ao código do evento.
-		 * 
-		 * Esse método acessa a evento relacionada a ele no 
-		 * código principal e retorna o seu código. 
-		 * 
-		 * @return valor do código de evento. 
-		 * 
-		*/
-
-		string getCodigoEvento() const {
-			return codigo;
-
-		}
-};
-
 /**
  *  Classe do código de segurança.
  *
@@ -503,6 +437,71 @@ public:
 };
 
 /**
+ *  Classe do CPF.
+ *
+ *  A classe descreve o nome de uma cidade. Seus
+ *  métodos validam o nome da cidade, criam
+ *  essa cidade e retornam o nome da cidade ao usuário.
+ */
+
+class CPF {
+private:
+	string cpf; /**< string que contém o nome da cidade */
+
+	const static int LIMITE = 11; /**< inteiro correspondente ao limite de caracteres da string cidade */
+	
+	// Metodo de validacao
+
+	/**
+	 * Método para validação do nome da cidade.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para a string
+	 * nome da cidade. Se ele for inválido, é lançada a
+	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
+	 * será inválido se tiver mais que 15 caracteres, ter dois espaço seguidos,
+	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
+	 * de alfanúmericos,ponto(.) ou espaço.
+	 *
+	 * @param cidade string que contém o nome da cidade.
+	 *
+	*/
+	void validar(string) throw(invalid_argument);
+
+public:
+
+	// Metodos de acesso
+
+	/**
+	 * Método para criação do número da conta corrente.
+	 *
+	 * Esse método invoca o outro método Cidade::validar()
+	 * para validar o valor fornecido pelo usuário para a string numero.
+	 * Se ele for válido, o número da conta corrente é criado contendo
+	 * aquele valor específico. Se ele não for válido, o número da conta
+	 * corrente não é criado.
+	 *
+	 * @param numero string que contém os números correspondente ao
+	 * número da conta corrente.
+	 *
+	 * @see Cidade::validar()
+	*/
+	void setCPF(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao número da conta corrente.
+	 *
+	 * Esse método acessa o número da conta corrente relacionada a ele no
+	 * código principal e retorna o seu valor.
+	 *
+	 * @return valor do número da conta corrente.
+	 *
+	*/
+	string getCPF() const {
+		return cpf;
+	}
+};
+
+/**
  *  Classe da data.
  *
  *  A classe descreve uma data. Seus métodos validam a data,
@@ -515,7 +514,7 @@ class Data {
 		
 		// Defincao dos limites para Dia e Ano
 
-		static string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$";
+		const string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$";
 
 		// Metodo de validacao
 		/**
@@ -573,11 +572,12 @@ class Data {
  *  a data de validade, criam essa data de validade e retornam a 
  *  data de validade criada ao usuário.  
  */
+
 class DataValidade {
 	private:
 		string dt_validade; /**< inteiros que corresponde ao dia e ao ano */
 		
-		const static string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\/)\d{2}";
+		const string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\/)\d{2}";
 		
 		// Metodos de validacao
 
@@ -633,6 +633,7 @@ class DataValidade {
  *  A classe descreve a disponibilidade para um evento. Seus métodos validam a disponibilidade,
  *  criam esse disponibilidade e retornam a disponibilidade criada ao usuário.
  */
+
 class Disponibilidade {
 private:
 	int disponibilidade; /**< string que contém o disponibilidade */
@@ -694,6 +695,7 @@ public:
  *  estado, criam esse estado com essa sigla e retornam a sigla 
  *  criada ao usuário.  
  */
+
 class Estado {
 	private:
 		string estado; /**< string que contém a sigla de um estado brasileiro */
@@ -755,13 +757,14 @@ class Estado {
  *  A classe descreve um faixa étaria. Seus métodos validam o faixa étaria,
  *  criam esse faixa étaria e retornam o faixa étaria criado ao usuário.  
  */
+
 class FaixaEtaria {
 	private:
 		string faixa_et; /**< string que contém o faixa étaria */
 
 		// Definicoes de limites para os caracteres do faixa étaria em codigo ASCII 
 
-		const static string LIM_FAIXA[] = { "L", "10", "12", "14", "16", "18" };
+		const string LIM_FAIXA[6] = { "L", "10", "12", "14", "16", "18" };
 
 		// Metodo de validacao
 		/**
@@ -807,14 +810,146 @@ class FaixaEtaria {
 		}
 };
 
-/** 
- *  Classe do número de cartão de crédito.
- *  
- *  A classe descreve uma número de cartão de crédito. Seus 
- *  métodos validam o número de cartão de crédito, criam 
- *  esse número e retornam o número de cartão de crédito criado 
- *  ao usuário.  
+/**
+ *  Classe do horário do evento.
+ *
+ *  A classe descreve uma data. Seus métodos validam a data,
+ *  criam essa data e retornam a data criada ao usuário.
  */
+
+class Horario {
+private:
+
+	string horario; /**< string que contém o valor correspondente
+	ao código do evento */
+
+	const static int LIMITE = 3; /**< inteiro correspondente ao limite mínimo e máximo de
+	digitos que a string codigo tem que ter. */
+
+	// Metodo de validacao
+	/**
+	 * Método para validação do código do evento.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para a string
+	 * código. Se ele for inválido, é lançada a exceção de argumento
+	 * inválido. Se for válido, nada é feito. O valor será inválido se
+	 * tiver mais ou menos do que 3 digitos.
+	 *
+	 * @param codigo string que contém o código correspondente ao evento.
+	*/
+	void validar(string) throw (invalid_argument);
+
+public:
+	// Metodos de acesso
+
+
+	/**
+	 * Método para criação do código de evento.
+	 *
+	 * Esse método invoca o outro método CodigoEvento::validar() para validar
+	 * o valor fornecido pelo usuário para a string código. Se ele for
+	 * válido, o código de evento é criado contendo aquele valor específico. Se
+	 * ele não for válido, o código de evento não é criado.
+	 *
+	 * @param codigo string que contém os números correspondente ao código de evento.
+	 *
+	 * @see CodigoEvento::validar()
+	*/
+	void setHorario(string) throw (invalid_argument);
+
+
+	/**
+	 * Método para o acesso ao código do evento.
+	 *
+	 * Esse método acessa a evento relacionada a ele no
+	 * código principal e retorna o seu código.
+	 *
+	 * @return valor do código de evento.
+	 *
+	*/
+
+	string getHorario() const {
+		return horario;
+
+	}
+};
+
+ /**
+  *  Classe do nome do evento.
+  *
+  *  A classe descreve o nome de uma cidade. Seus
+  *  métodos validam o nome da cidade, criam
+  *  essa cidade e retornam o nome da cidade ao usuário.
+  */
+
+class NomeEvento {
+private:
+	string nm_evento; /**< string que contém o nome da cidade */
+
+	const static int LIMITE = 20; /**< inteiro correspondente ao limite de caracteres da string cidade */
+	const string REGEX_EXP = "^((([A-Z]|[a-z]){1,}|[0-9]{1,})|((\w{1}\W{1}))|(([A-Z]*[a-z]*)[.]*)){1,15}$"; /**< Expressão regular para checar se a string tem ao menos
+																											 1 letra, não há espaços seguidos, ponto é precido por letra./
+
+	// Metodo de validacao
+
+	/**
+	 * Método para validação do nome da cidade.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para a string
+	 * nome da cidade. Se ele for inválido, é lançada a
+	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
+	 * será inválido se tiver mais que 15 caracteres, ter dois espaço seguidos,
+	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
+	 * de alfanúmericos,ponto(.) ou espaço.
+	 *
+	 * @param cidade string que contém o nome da cidade.
+	 *
+	*/
+	void validar(string) throw(invalid_argument);
+
+public:
+
+	// Metodos de acesso
+
+	/**
+	 * Método para criação do número da conta corrente.
+	 *
+	 * Esse método invoca o outro método Cidade::validar()
+	 * para validar o valor fornecido pelo usuário para a string numero.
+	 * Se ele for válido, o número da conta corrente é criado contendo
+	 * aquele valor específico. Se ele não for válido, o número da conta
+	 * corrente não é criado.
+	 *
+	 * @param numero string que contém os números correspondente ao
+	 * número da conta corrente.
+	 *
+	 * @see Cidade::validar()
+	*/
+	void setNomeEvento(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao número da conta corrente.
+	 *
+	 * Esse método acessa o número da conta corrente relacionada a ele no
+	 * código principal e retorna o seu valor.
+	 *
+	 * @return valor do número da conta corrente.
+	 *
+	*/
+	string getNomeEvento() const {
+		return nm_evento;
+	}
+};
+
+/**
+ *  Classe do número de cartão de crédito.
+ *
+ *  A classe descreve uma número de cartão de crédito. Seus
+ *  métodos validam o número de cartão de crédito, criam
+ *  esse número e retornam o número de cartão de crédito criado
+ *  ao usuário.
+ */
+
 class NumeroCartaoCredito {
 	private:
 		string numero; /**< string que contém o número do cartão de crédito */
@@ -875,17 +1010,79 @@ class NumeroCartaoCredito {
 
 };
 
+/**
+ *  Classe do preço do evento.
+ *
+ *  A classe descreve um tipo de acomodação. Seus métodos validam
+ *  o tipo de acomodação, criam esse tipo e retornam o tipo de
+ *  acomodação criado ao usuário.
+ */
+
+class Preco {
+private:
+	string preco; 
+
+	const string PRECO_MIN = "0,00";
+	const string PRECO_MAX = "1000,00";
+
+	// Metodo de validacao
+
+	/**
+	 * Método para validação do tipo de acomodação.
+	 *
+	 * Esse método analisa a string fornecida pelo usuário para o tipo de
+	 * acomodação. Se ele for inválido, é lançada a exceção de argumento
+	 * inválido. Se for válido, nada é feito. O valor será inválido se
+	 * for diferente de "Apartamento", "Casa" ou "Flat".
+	 *
+	 * @param tipo string que contém o tipo de acomodação.
+	*/
+	void validar(string) throw(invalid_argument);
+
+public:
+
+	// Metodos de acesso
+
+	/**
+	 * Método para criação do tipo de acomodação.
+	 *
+	 * Esse método invoca o outro método TipoAcomodacao::validar()
+	 * para validar a string tipo. Se ela for válida, o tipo de
+	 * acomodação é criado contendo aquela string específica. Se
+	 * ele não for válida, o tipo de acomodação não é criado.
+	 *
+	 * @param tipo string que contém o tipo de acomodação.
+	 *
+	 * @see TipoAcomodacao::validar()
+	*/
+	void setPreco(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao tipo de acomodação.
+	 *
+	 * Esse método acessa o tipo de acomodação relacionada a ele no
+	 * código principal e retorna o seu valor.
+	 *
+	 * @return valor do tipo de acomodação.
+	 *
+	*/
+	string getPreco() const {
+		return preco;
+	}
+};
+
 /** 
  *  Classe da senha.
  *  
  *  A classe descreve uma senha. Seus métodos validam a senha,
  *  criam essa senha e retornam a senha criada ao usuário.  
  */
+
 class Senha{
 	private:
 		string senha; /**< string que contém a senha */
 		
-		const static int LIMITE_TAM = 6;
+		const static int LIMITE = 6;
 
 
 		// Metodo para validacao
@@ -934,61 +1131,5 @@ class Senha{
 		}
 };
 
-/** 
- *  Classe do tipo de acomodação.
- *  
- *  A classe descreve um tipo de acomodação. Seus métodos validam 
- *  o tipo de acomodação, criam esse tipo e retornam o tipo de
- *  acomodação criado ao usuário.  
- */
-class TipoAcomodacao {
-	private:
-		string tipo; /**< string que contém o tipo de acomodação */
-
-		// Metodo de validacao
-
-		/**
-		 * Método para validação do tipo de acomodação.
-		 * 
-		 * Esse método analisa a string fornecida pelo usuário para o tipo de 
-		 * acomodação. Se ele for inválido, é lançada a exceção de argumento 
-		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * for diferente de "Apartamento", "Casa" ou "Flat".
-		 * 
-		 * @param tipo string que contém o tipo de acomodação. 
-		*/
-		void validar(string) throw(invalid_argument);
-
-	public:
-
-		// Metodos de acesso
-
-		/**
-		 * Método para criação do tipo de acomodação.
-		 * 
-		 * Esse método invoca o outro método TipoAcomodacao::validar() 
-		 * para validar a string tipo. Se ela for válida, o tipo de 
-		 * acomodação é criado contendo aquela string específica. Se 
-		 * ele não for válida, o tipo de acomodação não é criado. 
-		 * 
-		 * @param tipo string que contém o tipo de acomodação. 
-		 * 
-		 * @see TipoAcomodacao::validar()
-		*/
-		void setAcomodacao(string) throw(invalid_argument);
-
-		/**
-		 * Método para o acesso ao tipo de acomodação.
-		 * 
-		 * Esse método acessa o tipo de acomodação relacionada a ele no 
-		 * código principal e retorna o seu valor. 
-		 * 
-		 * @return valor do tipo de acomodação. 
-		 * 
-		*/
-		string getAcomodacao() const {
-			return tipo;
-		}
-};
 
 #endif // DOMINIOS_H_INCLUDED

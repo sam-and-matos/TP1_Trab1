@@ -2,6 +2,8 @@
 #include "dominios.h"
 #include <algorithm>
 #include <regex>
+#include <time.h>
+#include <cctype>
 
 using namespace std;
 
@@ -32,6 +34,21 @@ bool checkLuhn(string numero){
 
 bool checkNumero(string numero) {
 	return all_of(numero.begin (),numero.end (), ::isdigit);
+}
+
+bool checkCPF(string cpf) {
+	int aux_cpf = stoi(cpf);
+	string aux = aux_cpf;
+	int digito_1 = 10, digito_2 = 11, teste = 0, multiplicador = 10, mod = 11;
+
+	for (string::iterator it = cpf.begin(); it != cpf.end(); it++)
+	{
+		teste += (*it) * digito_1;
+		digito_1--;
+	}
+
+	if(((teste * multiplicador)%mod) != 
+
 }
 	
 // Defini��es dos m�todos
@@ -95,22 +112,21 @@ void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argume
 	this->codigo = cd_ingresso;
 }
 
-void CodigoIngresso::validar(string cd_ingresso) throw(invalid_argument) {
-	if (!checkNumero(cd_ingresso))
-		throw invalid_argument("Codigo de Ingresso invalido! Somente digitos sao aceitos.");
-	if (cd_ingresso.size() != LIMITE)
+void CPF::validar(string cpf) throw(invalid_argument) {
+	if (cpf.size() != LIMITE)
 		throw invalid_argument("Codigo de Ingresso invalido! Codigo tem que ter 5 digitos.");
+
 }
 
-void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argument) {
-	validar(cd_ingresso);
-	this->codigo = cd_ingresso;
+void CPF::setCPF(string cpf) throw (invalid_argument) {
+	validar(cpf);
+	this->cpf = cpf;
 }
 
 void Data::validar(string data) throw (invalid_argument) {
 	regex valida (REGEX_EXP); // Método para criar um objeto regex.
 	if (!regex_match(data,valida))
-		throw invalid_argument("Data inválida!");
+		throw invalid_argument("Data inválida! Verificar formato, data precisa estar no formato DD/MM/YY");
 }
 
 void Data::setData(string data) throw (invalid_argument) {
@@ -121,6 +137,7 @@ void Data::setData(string data) throw (invalid_argument) {
 void DataValidade::validar(string dt_validade) throw (invalid_argument) {
 	regex valida(REGEX_EXP); // Método para criar um objeto regex.
 	if (!regex_match(dt_validade, valida))
+		throw invalid_argument("Data de validade invalida! Data deve estar no formato MM/YY  e ser válida, ser maior que a data atual.");
 }
 
 void DataValidade::setDataDeValidade(string dt_validade) throw (invalid_argument) {
@@ -130,7 +147,7 @@ void DataValidade::setDataDeValidade(string dt_validade) throw (invalid_argument
 
 void Disponibilidade::validar(int disponibilidade) throw (invalid_argument) {
 	if (disponibilidade < LIMITE_MIN || disponibilidade > LIMITE_MAX)
-		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.")
+		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.");
 }
 
 void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_argument) {
@@ -140,7 +157,7 @@ void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_arg
 
 void Disponibilidade::validar(int disponibilidade) throw (invalid_argument) {
 	if (disponibilidade < LIMITE_MIN || disponibilidade > LIMITE_MAX)
-		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.")
+		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.");
 }
 
 void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_argument) {
@@ -149,8 +166,8 @@ void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_arg
 }
 
 void FaixaEtaria::validar(string faixa_et) throw (invalid_argument) {
-	if (!all_of(LIM_FAIXA->begin(),LIM_FAIXA->end(), faixa_et))
-		throw invalid_argument("Faixa étaria invalida! Valor só pode ser: L, 10, 12, 14, 16 ou 18.")
+	if (!all_of(LIM_FAIXA->begin(), LIM_FAIXA->end(), faixa_et))
+		throw invalid_argument("Faixa étaria invalida! Valor só pode ser: L, 10, 12, 14, 16 ou 18.");
 }
 
 void FaixaEtaria::setFaixaEtaria(string faixa_et) throw (invalid_argument) {
@@ -203,7 +220,7 @@ void NumeroCartaoCredito::validar(string numero) throw (invalid_argument) {
 		throw invalid_argument("Numero de cartao invalido! Numero precisa conter 16 digitos(0-9)!");
 
 	if (!checkLuhn(numero))
-		throw invalid_argument("Numero de cart�o invalido.");
+		throw invalid_argument("Numero de cartão invalido! Confira o número do cartão, cartão inexistente");
 }
 
 void NumeroCartaoCredito::setNumero(string numero) throw (invalid_argument) {
@@ -211,57 +228,56 @@ void NumeroCartaoCredito::setNumero(string numero) throw (invalid_argument) {
 	this->numero = numero;
 }
 
+void Preco::validar(string preco) throw (invalid_argument) {
+	if (stof(preco) < stof(PRECO_MIN) || stof(preco) > stof(PRECO_MAX))
+		throw invalid_argument("Preço invalido! Preço deve estar entre 0,00 e 1000,00");
+}
+
+void Preco::setPreco(string preco) throw (invalid_argument) {
+	validar(preco);
+	this->preco = preco;
+}
+
 void Senha::validar(string senha) throw (invalid_argument) {
-	list<char> auxMaiuscula, auxMinuscula, auxSimbolo, auxNumero;
+	string auxMaiuscula, auxMinuscula, auxNumero;
 
 	if (senha.size() != LIMITE)
-		throw invalid_argument("Tamano da senha invalido! Senha precisa conter 8 digitos!");
+		throw invalid_argument("Tamano da senha invalido! Senha precisa conter 6 caracteres!");
 
-	for (std::string::iterator it = senha.begin(); it != senha.end(); it++) {
-		if (int(*it) >= ASCII_SIMB_MIN && int(*it) <= ASCII_SIMB_MAX && *it != SIMBOLO_EXCESSAO) {
-			if (auxSimbolo.empty())
-				auxSimbolo.push_front(*it);
-			else {
-				for (std::list<char>::iterator it2 = auxSimbolo.begin(); it2 != auxSimbolo.end(); it2++) {
-					if (*it == *it2)
-						throw invalid_argument("Senha invalida! Caracter repetido!");
-
-				}
-				auxSimbolo.push_front(*it);
-			}
-
-		}
-		else if (int(*it) >= ASCII_a && int(*it) <= ASCII_z) {
-			if (auxMinuscula.empty())
-				auxMinuscula.push_front(*it);
-			else {
-				for (std::list<char>::iterator it2 = auxMinuscula.begin(); it2 != auxMinuscula.end(); it2++) {
-					if (*it == *it2)
-						throw invalid_argument("Senha invalida! Caracter repetido!");
-				}
-				auxMinuscula.push_front(*it);
-			}
-		}
-		else if (int(*it) >= ASCII_A && int(*it) <= ASCII_Z) {
+	for (string::iterator it = senha.begin(); it != senha.end(); it++) {
+		if (isupper(*it)) {
 			if (auxMaiuscula.empty())
-				auxMaiuscula.push_front(*it);
+				auxMaiuscula += *it;
 			else {
-				for (std::list<char>::iterator it2 = auxMaiuscula.begin(); it2 != auxMaiuscula.end(); it2++) {
+				for (string::iterator it2 = auxMaiuscula.begin(); it2 != auxMaiuscula.end(); it2++) {
+					if (*it == *it2)
+						throw invalid_argument("Senha invalida! Caracter repetido!");
+
+				}
+				auxMaiuscula += *it;
+			}
+
+		}
+		else if (islower(*it)) {
+			if (auxMinuscula.empty())
+				auxMinuscula += *it;
+			else {
+				for (string::iterator it2 = auxMinuscula.begin(); it2 != auxMinuscula.end(); it2++) {
 					if (*it == *it2)
 						throw invalid_argument("Senha invalida! Caracter repetido!");
 				}
-				auxMaiuscula.push_front(*it);
+				auxMinuscula += *it;
 			}
 		}
-		else if (int(*it) >= ASCII_0 && int(*it) <= ASCII_9) {
+		else if (isdigit(*it)) {
 			if (auxNumero.empty())
-				auxNumero.push_front(*it);
+				auxNumero += *it;
 			else {
-				for (std::list<char>::iterator it2 = auxNumero.begin(); it2 != auxNumero.end(); it2++) {
+				for (string::iterator it2 = auxNumero.begin(); it2 != auxNumero.end(); it2++) {
 					if (*it == *it2)
 						throw invalid_argument("Senha invalida! Caracter repetido!");
 				}
-				auxNumero.push_front(*it);
+				auxNumero += *it;
 			}
 		}
 		else
@@ -269,7 +285,7 @@ void Senha::validar(string senha) throw (invalid_argument) {
 
 	}
 
-	if (auxMaiuscula.empty() || auxMinuscula.empty() || auxNumero.empty() || auxSimbolo.empty())
+	if (auxMaiuscula.empty() || auxMinuscula.empty() || auxNumero.empty())
 		throw invalid_argument("Senha invalida! Senha precisa conter ao menos uma letra maiuscula, uma miniscula, um numero e um simbolo");
 
 }
@@ -279,15 +295,4 @@ void Senha::setSenha(string senha) throw (invalid_argument) {
 	this->senha = senha;
 }
 
-void TipoAcomodacao::validar(string tipo) throw (invalid_argument) {
-	if (tipo == "Apartamento");
-	else if (tipo == "Casa");
-	else if (tipo == "Flat");
-	else
-		throw invalid_argument("Tipo de acomoda��o invalido!");
-}
 
-void TipoAcomodacao::setAcomodacao(string tipo) throw (invalid_argument) {
-	validar(tipo);
-	this->tipo = tipo;
-}
