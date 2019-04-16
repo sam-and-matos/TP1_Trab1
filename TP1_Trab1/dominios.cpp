@@ -181,34 +181,6 @@ void Estado::setEstado(string estado) throw (invalid_argument) {
 	this->estado = estado;
 }
 
-void Nome::validar(string nome) throw (invalid_argument) {
-	string aux;
-
-	if (nome.size() != LIMITE)
-		throw invalid_argument("Nome invalido!");
-
-	if (nome.empty())
-		throw invalid_argument("Nome invalido.");
-
-	for (auto it = nome.begin(); it != nome.end(); it++) {
-		if ((int(*it) >= ASCII_a && int(*it) <= ASCII_z) || (int(*it) >= ASCII_A && int(*it) <= ASCII_Z))
-			aux = *it;
-		else if (int(*it) == PONTO) {
-			if (aux.empty() || aux == " ")
-				throw invalid_argument("Nome invalido!");
-		}
-		else if (int(*it) == SPACO) {
-			if (aux == " ")
-				throw invalid_argument("Nome invalido!");
-		}
-	}
-}
-
-void Nome::setNome(string nome) throw (invalid_argument) {
-	validar(nome);
-	this->nome = nome;
-}
-
 void NumeroCartaoCredito::validar(string numero) throw (invalid_argument) {
 	if (numero.size() != LIMITE)
 		throw invalid_argument("Numero de cartao invalido! Numero precisa conter 16 digitos(0-9)!");
@@ -218,21 +190,6 @@ void NumeroCartaoCredito::validar(string numero) throw (invalid_argument) {
 }
 
 void NumeroCartaoCredito::setNumero(string numero) throw (invalid_argument) {
-	validar(numero);
-	this->numero = numero;
-}
-
-void NumeroContaCorrente::validar(string numero) throw (invalid_argument) {
-	if (numero.size() != LIMITE)
-		throw invalid_argument("Numero da conta invalido! Conta precisa ter 6 numeros 0-9");
-
-	for (std::string::iterator it = numero.begin(); it != numero.end(); it++) {
-		if (int(*it) < ASCII_0 || int(*it) > ASCII_9)
-			throw invalid_argument("Numero da conta invalido, somente numeros de 0-9");
-	}
-}
-
-void NumeroContaCorrente::setNumero(string numero) throw (invalid_argument) {
 	validar(numero);
 	this->numero = numero;
 }

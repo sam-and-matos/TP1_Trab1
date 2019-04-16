@@ -379,6 +379,137 @@ class CodigoIngresso {
  *  criam essa data e retornam a data criada ao usuário.  
  */
 
+class CodigoEvento {
+	private:
+
+		string codigo; /**< string que contém o valor correspondente 
+		ao código do evento */
+
+		const static int LIMITE = 3; /**< inteiro correspondente ao limite mínimo e máximo de 
+		digitos que a string codigo tem que ter. */
+
+		// Metodo de validacao
+		/**
+		 * Método para validação do código do evento.
+		 * 
+		 * Esse método analisa o valor fornecido pelo usuário para a string
+		 * código. Se ele for inválido, é lançada a exceção de argumento 
+		 * inválido. Se for válido, nada é feito. O valor será inválido se 
+		 * tiver mais ou menos do que 3 digitos.
+		 * 
+		 * @param codigo string que contém o código correspondente ao evento. 
+		*/
+		void validar(string) throw (invalid_argument); 
+
+	public:
+		// Metodos de acesso
+
+		
+		/**
+		 * Método para criação do código de evento.
+		 * 
+		 * Esse método invoca o outro método CodigoEvento::validar() para validar
+		 * o valor fornecido pelo usuário para a string código. Se ele for 
+		 * válido, o código de evento é criado contendo aquele valor específico. Se 
+		 * ele não for válido, o código de evento não é criado. 
+		 * 
+		 * @param codigo string que contém os números correspondente ao código de evento. 
+		 * 
+		 * @see CodigoEvento::validar()
+		*/
+		void setCodigoEvento(string) throw (invalid_argument);
+
+
+		/**
+		 * Método para o acesso ao código do evento.
+		 * 
+		 * Esse método acessa a evento relacionada a ele no 
+		 * código principal e retorna o seu código. 
+		 * 
+		 * @return valor do código de evento. 
+		 * 
+		*/
+
+		string getCodigoEvento() const {
+			return codigo;
+
+		}
+};
+
+/**
+ *  Classe do código do ingresso.
+ *
+ *  A classe descreve o número do código do ingresso de um
+ *  determinado evento. Seus métodos validam uma
+ *  string do código do ingresso, criam essa string e retornam
+ *  o string criada ao usuário.
+ */
+
+class CodigoSeguranca {
+private:
+	string codigo; /**< string que contém o valor correspondente
+	ao código de ingresso */
+
+	const static int LIMITE = 3;  /**< inteiro correspondente ao limite mínimo e máximo de
+	digitos que a string código tem que ter. */
+
+	// Metodo de validacao
+
+	/**
+	 * Método para validação do código do ingresso.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para a string
+	 * correspondente ao código do ingresso. Se ele for inválido, é
+	 * lançada a exceção de argumento inválido. Se for válido, nada é
+	 * feito. O valor será inválido se não tiver 5 digitos.
+	 *
+	 * @param codigo string correspondente ao código do ingresso.
+	*/
+
+	void validar(string) throw(invalid_argument);
+
+public:
+	// Metodos de acesso
+
+
+	/**
+	 * Método para criação do código do ingresso
+	 *
+	 * Esse método invoca o outro método CodigoIngresso::validar()
+	 * para validar o valor fornecido pelo usuário para a string
+	 * correspondente ao código do ingresso. Se ele for válido, o
+	 * código do ingresso é criado contendo aquele valor específico.
+	 * Se ela não for válido, o código do ingresso não é criado.
+	 *
+	 * @param codigo string correspondente ao código do ingresso.
+	 *
+	 * @see CodigoIngresso::validar()
+	*/
+
+	void setCodigoIngresso(string) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao código do ingresso.
+	 *
+	 * Esse método acessa o código do ingresso relacionado a ele no
+	 * programa e retorna o seu valor.
+	 *
+	 * @return codigo número do código do ingresso.
+	 *
+	*/
+
+	string getCodigoIngresso() const {
+		return codigo;
+	}
+};
+
+/**
+ *  Classe da data.
+ *
+ *  A classe descreve uma data. Seus métodos validam a data,
+ *  criam essa data e retornam a data criada ao usuário.
+ */
+
 class Data {
 	private:
 		string data; /**< string que corresponde a data no formato dd/mm/yy */
