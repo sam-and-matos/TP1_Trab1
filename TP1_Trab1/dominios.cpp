@@ -41,17 +41,28 @@ bool checkCPF(string cpf) {
 	string aux = aux_cpf;
 	int digito_1 = 10, digito_2 = 11, teste = 0, multiplicador = 10, mod = 11;
 
-	for (string::iterator it = cpf.begin(); it != cpf.end(); it++)
-	{
+	for (string::iterator it = aux.begin(); it != aux.at(8); it++) {
 		teste += (*it) * digito_1;
 		digito_1--;
 	}
 
-	if(((teste * multiplicador)%mod) != 
+	if (((teste * multiplicador) % mod) == aux.at(9)) {
+		teste = 0;
+		for (string::iterator it = aux.begin(); it != aux.at(9); it++)
+		{
+			teste += (*it) * digito_2;
+			digito_2--;
+		}
+		if (((teste * multiplicador) % mod) != aux.at(10))
+			return false;
+	}
+	else
+		return false;
 
+	return true;
 }
 	
-// Defini��es dos m�todos
+// Definições dos m�todos
 
 void Cidade::validar(string cidade) throw(invalid_argument) {
 	if (cidade.length() > LIMITE)
@@ -113,8 +124,13 @@ void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argume
 }
 
 void CPF::validar(string cpf) throw(invalid_argument) {
-	if (cpf.size() != LIMITE)
-		throw invalid_argument("Codigo de Ingresso invalido! Codigo tem que ter 5 digitos.");
+	regex valida(REGEX_EXP);
+
+	if (!regex_match(cpf,valida))
+		throw invalid_argument("CPF invalido! CPF tem que estar no seguinte formato: 000.000.000-00.");
+
+	if (!checkCPF)
+		throw invalid_argument("CPF invalido! Confira o CPF e tente novamente.");
 
 }
 
@@ -143,16 +159,6 @@ void DataValidade::validar(string dt_validade) throw (invalid_argument) {
 void DataValidade::setDataDeValidade(string dt_validade) throw (invalid_argument) {
 	validar(dt_validade);
 	this->dt_validade = dt_validade;
-}
-
-void Disponibilidade::validar(int disponibilidade) throw (invalid_argument) {
-	if (disponibilidade < LIMITE_MIN || disponibilidade > LIMITE_MAX)
-		throw invalid_argument("Disponibilidade invalida! Valor precisa estar entre 0 e 250.");
-}
-
-void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_argument) {
-	validar(disponibilidade);
-	this->disponibilidade = disponibilidade;
 }
 
 void Disponibilidade::validar(int disponibilidade) throw (invalid_argument) {
@@ -213,6 +219,32 @@ void Estado::validar(string estado) throw (invalid_argument) {
 void Estado::setEstado(string estado) throw (invalid_argument) {
 	validar(estado);
 	this->estado = estado;
+}
+
+void Horario::validar(int hr, int min) throw (invalid_argument) {
+	if (hr < LIMITE_HR_MIN || hr> LIMITE_HR_MAX)
+		throw invalid_argument("Horario invalido! Somente são aceitos eventos das 07 as 22 hrs");
+	if (!all_of(LIMITE_MIN.begin(), LIMITE_MIN.end(), min))
+		throw invalid_argument("Horario invalido! Somente são aceitos eventos com os seguintes minutos: 00, 15, 30 e 45");
+}
+
+void Horario::setHorario(int hr, int min) throw (invalid_argument) {
+	validar(hr, min);
+	this->hr = hr;
+	this->min = min;
+}
+
+void NomeEvento::validar(string nome) throw(invalid_argument) {
+	if (nome.length() > LIMITE)
+		throw invalid_argument("Nome do evento invalido! Nome do evento pode ter no máximo 20 caracteres.");
+	regex valida(REGEX_EXP);
+	if (!regex_match(nome, valida))
+		throw invalid_argument("Nome do evento invalido! Nome do evento tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+}
+
+void NomeEvento::setNomeEvento(string nome) {
+	validar(nome);
+	this->nm_evento = nome;
 }
 
 void NumeroCartaoCredito::validar(string numero) throw (invalid_argument) {

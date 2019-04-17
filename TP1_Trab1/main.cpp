@@ -1,6 +1,6 @@
 #include <iostream>
 #include "dominios.h"
-#include "entidades.h"
+/*#include "entidades.h"*/
 #include "testes.h"
 
 using namespace std;
@@ -11,42 +11,42 @@ int main()
     const static int SUCESSO =  0;
     const static int FALHA   = -1;
 
-    TUAgencia testeAgencia;
+    TUCodigoEvento testeAgencia;
 
     switch(testeAgencia.run()){
-        case TUAgencia::SUCESSO: contador = SUCESSO;
+        case TUCodigoEvento::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUAgencia::FALHA  : cout << "Agencia: FALHA\n";
+        case TUCodigoEvento::FALHA  : cout << "CodigoEvento: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUBanco testeBanco;
+    TUCodigoApresentacao testeBanco;
 
     switch(testeBanco.run()){
-        case TUBanco::SUCESSO: contador = SUCESSO;
+        case TUCodigoApresentacao::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUBanco::FALHA  : cout << "Banco: FALHA\n";
+        case TUCodigoApresentacao::FALHA  : cout << "Codigo de Apresentacao: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUCapacidadeAcomodacao testeCapacidadeAcomodacao;
+    TUCodigoIngresso testeCapacidadeAcomodacao;
 
     switch(testeCapacidadeAcomodacao.run()){
-        case TUCapacidadeAcomodacao::SUCESSO: contador = SUCESSO;
+        case TUCodigoIngresso::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUCapacidadeAcomodacao::FALHA  : cout << "Capacidade de Acomodação: FALHA\n";
+        case TUCodigoIngresso::FALHA  : cout << "Codigo de Ingresso: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUDiaria testeDiaria;
+    TUNomeEvento testeDiaria;
 
     switch(testeDiaria.run()){
-        case TUDiaria::SUCESSO: contador = SUCESSO;
+        case TUNomeEvento::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUDiaria::FALHA  : cout << "Diária: FALHA\n";
+        case TUNomeEvento::FALHA  : cout << "Nome do Evento: FALHA\n";
                                 contador = FALHA;
                                 break;
     }

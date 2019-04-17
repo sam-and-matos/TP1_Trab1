@@ -12,6 +12,7 @@
 
 #include <stdexcept>
 #include <string>
+#include <array>
 
 using namespace std;
 
@@ -448,7 +449,7 @@ class CPF {
 private:
 	string cpf; /**< string que contém o nome da cidade */
 
-	const static int LIMITE = 11; /**< inteiro correspondente ao limite de caracteres da string cidade */
+	const string REGEX_EXP = "^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$";
 	
 	// Metodo de validacao
 
@@ -820,24 +821,12 @@ class FaixaEtaria {
 class Horario {
 private:
 
-	string horario; /**< string que contém o valor correspondente
-	ao código do evento */
+	int hr, min;
 
-	const static int LIMITE = 3; /**< inteiro correspondente ao limite mínimo e máximo de
-	digitos que a string codigo tem que ter. */
+	const static int LIMITE_HR_MIN = 07, LIMITE_HR_MAX = 22;
+	array<int, 4> = { 00,15,30,45 };
 
-	// Metodo de validacao
-	/**
-	 * Método para validação do código do evento.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * código. Se ele for inválido, é lançada a exceção de argumento
-	 * inválido. Se for válido, nada é feito. O valor será inválido se
-	 * tiver mais ou menos do que 3 digitos.
-	 *
-	 * @param codigo string que contém o código correspondente ao evento.
-	*/
-	void validar(string) throw (invalid_argument);
+	void validar(int, int) throw (invalid_argument);
 
 public:
 	// Metodos de acesso
@@ -855,7 +844,7 @@ public:
 	 *
 	 * @see CodigoEvento::validar()
 	*/
-	void setHorario(string) throw (invalid_argument);
+	void setHorario(int, int) throw (invalid_argument);
 
 
 	/**
@@ -869,7 +858,12 @@ public:
 	*/
 
 	string getHorario() const {
-		return horario;
+		string aux;
+		aux += hr;
+		aux += ":";
+		aux += min;
+
+		return aux;
 
 	}
 };

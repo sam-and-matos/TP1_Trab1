@@ -7,19 +7,19 @@
 
 // Definições de métodos.
 
-void TUAgencia::setUp(){
-    agencia = new CodigoEvento();
+void TUCodigoEvento::setUp(){
+    codigo = new CodigoEvento();
     estado = SUCESSO;
 }
 
-void TUAgencia::tearDown(){
-    delete agencia;
+void TUCodigoEvento::tearDown(){
+    delete codigo;
 }
 
-void TUAgencia::testarCenarioSucesso(){
+void TUCodigoEvento::testarCenarioSucesso(){
     try{
-        agencia->setAgencia(VALOR_VALIDO);
-        if (agencia->getAgencia() != VALOR_VALIDO)
+        codigo->setCodigoEvento(VALOR_VALIDO);
+        if (codigo->getCodigoEvento() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -27,9 +27,9 @@ void TUAgencia::testarCenarioSucesso(){
     }
 }
 
-void TUAgencia::testarCenarioFalha(){
+void TUCodigoEvento::testarCenarioFalha(){
     try{
-        agencia->setAgencia(VALOR_INVALIDO);
+        codigo->setCodigoEvento(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -37,7 +37,7 @@ void TUAgencia::testarCenarioFalha(){
     }
 }
 
-int TUAgencia::run(){
+int TUCodigoEvento::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
@@ -45,19 +45,19 @@ int TUAgencia::run(){
     return estado;
 }
 
-void TUBanco::setUp(){
-    banco = new Banco();
+void TUCodigoApresentacao::setUp(){
+    codigo = new CodigoApresentacao();
     estado = SUCESSO;
 }
 
-void TUBanco::tearDown(){
-    delete banco;
+void TUCodigoApresentacao::tearDown(){
+    delete codigo;
 }
 
-void TUBanco::testarCenarioSucesso(){
+void TUCodigoApresentacao::testarCenarioSucesso(){
     try{
-        banco->setBanco(VALOR_VALIDO);
-        if (banco->getBanco() != VALOR_VALIDO)
+        codigo->setCodigoApresentacao(VALOR_VALIDO);
+        if (codigo->getCodigoApresentacao() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -65,9 +65,9 @@ void TUBanco::testarCenarioSucesso(){
     }
 }
 
-void TUBanco::testarCenarioFalha(){
+void TUCodigoApresentacao::testarCenarioFalha(){
     try{
-        banco->setBanco(VALOR_INVALIDO);
+        codigo->setCodigoApresentacao(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -75,7 +75,7 @@ void TUBanco::testarCenarioFalha(){
     }
 }
 
-int TUBanco::run(){
+int TUCodigoApresentacao::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
@@ -83,19 +83,19 @@ int TUBanco::run(){
     return estado;
 }
 
-void TUCapacidadeAcomodacao::setUp(){
-    capacidadeAcomodacao = new CapacidadeAcomodacao();
+void TUCodigoIngresso::setUp(){
+    codigo = new CodigoIngresso();
     estado = SUCESSO;
 }
 
-void TUCapacidadeAcomodacao::tearDown(){
-    delete capacidadeAcomodacao;
+void TUCodigoIngresso::tearDown(){
+    delete codigo;
 }
 
-void TUCapacidadeAcomodacao::testarCenarioSucesso(){
+void TUCodigoIngresso::testarCenarioSucesso(){
     try{
-        capacidadeAcomodacao->setCapacidade(VALOR_VALIDO);
-        if (capacidadeAcomodacao->getCapacidade() != VALOR_VALIDO)
+        codigo->setCodigoIngresso(VALOR_VALIDO);
+        if (codigo->getCodigoIngresso() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -103,9 +103,9 @@ void TUCapacidadeAcomodacao::testarCenarioSucesso(){
     }
 }
 
-void TUCapacidadeAcomodacao::testarCenarioFalha(){
+void TUCodigoIngresso::testarCenarioFalha(){
     try{
-        capacidadeAcomodacao->setCapacidade(VALOR_INVALIDO);
+        codigo->setCodigoIngresso(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -113,7 +113,7 @@ void TUCapacidadeAcomodacao::testarCenarioFalha(){
     }
 }
 
-int TUCapacidadeAcomodacao::run(){
+int TUCodigoIngresso::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
@@ -121,19 +121,19 @@ int TUCapacidadeAcomodacao::run(){
     return estado;
 }
 
-void TUDiaria::setUp(){
-    diaria = new Diaria();
+void TUNomeEvento::setUp(){
+    nm_evento = new NomeEvento();
     estado = SUCESSO;
 }
 
-void TUDiaria::tearDown(){
-    delete diaria;
+void TUNomeEvento::tearDown(){
+    delete nm_evento;
 }
 
-void TUDiaria::testarCenarioSucesso(){
+void TUNomeEvento::testarCenarioSucesso(){
     try{
-        diaria->setDiaria(VALOR_VALIDO);
-        if (diaria->getDiaria() != VALOR_VALIDO)
+        nm_evento->setNomeEvento(VALOR_VALIDO);
+        if (nm_evento->getNomeEvento() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -141,9 +141,9 @@ void TUDiaria::testarCenarioSucesso(){
     }
 }
 
-void TUDiaria::testarCenarioFalha(){
+void TUNomeEvento::testarCenarioFalha(){
     try{
-        diaria->setDiaria(VALOR_INVALIDO);
+        nm_evento->setNomeEvento(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -151,7 +151,7 @@ void TUDiaria::testarCenarioFalha(){
     }
 }
 
-int TUDiaria::run(){
+int TUNomeEvento::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
@@ -556,3 +556,4 @@ int TUTipoAcomodacao::run(){
     tearDown();
     return estado;
 }
+

@@ -28,22 +28,18 @@ using namespace std;
  *  falha.
  *  
  */
-class TUAgencia {
+class TUCodigoEvento {
     private:
 
         // Definições de constantes para evitar numeros mágicos.
     
-        string VALOR_VALIDO   = "29584"; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO = "300000"; /**< string contendo um exemplo de valor inválido */
+        string VALOR_VALIDO   = "295"; /**< string contendo um exemplo de valor válido */
+        string VALOR_INVALIDO = "3000"; /**< string contendo um exemplo de valor inválido */
 
         // Referência para o objeto a ser testado.
 
-
-        Agencia *agencia; /**< instância da classe para a execução de testes unitários */
-
-        CodigoEvento *agencia;
-
-
+        CodigoEvento *codigo; /**< instância da classe para a execução de testes unitários */
+		
         // Estado do teste.
 
         int estado; /**< índice inteiro que indicará se o estado do teste é de sucesso ou de falha */
@@ -109,36 +105,36 @@ class TUAgencia {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUAgencia::setUp()
-         * @see TUAgencia::tearDown()
-         * @see TUAgencia::testarCenarioSucesso()
-         * @see TUAgencia::testarCenarioFalha()
+         * @see TUCodigoEvento::setUp()
+         * @see TUCodigoEvento::tearDown()
+         * @see TUCodigoEvento::testarCenarioSucesso()
+         * @see TUCodigoEvento::testarCenarioFalha()
          * 
 		*/
         int run();
 };
 
 /** 
- *  Classe de Teste de Unidade do Banco.
+ *  Classe de Teste de Unidade do Codigo de Apresentação.
  *  
- *  A classe descreve o teste de unidade de um banco. Seus métodos criam e 
- *  destroem esse banco. Seus métodos também apresentam exemplos de valores 
+ *  A classe descreve o teste de unidade de um código de apresentação. Seus métodos criam e 
+ *  destroem este. Seus métodos também apresentam exemplos de valores 
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de 
  *  falha.
  *  
  */
-class TUBanco {
+class TUCodigoApresentacao {
     private:
 
         // Definições de constantes para evitar numeros mágicos.
     
-        string VALOR_VALIDO   = "324"; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO = "4000"; /**< string contendo um exemplo de valor inválido */
+        string VALOR_VALIDO   = "3244"; /**< string contendo um exemplo de valor válido */
+        string VALOR_INVALIDO = "40000"; /**< string contendo um exemplo de valor inválido */
 
         // Referência para o objeto a ser testado.
 
-        Banco *banco; /**< instância da classe para a execução de testes unitários */
+        CodigoApresentacao *codigo; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -205,10 +201,10 @@ class TUBanco {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUBanco::setUp()
-         * @see TUBanco::tearDown()
-         * @see TUBanco::testarCenarioSucesso()
-         * @see TUBanco::testarCenarioFalha()
+         * @see TUCodigoApresentacao::setUp()
+         * @see TUCodigoApresentacao::tearDown()
+         * @see TUCodigoApresentacao::testarCenarioSucesso()
+         * @see TUCodigoApresentacao::testarCenarioFalha()
          * 
 		*/
         int run();
@@ -224,17 +220,17 @@ class TUBanco {
  *  falha.
  *  
  */
-class TUCapacidadeAcomodacao {
+class TUCodigoIngresso {
     private:
 
         // Definições de constantes para evitar numeros mágicos.
     
-        int VALOR_VALIDO   = 7; /**< inteiro contendo um exemplo de valor válido */
-        int VALOR_INVALIDO = 15; /**< inteiro contendo um exemplo de valor inválido */
+		string VALOR_VALIDO = "32444"; /**< string contendo um exemplo de valor válido */
+		string VALOR_INVALIDO = "400000"; /**< string contendo um exemplo de valor inválido */
 
         // Referência para o objeto a ser testado.
 
-        CapacidadeAcomodacao *capacidadeAcomodacao; /**< instância da classe para a execução de testes unitários */
+        CodigoIngresso *codigo; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -256,13 +252,13 @@ class TUCapacidadeAcomodacao {
         /**
 		 * Método para testar a classe em um cenário de sucesso.
 		 * 
-		 * Esse método testa se os métodos da classe CapacidadeAcomodacao estão
+		 * Esse método testa se os métodos da classe CodigoIngresso estão
          * funcionando perfeitamente para um cenário em que a entrada
          * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
          * o estado é igualado a SUCESSO do teste. Se não for, o estado é 
          * igualado a FALHA do teste.
          * 
-         * @see CapacidadeAcomodacao
+         * @see CodigoIngresso
 		 * 
 		*/
         void testarCenarioSucesso();
@@ -270,13 +266,13 @@ class TUCapacidadeAcomodacao {
         /**
 		 * Método para testar a classe em um cenário de falha.
 		 * 
-		 * Esse método testa se os métodos da classe CapacidadeAcomodacao estão
+		 * Esse método testa se os métodos da classe CodigoIngresso estão
          * funcionando perfeitamente para um cenário em que a entrada
          * do exemplo deve ser falha. Se ela falhar, o estado é igualado 
          * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA 
          * do teste.
          * 
-         * @see CapacidadeAcomodacao
+         * @see CodigoIngresso
 		 * 
 		*/
         void testarCenarioFalha();
@@ -301,10 +297,10 @@ class TUCapacidadeAcomodacao {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUCapacidadeAcomodacao::setUp()
-         * @see TUCapacidadeAcomodacao::tearDown()
-         * @see TUCapacidadeAcomodacao::testarCenarioSucesso()
-         * @see TUCapacidadeAcomodacao::testarCenarioFalha()
+         * @see TUCodigoIngresso::setUp()
+         * @see TUCodigoIngresso::tearDown()
+         * @see TUCodigoIngresso::testarCenarioSucesso()
+         * @see TUCodigoIngresso::testarCenarioFalha()
          * 
 		*/
         int run();
@@ -320,18 +316,18 @@ class TUCapacidadeAcomodacao {
  *  falha.
  *  
  */
-class TUDiaria {
+class TUNomeEvento {
 
     private:
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        float VALOR_VALIDO   = 5738.45; /**< float contendo um exemplo de valor válido */
-        float VALOR_INVALIDO = 37625.89; /**< float contendo um exemplo de valor inválido */
+		string VALOR_VALIDO = "Show Luan Santana"; /**< string contendo um exemplo de valor válido */
+		string VALOR_INVALIDO = "Show  Luan  Santana"; /**< string contendo um exemplo de valor inválido */
 
         // Refer�ncia para o objeto a ser testado.
 
-        Diaria *diaria; /**< instância da classe para a execução de testes unitários */
+        NomeEvento *nm_evento; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -353,13 +349,13 @@ class TUDiaria {
         /**
 		 * Método para testar a classe em um cenário de sucesso.
 		 * 
-		 * Esse método testa se os métodos da classe Diaria estão
+		 * Esse método testa se os métodos da classe NomeEvento estão
          * funcionando perfeitamente para um cenário em que a entrada
          * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
          * o estado é igualado a SUCESSO do teste. Se não for, o estado é 
          * igualado a FALHA do teste.
          * 
-         * @see Diaria
+         * @see NomeEvento
 		 * 
 		*/
         void testarCenarioSucesso();
@@ -367,13 +363,13 @@ class TUDiaria {
         /**
 		 * Método para testar a classe em um cenário de falha.
 		 * 
-		 * Esse método testa se os métodos da classe Diaria estão
+		 * Esse método testa se os métodos da classe NomeEvento estão
          * funcionando perfeitamente para um cenário em que a entrada
          * do exemplo deve ser falha. Se ela falhar, o estado é igualado 
          * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA 
          * do teste.
          * 
-         * @see Diaria
+         * @see NomeEvento
 		 * 
 		*/
         void testarCenarioFalha();
@@ -398,14 +394,15 @@ class TUDiaria {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUDiaria::setUp()
-         * @see TUDiaria::tearDown()
-         * @see TUDiaria::testarCenarioSucesso()
-         * @see TUDiaria::testarCenarioFalha()
+         * @see TUNomeEvento::setUp()
+         * @see TUNomeEvento::tearDown()
+         * @see TUNomeEvento::testarCenarioSucesso()
+         * @see TUNomeEvento::testarCenarioFalha()
          * 
 		*/
         int run();
 };
+
 
 /** 
  *  Classe de Teste de Unidade da Data.
@@ -417,6 +414,7 @@ class TUDiaria {
  *  falha.
  *  
  */
+
 class TUData {
 
     private:
