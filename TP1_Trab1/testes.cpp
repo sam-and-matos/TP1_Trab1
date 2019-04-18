@@ -170,8 +170,8 @@ void TUData::tearDown(){
 
 void TUData::testarCenarioSucesso(){
     try{
-        data->setData(VALOR_VALIDO_DIA, VALOR_VALIDO_MES, VALOR_VALIDO_ANO);
-        if (data->getData() != "20/fev/2002")  
+        data->setData(VALOR_VALIDO);
+        if (data->getData() != VALOR_VALIDO)  
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -181,7 +181,7 @@ void TUData::testarCenarioSucesso(){
 
 void TUData::testarCenarioFalha(){
     try{
-        data->setData(VALOR_INVALIDO_DIA, VALOR_INVALIDO_MES, VALOR_INVALIDO_ANO);
+        data->setData(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -208,8 +208,8 @@ void TUDataValidade::tearDown(){
 
 void TUDataValidade::testarCenarioSucesso(){
     try{
-        dataValidade->setDataDeValidade(VALOR_VALIDO_MES, VALOR_VALIDO_ANO);
-        if (dataValidade->getDataDeValidade(VALOR_VALIDO_MES, VALOR_VALIDO_ANO) != (VALOR_VALIDO_MES, VALOR_VALIDO_ANO)) // checar! 
+        dataValidade->setDataDeValidade(VALOR_VALIDO);
+        if (dataValidade->getDataDeValidade() != (VALOR_VALIDO)) // checar! 
             estado = FALHA;
     }
     catch(invalid_argument excecao){
@@ -219,7 +219,7 @@ void TUDataValidade::testarCenarioSucesso(){
 
 void TUDataValidade::testarCenarioFalha(){
     try{
-        dataValidade->setDataDeValidade(VALOR_INVALIDO_MES, VALOR_INVALIDO_ANO);
+        dataValidade->setDataDeValidade(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument excecao){

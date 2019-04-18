@@ -24,8 +24,7 @@ using namespace std;
 class Usuario {
 
 	private:
-		Nome nome; /**< classe que contém o nome do usuário */
-		Identificador identificador; /**< classe que contém o identificador do usuário */
+		CPF cpf; /**< classe que contém o cpf do usuário */
 		Senha senha; /**< classe que contém a senha do usuário */
 
 	public:
@@ -42,24 +41,8 @@ class Usuario {
 		 * @see Nome
 		 * 
 		*/
-		void setNome(const Nome &nome) {
-			this->nome = nome;
-		}
-
-		/**
-		 * Método para criação da classe do identificador.
-		 * 
-		 * Esse método cria uma classe Identificador para o 
-		 * identificador da entidade "Usuário".
-		 * 
-		 * @param identificador o ponteiro para a classe "identificador" 
-		 * que será criada
-		 * 
-		 * @see Identificador
-		 * 
-		*/
-		void setIdentificador(const Identificador &identificador) {
-			this->identificador = identificador;
+		void setCPF(const CPF &cpf) {
+			this->cpf = cpf;
 		}
 
 		/**
@@ -98,43 +81,29 @@ class Usuario {
 		 * @return a classe do nome. 
 		 * 
 		*/
-		Nome getNome() const {
-			return nome;
+		CPF getCPF() const {
+			return cpf;
 		}
 
-		/**
-		 * Método para o acesso à classe do identificador.
-		 * 
-		 * Esse método acessa a classe do identificador relacionada a ele no 
-		 * código principal e retorna essa classe. 
-		 * 
-		 * @return a classe do identificador. 
-		 * 
-		*/
-		Identificador getIdentificador() const {
-			return identificador;
-		}
 };
 
 /** 
  *  Classe da Acomodação.
  *  
  *  A classe descreve uma acomodação, composta pelas seguintes classes de
- *  domínios: Identificador, TipoAcomodacao (tipo de acomodação), uma 
+ *  domínios: CodigoEvento, TipoAcomodacao (tipo de acomodação), uma 
  *  CapacidadeAcomodacao (capacidade de acomodação), duas classes de Data 
  *  (uma de início e uma de fim), Nome, Estado e Diária. Seus métodos 
  *  criam os domínios e o retornam se necessário.  
  */
-class Acomodacao {
+class Evento {
 	private:
-		Identificador identificador; /**< classe que contém o identificador da acomodação */
-		TipoAcomodacao tipoAcomodacao; /**< classe que contém o tipo da acomodação */
-		CapacidadeAcomodacao capacidadeAcomodacao; /**< classe que contém a capacidade da acomodação */
-		Data dataInicio; /**< classe que contém a data de início da acomodação */
-		Data dataFim; /**< classe que contém a data de fim da acomodação */
-		Nome cidade; /**< classe que contém o nome da cidade da acomodação */
+		CodigoEvento codigo; /**< classe que contém o identificador da acomodação */
+		NomeEvento nome; /**< classe que contém o tipo da acomodação */
+		Cidade cidade; /**< classe que contém a capacidade da acomodação */
+		ClasseEvento classe; /**< classe que contém a data de início da acomodação */
 		Estado estado; /**< classe que contém o estado brasileiro da acomodação */
-		Diaria diaria; /**< classe que contém a diária da acomodação */
+		FaixaEtaria faixa; /**< classe que contém a diária da acomodação */
 
 	public:
 
@@ -143,16 +112,16 @@ class Acomodacao {
 		/**
 		 * Método para criação da classe do identificador da acomodação.
 		 * 
-		 * Esse método cria uma classe Identificador para a entidade 
+		 * Esse método cria uma classe CodigoEvento para a entidade 
 		 * "Acomodacao".
 		 * 
 		 * @param identificador o ponteiro para a classe "identificador" que será criada
 		 * 
-		 * @see Identificador
+		 * @see CodigoEvento
 		 * 
 		*/
-		void setIdentificador(const Identificador &identificador) {
-			this->identificador = identificador;
+		void setCodigoEvento(const CodigoEvento &codigo) {
+			this->codigo = codigo;
 		}
 		
 		/**
@@ -166,8 +135,8 @@ class Acomodacao {
 		 * @see TipoAcomodacao
 		 * 
 		*/
-		void setTipoAcomodacao(const TipoAcomodacao &tipoAcomodacao) {
-			this->tipoAcomodacao = tipoAcomodacao;
+		void setNomeEvento(const NomeEvento &nome) {
+			this->nome = nome;
 		}
 
 		/**
@@ -181,52 +150,7 @@ class Acomodacao {
 		 * @see CapacidadeAcomodacao
 		 * 
 		*/
-		void setCapacidadeAcomodacao(const CapacidadeAcomodacao &capaidadeAcomodacao) {
-			this->capacidadeAcomodacao = capaidadeAcomodacao;
-		}
-		
-		/**
-		 * Método para criação da classe da data de início da acomodação.
-		 * 
-		 * Esse método cria uma classe Data correspondente à data de início 
-		 * da acomodação para a entidade "Acomodacao".
-		 * 
-		 * @param dataInicio o ponteiro para a classe "dataInicio" que será criada
-		 * 
-		 * @see Data
-		 * 
-		*/
-		void setDataInicio(const Data &dataInicio) {
-			this->dataInicio = dataInicio;
-		}
-
-		/**
-		 * Método para criação da classe da data de fim da acomodação.
-		 * 
-		 * Esse método cria uma classe Data correspondente à data de fim 
-		 * da acomodação para a entidade "Acomodacao".
-		 * 
-		 * @param dataFim o ponteiro para a classe "dataFim" que será criada
-		 * 
-		 * @see Data
-		 * 
-		*/
-		void setDataFim(const Data &dataFim) {
-			this->dataFim = dataFim;
-		}
-
-		/**
-		 * Método para criação da classe da cidade da acomodação.
-		 * 
-		 * Esse método cria uma classe Nome correspondente à cidade 
-		 * da acomodação para a entidade "Acomodacao".
-		 * 
-		 * @param cidade o ponteiro para a classe "cidade" que será criada
-		 * 
-		 * @see Nome
-		 * 
-		*/
-		void setCidade(const Nome &cidade) {
+		void setCidade(const Cidade &cidade) {
 			this->cidade = cidade;
 		}
 
@@ -246,21 +170,6 @@ class Acomodacao {
 		}
 
 		/**
-		 * Método para criação da classe da diária da acomodação.
-		 * 
-		 * Esse método cria uma classe Diaria correspondente à diária 
-		 * da acomodação para a entidade "Acomodacao".
-		 * 
-		 * @param diaria o ponteiro para a classe "diaria" que será criada
-		 * 
-		 * @see Diaria
-		 * 
-		*/
-		void setDiaria(const Diaria &diaria) {
-			this->diaria = diaria;
-		}
-
-		/**
 		 * Método para o acesso à classe do identificador.
 		 * 
 		 * Esse método acessa a classe do identificador relacionada a ele no 
@@ -269,8 +178,8 @@ class Acomodacao {
 		 * @return a classe do identificador. 
 		 * 
 		*/
-		Identificador getIdentificador() const {
-			return identificador;
+		CodigoEvento getCodigoEvento() const {
+			return codigo;
 		}
 
 		/**
@@ -282,8 +191,8 @@ class Acomodacao {
 		 * @return a classe do tipo de acomodação. 
 		 * 
 		*/
-		TipoAcomodacao getTipoAcomodacao() const {
-			return tipoAcomodacao;
+		NomeEvento getNomeEvento() const {
+			return nome;
 		}
 
 		/**
@@ -295,46 +204,7 @@ class Acomodacao {
 		 * @return a classe da capacidade de acomodação. 
 		 * 
 		*/
-		CapacidadeAcomodacao getCapacidadeAcomodacao() const {
-			return capacidadeAcomodacao;
-		}
-
-		/**
-		 * Método para o acesso à data de início da hospedagem.
-		 * 
-		 * Esse método acessa a classe Data que contém data de início 
-		 * da hospedagem. Retorna a classe com a data de início. 
-		 * 
-		 * @return a classe da data de início da hospedagem. 
-		 * 
-		*/
-		Data getDataInicio() const {
-			return dataInicio;
-		}
-
-		/**
-		 * Método para o acesso à data de fim da hospedagem.
-		 * 
-		 * Esse método acessa a classe Data que contém data de fim 
-		 * da hospedagem. Retorna a classe com a data de início.
-		 * 
-		 * @return a classe da data de fim da hospedagem. 
-		 * 
-		*/
-		Data getDataFim() const {
-			return dataFim;
-		}
-
-		/**
-		 * Método para o acesso à cidade da hospedagem.
-		 * 
-		 * Esse método acessa a classe Nome que contém cidade 
-		 * da hospedagem. Retorna a classe com a cidade.
-		 * 
-		 * @return a classe da cidade da hospedagem. 
-		 * 
-		*/
-		Nome getCidade() const {
+		Cidade getCidade() const {
 			return cidade;
 		}
 
@@ -360,9 +230,23 @@ class Acomodacao {
 		 * @return a classe da diária. 
 		 * 
 		*/
-		Diaria getDiaria() const {
-			return diaria;
+		ClasseEvento getClasseEvento() const {
+			return classe;
 		}
+
+		/**
+		 * Método para o acesso à classe da diária.
+		 *
+		 * Esse método acessa a classe da diária relacionado a ele no
+		 * código principal e retorna essa classe.
+		 *
+		 * @return a classe da diária.
+		 *
+		*/
+		FaixaEtaria getFaixaEtaria() const {
+			return faixa;
+		}
+
 };
 
 /** 
@@ -374,8 +258,9 @@ class Acomodacao {
  */
 class CartaoDeCredito {
 	private:
-		NumeroCartaoCredito numeroCartaoCredito; /**< classe que contém o número do cartão de crédito */
-		DataValidade dataValidade; /**< classe que contém a data de validade do cartão de crédito */
+		NumeroCartaoCredito numero; /**< classe que contém o número do cartão de crédito */
+		DataValidade data; /**< classe que contém a data de validade do cartão de crédito */
+		CodigoSeguranca codigo; /**< classe que contém a data de validade do cartão de crédito */
 
 	public:
 
@@ -394,7 +279,7 @@ class CartaoDeCredito {
 		 * 
 		*/
 		void setNumeroCartaoCredito(const NumeroCartaoCredito &numeroCartaoCredito) {
-			this->numeroCartaoCredito = numeroCartaoCredito;
+			this->numero = numeroCartaoCredito;
 		}
 
 		/**
@@ -410,7 +295,23 @@ class CartaoDeCredito {
 		 * 
 		*/
 		void setDataValidade(const DataValidade &dataValidade) {
-			this->dataValidade = dataValidade;
+			this->data = dataValidade;
+		}
+
+		/**
+		 * Método para criação da classe da data de validade do cartão de crédito.
+		 *
+		 * Esse método cria uma classe DataValidade para a entidade
+		 * "CartaoDeCredito".
+		 *
+		 * @param dataValidade o ponteiro para a classe "dataValidade"
+		 * que será criada
+		 *
+		 * @see DataValidade
+		 *
+		*/
+		void setCodigoSeguranca(const CodigoSeguranca& codigo) {
+			this->codigo = codigo;
 		}
 
 		/**
@@ -423,7 +324,7 @@ class CartaoDeCredito {
 		 * 
 		*/
 		NumeroCartaoCredito getNumeroCartaoCredito() const {
-			return numeroCartaoCredito;
+			return numero;
 		}
 
 		/**
@@ -436,112 +337,256 @@ class CartaoDeCredito {
 		 * 
 		*/
 		DataValidade getDataValidade() const {
-			return dataValidade;
+			return data;
 		}
+
+		/**
+		 * Método para o acesso à classe do código de segurança.
+		 *
+		 * Esse método acessa a classe do código de segurança relacionada a ele no
+		 * código principal e retorna essa classe.
+		 *
+		 * @return a classe do código de segurança.
+		 *
+		*/
+		CodigoSeguranca getCodigoSeguranca() const {
+			return codigo;
+		}
+
 };
 
 /** 
- *  Classe da Conta Corrente.
+ *  Classe da Apresentação.
  *  
- *  A classe descreve uma conta corrente, composta pelas seguintes classes de
- *  domínios: NumeroContaCorrente (número de conta corrente), Agencia e Banco.
+ *  A classe descreve uma apresentação, composta pelas seguintes classes de
+ *  domínios: CodigoApresetancao, Data, Horario, Preco, NumeroSala e Disponibilidade.
  *  Seus métodos criam os domínios e o retornam se necessário.  
  */
-class ContaCorrente {
+class Apresentacao {
 	private:
-		NumeroContaCorrente conta; /**< classe que contém o número da conta corrente */
-		Agencia agencia; /**< classe que contém a agência da conta corrente */
-		Banco banco; /**< classe que contém o banco da conta corrente */
+		CodigoApresentacao codigo; 
+		Data data; 
+		Horario horario; 
+		Preco preco; 
+		NumeroSala sala; 
+		Disponibilidade disponibilidade;
 
 	public:
 
 		// Metodos de acesso
 
 		/**
-		 * Método para criação da classe do número da conta corrente.
+		 * Método para criação da classe do código de apresentação.
 		 * 
-		 * Esse método cria uma classe NumeroContaCorrente para a entidade 
-		 * "ContaCorrente".
+		 * Esse método cria uma classe CodigoApresentacao para a entidade 
+		 * "Aprensentacao".
 		 * 
-		 * @param conta o ponteiro para a classe "conta" que será criada
+		 * @param codigo o ponteiro para a classe "CodigoApresentacao" que será criada
 		 * 
-		 * @see NumeroContaCorrente
+		 * @see CodigoApresentacao
 		 * 
 		*/
-		void setConta(const NumeroContaCorrente &conta) {
-			this->conta = conta;
+		void setCodigoApresentacao(const CodigoApresentacao &codigo) {
+			this->codigo = codigo;
 		}
 
 		/**
-		 * Método para criação da classe da agência da conta corrente.
+		 * Método para criação da classe da data da apresentação.
 		 * 
-		 * Esse método cria uma classe Agencia para a entidade 
-		 * "ContaCorrente".
+		 * Esse método cria uma classe Data para a entidade 
+		 * "CodigoApresentacao".
 		 * 
-		 * @param agencia o ponteiro para a classe "agencia" que será criada
+		 * @param data o ponteiro para a classe "Data" que será criada
 		 * 
 		 * @see Agencia
 		 * 
 		*/
-		void setAgencia(const Agencia &agencia) {
-			this->agencia = agencia;
+		void setData(const Data &data) {
+			this->data = data;
 		}
 		
 		/**
-		 * Método para criação da classe do banco da conta corrente.
+		 * Método para criação da classe do horario da apresentação.
 		 * 
-		 * Esse método cria uma classe Banco para a entidade 
-		 * "ContaCorrente".
+		 * Esse método cria uma classe Horario para a entidade 
+		 * "Apresentacao".
 		 * 
-		 * @param banco o ponteiro para a classe "banco" que será criada
+		 * @param horario o ponteiro para a classe "Horario" que será criada
 		 * 
-		 * @see Banco
+		 * @see Horario
 		 * 
 		*/
-		void setCodigoApresentacao(const Banco &banco) {
-			this->banco = banco;
+		void setHorario(const Horario &horario) {
+			this->horario = horario;
 		}
 
 		/**
-		 * Método para o acesso à da conta corrente.
-		 * 
-		 * Esse método acessa a classe da conta corrente relacionada a ele no 
-		 * código principal e retorna essa classe. 
-		 * 
-		 * @return a classe da conta corrente. 
-		 * 
+		 * Método para criação da classe do preço da apresentação.
+		 *
+		 * Esse método cria uma classe Preco para a entidade
+		 * "Apresentacao".
+		 *
+		 * @param preco o ponteiro para a classe "Preco" que será criada
+		 *
+		 * @see Preco
+		 *
 		*/
-		NumeroContaCorrente getConta() const {
-			return conta;
+		void setPreco(const Preco& preco) {
+			this->preco = preco;
 		}
 
 		/**
-		 * Método para o acesso à classe da agência.
-		 * 
-		 * Esse método acessa a classe da agência relacionada a ele no 
-		 * código principal e retorna essa classe. 
-		 * 
-		 * @return a classe de agência. 
-		 * 
+		 * Método para criação da classe do número da sala da aparesentação.
+		 *
+		 * Esse método cria uma classe NumeroSala para a entidade
+		 * "Apresentacao".
+		 *
+		 * @param numero o ponteiro para a classe "NumeroSala" que será criada
+		 *
+		 * @see NumeroSala
+		 *
 		*/
-		Agencia getAgencia() const {
-			return agencia;
+		void setNumeroSala(const NumeroSala& numero) {
+			this->sala = numero;
 		}
 
 		/**
-		 * Método para o acesso à classe do banco.
+		 * Método para criação da classe de disponibilidade da apresentação.
+		 *
+		 * Esse método cria uma classe Disponibilidade para a entidade
+		 * "Apresentacao".
+		 *
+		 * @param disponibilidade o ponteiro para a classe "Disponibilidade" que será criada
+		 *
+		 * @see Disponibilidade
+		 *
+		*/
+		void setDisponibilidade(const Disponibilidade& disponibilidade) {
+			this->disponibilidade = disponibilidade;
+		}
+
+		/**
+		 * Método para o acesso ao código da apresentação.
 		 * 
-		 * Esse método acessa a classe do banco relacionado a ele no 
+		 * Esse método acessa a classe do CodigoApresentacao a ele no 
 		 * código principal e retorna essa classe. 
 		 * 
-		 * @return a classe de banco. 
+		 * @return a classe CodigoApresentacao. 
 		 * 
 		*/
-		Banco getBanc() const {
-			return banco;
+		CodigoApresentacao getCodigoApresentacao() const {
+			return codigo;
+		}
+
+		/**
+		 * Método para o acesso à classe da data.
+		 * 
+		 * Esse método acessa a classe da Data relacionada a ele no 
+		 * código principal e retorna essa classe. 
+		 * 
+		 * @return a classe Data. 
+		 * 
+		*/
+		Data getData() const {
+			return data;
+		}
+
+		/**
+		 * Método para o acesso ao horário da apresentação.
+		 * 
+		 * Esse método acessa a classe do Horario relacionada a ele no 
+		 * código principal e retorna essa classe. 
+		 * 
+		 * @return a classe Horario. 
+		 * 
+		*/
+		Horario getHorario() const {
+			return horario;
+		}
+
+		/**
+		 * Método para o acesso ao preçõ da apresentação.
+		 *
+		 * Esse método acessa a classe do Preco relacionada a ele no
+		 * código principal e retorna essa classe.
+		 *
+		 * @return a classe Preco.
+		 *
+		*/
+		Preco getPreco() const {
+			return preco;
+		}
+
+		/**
+		 * Método para o acesso ao número da sala da apresentação.
+		 *
+		 * Esse método acessa a classe do NumeroSala relacionada a ele no
+		 * código principal e retorna essa classe.
+		 *
+		 * @return a classe NumeroSala.
+		 *
+		*/
+		NumeroSala getNumeroSala() const {
+			return sala;
+		}
+
+		/**
+		 * Método para o acesso à disponibilidade da apresentação.
+		 *
+		 * Esse método acessa a classe da Disponibilidade relacionada a ele no
+		 * código principal e retorna essa classe.
+		 *
+		 * @return a classe Disponibilidade.
+		 *
+		*/
+		Disponibilidade getDisponibilidade() const {
+			return disponibilidade;
 		}
 };
 
+/**
+ *  Classe do Ingresso.
+ *
+ *  A classe descreve um ingresso, composto pelas seguintes classes de
+ *  domínios: CodigoIngresso. Seus métodos criam os domínios
+ *  e o retornam se necessário.
+ */
+class Ingresso {
 
+private:
+	CodigoIngresso ingresso;
+
+public:
+
+	// Metodos de acesso
+
+	/**
+	 * Método para criação da classe do código de ingresso.
+	 *
+	 * Esse método cria uma classe CodigoIngresso para a o ingresso da entidade "Ingresso".
+	 *
+	 * @param ingresso o ponteiro para a classe "CodigoIngresso" que será criada
+	 *
+	 * @see CodigoIngresso
+	 *
+	*/
+	void setCodigoIngresso(const CodigoIngresso& ingresso) {
+		this->ingresso = ingresso;
+	}
+
+	/**
+	 * Método para o acesso à classe CodigoIngresso.
+	 *
+	 * Esse método acessa a classe do codigo de ingresso relacionado a ele no
+	 * código principal e retorna essa classe.
+	 *
+	 * @return a classe do codigo de ingresso.
+	 *
+	*/
+	CodigoIngresso getSenha() const {
+		return ingresso;
+	}
+
+};
 
 #endif // ENTIDADES_H_INCLUDED

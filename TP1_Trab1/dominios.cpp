@@ -1,7 +1,6 @@
 
 #include "dominios.h"
 #include <algorithm>
-#include <regex>
 #include <time.h>
 #include <cctype>
 
@@ -38,17 +37,21 @@ bool checkNumero(string numero) {
 
 bool checkCPF(string cpf) {
 	int aux_cpf = stoi(cpf);
-	string aux = aux_cpf;
+	string aux = to_string(aux_cpf);
+	string aux1 = to_string(aux_cpf);
+	aux1.resize(8);
 	int digito_1 = 10, digito_2 = 11, teste = 0, multiplicador = 10, mod = 11;
 
-	for (string::iterator it = aux.begin(); it != aux.at(8); it++) {
+	for (string::iterator it = aux1.begin(); it != aux1.end(); it++) {
 		teste += (*it) * digito_1;
 		digito_1--;
 	}
 
-	if (((teste * multiplicador) % mod) == aux.at(9)) {
+	string aux2 = to_string(aux_cpf);
+	aux2.resize(9);
+	if (((teste * multiplicador) % mod) == aux2.at(9)) {
 		teste = 0;
-		for (string::iterator it = aux.begin(); it != aux.at(9); it++)
+		for (string::iterator it = aux2.begin(); it != aux2.end(); it++)
 		{
 			teste += (*it) * digito_2;
 			digito_2--;
@@ -67,9 +70,14 @@ bool checkCPF(string cpf) {
 void Cidade::validar(string cidade) throw(invalid_argument) {
 	if (cidade.length() > LIMITE)
 		throw invalid_argument("Cidade invalida! Nome da cidade pode ter no máximo 15 caracteres.");
-	regex valida(REGEX_EXP);
-	if (!regex_match(cidade, valida))
-		throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+	for (string::iterator it = cidade.begin(); it != cidade.end(); it++) {
+		if (!isalnum(*it) || !isspace(*it))
+			throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+		if (isspace(*it) && isspace(*(it + 1)))
+			throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+		if (*it == '.' && isalpha(*(it - 1)))
+			throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+	}
 }
 
 void Cidade::setCidade(string cidade) {
@@ -245,6 +253,16 @@ void NomeEvento::validar(string nome) throw(invalid_argument) {
 void NomeEvento::setNomeEvento(string nome) {
 	validar(nome);
 	this->nm_evento = nome;
+}
+
+void NumeroSala::validar(int numero) throw(invalid_argument) {
+	if (numero < LIMITE_MIN || numero > LIMITE_MAX)
+		throw invalid_argument("Numero da sala invalido! Sala só pode ter numero de 1 a 10.");
+}
+
+void NumeroSala::setNumero(int numero) throw(invalid_argument) {
+	validar(numero);
+	this->numero = numero;
 }
 
 void NumeroCartaoCredito::validar(string numero) throw (invalid_argument) {

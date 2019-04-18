@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include <string>
 #include <array>
+#include <regex>
 
 using namespace std;
 
@@ -55,8 +56,6 @@ private:
 	string cidade; /**< string que contém o nome da cidade */
 
 	const static int LIMITE = 15; /**< inteiro correspondente ao limite de caracteres da string cidade */
-	const string REGEX_EXP = "^((([A-Z]|[a-z]){1,}|[0-9]{1,})|((\w{1}\W{1}))|(([A-Z]*[a-z]*)[.]*)){1,15}$"; /**< Expressão regular para checar se a string tem ao menos
-																											 1 letra, não há espaços seguidos, ponto é precido por letra./
 
 	// Metodo de validacao
 
@@ -515,7 +514,7 @@ class Data {
 		
 		// Defincao dos limites para Dia e Ano
 
-		const string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$";
+		const string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}$";
 
 		// Metodo de validacao
 		/**
@@ -578,7 +577,7 @@ class DataValidade {
 	private:
 		string dt_validade; /**< inteiros que corresponde ao dia e ao ano */
 		
-		const string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\/)\d{2}";
+		const string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}";
 		
 		// Metodos de validacao
 
@@ -824,7 +823,7 @@ private:
 	int hr, min;
 
 	const static int LIMITE_HR_MIN = 07, LIMITE_HR_MAX = 22;
-	array<int, 4> = { 00,15,30,45 };
+	array<int, 4> LIMITE_MIN = { 00,15,30,45 };
 
 	void validar(int, int) throw (invalid_argument);
 
@@ -881,7 +880,7 @@ private:
 	string nm_evento; /**< string que contém o nome da cidade */
 
 	const static int LIMITE = 20; /**< inteiro correspondente ao limite de caracteres da string cidade */
-	const string REGEX_EXP = "^((([A-Z]|[a-z]){1,}|[0-9]{1,})|((\w{1}\W{1}))|(([A-Z]*[a-z]*)[.]*)){1,15}$"; /**< Expressão regular para checar se a string tem ao menos
+	const string REGEX_EXP = "^((([A-Z]|[a-z]){1,}|[0-9]{1,})|((\\w{1}\\W{1}))|(([A-Z]*[a-z]*)[.]*))$"; /**< Expressão regular para checar se a string tem ao menos
 																											 1 letra, não há espaços seguidos, ponto é precido por letra./
 
 	// Metodo de validacao
@@ -933,6 +932,58 @@ public:
 	string getNomeEvento() const {
 		return nm_evento;
 	}
+};
+
+/**
+ *  Classe do número da sala.
+ *
+ *  A classe descreve um número da sala. Seus
+ *  métodos validam o número da sala, criam
+ *  esse número e retornam o número da sala criada
+ *  ao usuário.
+ */
+
+class NumeroSala {
+private:
+	int numero; 
+
+	
+
+	const static int LIMITE_MIN = 1; 
+	const static int LIMITE_MAX = 10; 
+
+	void validar(int) throw (invalid_argument);
+
+public:
+
+	//Metodos de acesso
+
+	/**
+	 * Método para criação do número da sala.
+	 *
+	 * Esse método invoca o outro método para validar o valor fornecido pelo usuário
+	 * para o numero. Se ele for válido, o número da sala é criada contendo
+	 * aquele valor específico. Se ele não for válido, o número da sala não é criado.
+	 *
+	 * @param numero int número correspondente ao número da sala.
+	 *
+	 * @see NumeroSala::validar()
+	*/
+	void setNumero(int) throw(invalid_argument);
+
+	/**
+	 * Método para o acesso ao número da sala.
+	 *
+	 * Esse método acessa o número da sala relacionado a ele no
+	 * código principal e retorna o seu valor.
+	 *
+	 * @return valor do número da sala.
+	 *
+	*/
+	int getNumero() const {
+		return numero;
+	}
+
 };
 
 /**

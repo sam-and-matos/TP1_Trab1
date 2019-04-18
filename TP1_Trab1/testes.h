@@ -420,17 +420,9 @@ class TUData {
     private:
 
         // Definições de constantes para evitar numeros m�gicos.
-
-        const static int VALOR_VALIDO_DIA   = 20; /**< inteiro contendo um exemplo de valor válido */
-        const static int VALOR_INVALIDO_DIA = 35; /**< inteiro contendo um exemplo de valor inválido */
-
         
-        string VALOR_VALIDO_MES   = "fev"; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO_MES = "mil"; /**< string contendo um exemplo de valor inválido */
-
-        
-        const static int VALOR_VALIDO_ANO   = 2002; /**< inteiro contendo um exemplo de valor válido */
-        const static int VALOR_INVALIDO_ANO = 3580; /**< inteiro contendo um exemplo de valor inválido */
+        string VALOR_VALIDO  = "28/02/12"; /**< string contendo um exemplo de valor válido */
+        string VALOR_INVALIDO = "30/02/12"; /**< string contendo um exemplo de valor inválido */
 
         // Refer�ncia para o objeto a ser testado.
 
@@ -526,12 +518,8 @@ class TUDataValidade {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        const static int VALOR_VALIDO_MES   = 10; /**< inteiro contendo um exemplo de valor válido */
-        const static int VALOR_INVALIDO_MES = 78; /**< inteiro contendo um exemplo de valor inválido */
-
-        
-        const static int VALOR_VALIDO_ANO   = 45; /**< inteiro contendo um exemplo de valor válido */
-        const static int VALOR_INVALIDO_ANO = 133; /**< inteiro contendo um exemplo de valor inválido */
+		const string VALOR_VALIDO = "09/21";
+		const string VALOR_INVALIDO = "09/18";
 
         // Refer�ncia para o objeto a ser testado.
 
