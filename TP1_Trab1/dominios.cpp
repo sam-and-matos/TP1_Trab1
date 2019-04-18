@@ -131,6 +131,18 @@ void CodigoIngresso::setCodigoIngresso(string cd_ingresso) throw (invalid_argume
 	this->codigo = cd_ingresso;
 }
 
+void CodigoSeguranca::validar(string cd_seguranca) throw(invalid_argument) {
+	if (!checkNumero(cd_seguranca))
+		throw invalid_argument("Codigo de Segurança invalido! Somente digitos sao aceitos.");
+	if (cd_seguranca.size() != LIMITE)
+		throw invalid_argument("Codigo de Segurança invalido! Codigo tem que ter 3 digitos.");
+}
+
+void CodigoSeguranca::setCodigoSeguranca(string cd_seguranca) throw (invalid_argument) {
+	validar(cd_seguranca);
+	this->codigo = cd_seguranca;
+}
+
 void CPF::validar(string cpf) throw(invalid_argument) {
 	regex valida(REGEX_EXP);
 
@@ -229,17 +241,22 @@ void Estado::setEstado(string estado) throw (invalid_argument) {
 	this->estado = estado;
 }
 
-void Horario::validar(int hr, int min) throw (invalid_argument) {
-	if (hr < LIMITE_HR_MIN || hr> LIMITE_HR_MAX)
+void Horario::validar(string horario) throw (invalid_argument) {
+	int aux_horario = stoi(horario), int aux_hr, int aux_min;
+
+	aux_hr = aux_horario / 100;
+	aux_min = aux_horario % 100;
+
+
+	if (aux_hr < LIMITE_HR_MIN || aux_hr> LIMITE_HR_MAX)
 		throw invalid_argument("Horario invalido! Somente são aceitos eventos das 07 as 22 hrs");
-	if (!all_of(LIMITE_MIN.begin(), LIMITE_MIN.end(), min))
+	if (!all_of(LIMITE_MIN.begin(), LIMITE_MIN.end(), aux_min))
 		throw invalid_argument("Horario invalido! Somente são aceitos eventos com os seguintes minutos: 00, 15, 30 e 45");
 }
 
-void Horario::setHorario(int hr, int min) throw (invalid_argument) {
-	validar(hr, min);
-	this->hr = hr;
-	this->min = min;
+void Horario::setHorario(string horario) throw (invalid_argument) {
+	validar(horario);
+	this->horario = horario;
 }
 
 void NomeEvento::validar(string nome) throw(invalid_argument) {

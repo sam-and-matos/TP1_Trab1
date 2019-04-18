@@ -706,18 +706,18 @@ class TUEstado {
  *  falha.
  *  
  */
-class TUIdentificador {
+class TUHorario {
 
     private:
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "teste"; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO = "test4567"; /**< string contendo um exemplo de valor inválido */
+        string VALOR_VALIDO   = "07:30"; /**< string contendo um exemplo de valor válido */
+        string VALOR_INVALIDO = "07:22"; /**< string contendo um exemplo de valor inválido */
 
         // Refer�ncia para o objeto a ser testado.
 
-        Identificador *identificador; /**< instância da classe para a execução de testes unitários */
+        Horario *horario; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -803,22 +803,20 @@ class TUIdentificador {
  *  falha.
  *  
  */
-class TUNome {
+class TUPreco {
 
     private:
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO    = "Sophie Azevedo."; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO1 = "Natalya Petrovna"; /**< string contendo um exemplo de valor inválido */
-        string VALOR_INVALIDO2 = "."; /**< string contendo um exemplo de valor inválido */
-        string VALOR_INVALIDO3 = " "; /**< string contendo um exemplo de valor inválido */
-        string VALOR_INVALIDO4 = ".Gabriel"; /**< string contendo um exemplo de valor inválido */
-        string VALOR_INVALIDO5 = "Melissa  Lima"; /**< string contendo um exemplo de valor inválido */
-
+        string VALOR_VALIDO    = "100,00"; /**< string contendo um exemplo de valor válido */
+		string VALOR_VALIDO = "100.00"; /**< string contendo um exemplo de valor válido */
+        string VALOR_INVALIDO1 = "1250,00"; /**< string contendo um exemplo de valor inválido */
+        string VALOR_INVALIDO2 = "1250.00"; /**< string contendo um exemplo de valor inválido */
+        
         // Refer�ncia para o objeto a ser testado.
 
-        Nome *nome; /**< instância da classe para a execução de testes unitários */
+        Preco *preco; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -885,10 +883,10 @@ class TUNome {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUNome::setUp()
-         * @see TUNome::tearDown()
-         * @see TUNome::testarCenarioSucesso()
-         * @see TUNome::testarCenarioFalha()
+         * @see TUPreco::setUp()
+         * @see TUPreco::tearDown()
+         * @see TUPreco::testarCenarioSucesso()
+         * @see TUPreco::testarCenarioFalha()
          * 
 		*/
         int run();
@@ -1002,18 +1000,18 @@ class TUNumeroCartaoCredito {
  *  falha.
  *  
  */
-class TUNumeroContaCorrente {
+class TUNumeroSala {
 
     private:
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "356042"; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO = "30563214"; /**< string contendo um exemplo de valor inválido */
+        int VALOR_VALIDO   = 3; /**< string contendo um exemplo de valor válido */
+        int VALOR_INVALIDO = 12; /**< string contendo um exemplo de valor inválido */
 
         // Refer�ncia para o objeto a ser testado.
 
-        NumeroContaCorrente *numeroContaCorrente; /**< instância da classe para a execução de testes unitários */
+        NumeroSala *sala; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -1080,10 +1078,10 @@ class TUNumeroContaCorrente {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUNumeroContaCorrente::setUp()
-         * @see TUNumeroContaCorrente::tearDown()
-         * @see TUNumeroContaCorrente::testarCenarioSucesso()
-         * @see TUNumeroContaCorrente::testarCenarioFalha()
+         * @see TUNumeroSala::setUp()
+         * @see TUNumeroSala::tearDown()
+         * @see TUNumeroSala::testarCenarioSucesso()
+         * @see TUNumeroSala::testarCenarioFalha()
          * 
 		*/
         int run();
@@ -1199,7 +1197,7 @@ class TUSenha {
  *  falha.
  *  
  */
-class TUTipoAcomodacao {
+class TUCidade {
 
     private:
 
@@ -1210,7 +1208,7 @@ class TUTipoAcomodacao {
 
         // Refer�ncia para o objeto a ser testado.
 
-        TipoAcomodacao *tipoAcomodacao; /**< instância da classe para a execução de testes unitários */
+        Cidade *cidade; /**< instância da classe para a execução de testes unitários */
 
         // Estado do teste.
 
@@ -1277,13 +1275,498 @@ class TUTipoAcomodacao {
 		 * 
 		 * Esse método destroi a classe que passou pelos testes unitários.
 		 * 
-         * @see TUTipoAcomodacao::setUp()
-         * @see TUTipoAcomodacao::tearDown()
-         * @see TUTipoAcomodacao::testarCenarioSucesso()
-         * @see TUTipoAcomodacao::testarCenarioFalha()
+         * @see TUCidade::setUp()
+         * @see TUCidade::tearDown()
+         * @see TUCidade::testarCenarioSucesso()
+         * @see TUCidade::testarCenarioFalha()
          * 
 		*/
         int run();
+};
+
+/**
+ *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *
+ *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
+ *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  válidos e inválidos para esse domínio, checando se os valores válidos passam
+ *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
+ *  falha.
+ *
+ */
+class TUDisponibilidade {
+
+private:
+
+	// Definições de constantes para evitar numeros m�gicos.
+
+	int VALOR_VALIDO = 50; /**< int contendo um exemplo de valor válido */
+	int VALOR_INVALIDO = 350; /**< int contendo um exemplo de valor inválido */
+
+	// Refer�ncia para o objeto a ser testado.
+
+	Disponibilidade* disponibilidade; /**< instância da classe para a execução de testes unitários */
+
+	// Estado do teste.
+
+	int estado; /**< índice inteiro que indicará se o estado do teste é de sucesso ou de falha */
+
+	// Declarações de métodos.
+
+	/**
+	 * Método para criar a classe a ser testada.
+	 *
+	 * Esse método cria a classe que passará pelos testes unitários.
+	 * Se ela for criada sem erros, esse método iguala o estado do
+	 * teste ao índice que corresponde ao sucesso da classe ter sido
+	 * criada.
+	 *
+	*/
+	void setUp();
+
+	/**
+	 * Método para testar a classe em um cenário de sucesso.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
+	 * o estado é igualado a SUCESSO do teste. Se não for, o estado é
+	 * igualado a FALHA do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioSucesso();
+
+	/**
+	 * Método para testar a classe em um cenário de falha.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser falha. Se ela falhar, o estado é igualado
+	 * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA
+	 * do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioFalha();
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	*/
+	void tearDown();
+
+public:
+
+	// Definições de constantes para reportar resultado do teste.
+
+	const static int SUCESSO = 0; /**< índice inteiro que iguala o estado do teste a 0 se este for bem-sucedido */
+	const static int FALHA = -1; /**< índice inteiro que iguala o estado do teste a -1 se este for falhar */
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	 * @see TUCidade::setUp()
+	 * @see TUCidade::tearDown()
+	 * @see TUCidade::testarCenarioSucesso()
+	 * @see TUCidade::testarCenarioFalha()
+	 *
+	*/
+	int run();
+};
+
+/**
+ *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *
+ *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
+ *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  válidos e inválidos para esse domínio, checando se os valores válidos passam
+ *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
+ *  falha.
+ *
+ */
+class TUClasseEvento {
+
+private:
+
+	// Definições de constantes para evitar numeros m�gicos.
+
+	int VALOR_VALIDO = 1; /**< int contendo um exemplo de valor válido */
+	int VALOR_INVALIDO = 5; /**< int contendo um exemplo de valor inválido */
+
+	// Refer�ncia para o objeto a ser testado.
+
+	ClasseEvento* classe; /**< instância da classe para a execução de testes unitários */
+
+	// Estado do teste.
+
+	int estado; /**< índice inteiro que indicará se o estado do teste é de sucesso ou de falha */
+
+	// Declarações de métodos.
+
+	/**
+	 * Método para criar a classe a ser testada.
+	 *
+	 * Esse método cria a classe que passará pelos testes unitários.
+	 * Se ela for criada sem erros, esse método iguala o estado do
+	 * teste ao índice que corresponde ao sucesso da classe ter sido
+	 * criada.
+	 *
+	*/
+	void setUp();
+
+	/**
+	 * Método para testar a classe em um cenário de sucesso.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
+	 * o estado é igualado a SUCESSO do teste. Se não for, o estado é
+	 * igualado a FALHA do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioSucesso();
+
+	/**
+	 * Método para testar a classe em um cenário de falha.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser falha. Se ela falhar, o estado é igualado
+	 * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA
+	 * do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioFalha();
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	*/
+	void tearDown();
+
+public:
+
+	// Definições de constantes para reportar resultado do teste.
+
+	const static int SUCESSO = 0; /**< índice inteiro que iguala o estado do teste a 0 se este for bem-sucedido */
+	const static int FALHA = -1; /**< índice inteiro que iguala o estado do teste a -1 se este for falhar */
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	 * @see TUCidade::setUp()
+	 * @see TUCidade::tearDown()
+	 * @see TUCidade::testarCenarioSucesso()
+	 * @see TUCidade::testarCenarioFalha()
+	 *
+	*/
+	int run();
+};
+
+/**
+ *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *
+ *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
+ *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  válidos e inválidos para esse domínio, checando se os valores válidos passam
+ *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
+ *  falha.
+ *
+ */
+class TUFaixaEtaria {
+
+private:
+
+	// Definições de constantes para evitar numeros m�gicos.
+
+	string VALOR_VALIDO = "12"; /**< string contendo um exemplo de valor válido */
+	string VALOR_INVALIDO = "20"; /**< string contendo um exemplo de valor inválido */
+
+	// Refer�ncia para o objeto a ser testado.
+
+	FaixaEtaria* faixa; /**< instância da classe para a execução de testes unitários */
+
+	// Estado do teste.
+
+	int estado; /**< índice inteiro que indicará se o estado do teste é de sucesso ou de falha */
+
+	// Declarações de métodos.
+
+	/**
+	 * Método para criar a classe a ser testada.
+	 *
+	 * Esse método cria a classe que passará pelos testes unitários.
+	 * Se ela for criada sem erros, esse método iguala o estado do
+	 * teste ao índice que corresponde ao sucesso da classe ter sido
+	 * criada.
+	 *
+	*/
+	void setUp();
+
+	/**
+	 * Método para testar a classe em um cenário de sucesso.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
+	 * o estado é igualado a SUCESSO do teste. Se não for, o estado é
+	 * igualado a FALHA do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioSucesso();
+
+	/**
+	 * Método para testar a classe em um cenário de falha.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser falha. Se ela falhar, o estado é igualado
+	 * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA
+	 * do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioFalha();
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	*/
+	void tearDown();
+
+public:
+
+	// Definições de constantes para reportar resultado do teste.
+
+	const static int SUCESSO = 0; /**< índice inteiro que iguala o estado do teste a 0 se este for bem-sucedido */
+	const static int FALHA = -1; /**< índice inteiro que iguala o estado do teste a -1 se este for falhar */
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	 * @see TUCidade::setUp()
+	 * @see TUCidade::tearDown()
+	 * @see TUCidade::testarCenarioSucesso()
+	 * @see TUCidade::testarCenarioFalha()
+	 *
+	*/
+	int run();
+};
+
+/**
+ *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *
+ *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
+ *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  válidos e inválidos para esse domínio, checando se os valores válidos passam
+ *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
+ *  falha.
+ *
+ */
+class TUCPF {
+
+private:
+
+	// Definições de constantes para evitar numeros m�gicos.
+
+	string VALOR_VALIDO = "544.628.796-48"; /**< string contendo um exemplo de valor válido */
+	string VALOR_INVALIDO = "544.628.796-54"; /**< string contendo um exemplo de valor inválido */
+
+	// Refer�ncia para o objeto a ser testado.
+
+	CPF* cpf; /**< instância da classe para a execução de testes unitários */
+
+	// Estado do teste.
+
+	int estado; /**< índice inteiro que indicará se o estado do teste é de sucesso ou de falha */
+
+	// Declarações de métodos.
+
+	/**
+	 * Método para criar a classe a ser testada.
+	 *
+	 * Esse método cria a classe que passará pelos testes unitários.
+	 * Se ela for criada sem erros, esse método iguala o estado do
+	 * teste ao índice que corresponde ao sucesso da classe ter sido
+	 * criada.
+	 *
+	*/
+	void setUp();
+
+	/**
+	 * Método para testar a classe em um cenário de sucesso.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
+	 * o estado é igualado a SUCESSO do teste. Se não for, o estado é
+	 * igualado a FALHA do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioSucesso();
+
+	/**
+	 * Método para testar a classe em um cenário de falha.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser falha. Se ela falhar, o estado é igualado
+	 * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA
+	 * do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioFalha();
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	*/
+	void tearDown();
+
+public:
+
+	// Definições de constantes para reportar resultado do teste.
+
+	const static int SUCESSO = 0; /**< índice inteiro que iguala o estado do teste a 0 se este for bem-sucedido */
+	const static int FALHA = -1; /**< índice inteiro que iguala o estado do teste a -1 se este for falhar */
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	 * @see TUCidade::setUp()
+	 * @see TUCidade::tearDown()
+	 * @see TUCidade::testarCenarioSucesso()
+	 * @see TUCidade::testarCenarioFalha()
+	 *
+	*/
+	int run();
+};
+
+/**
+ *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *
+ *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
+ *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  válidos e inválidos para esse domínio, checando se os valores válidos passam
+ *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
+ *  falha.
+ *
+ */
+class TUCodigoSeguranca {
+
+private:
+
+	// Definições de constantes para evitar numeros m�gicos.
+
+	string VALOR_VALIDO = "529"; /**< string contendo um exemplo de valor válido */
+	string VALOR_INVALIDO = "4567"; /**< string contendo um exemplo de valor inválido */
+
+	// Refer�ncia para o objeto a ser testado.
+
+	CodigoSeguranca* codigo; /**< instância da classe para a execução de testes unitários */
+
+	// Estado do teste.
+
+	int estado; /**< índice inteiro que indicará se o estado do teste é de sucesso ou de falha */
+
+	// Declarações de métodos.
+
+	/**
+	 * Método para criar a classe a ser testada.
+	 *
+	 * Esse método cria a classe que passará pelos testes unitários.
+	 * Se ela for criada sem erros, esse método iguala o estado do
+	 * teste ao índice que corresponde ao sucesso da classe ter sido
+	 * criada.
+	 *
+	*/
+	void setUp();
+
+	/**
+	 * Método para testar a classe em um cenário de sucesso.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser bem-sucedida. Se ela for bem-sucedida,
+	 * o estado é igualado a SUCESSO do teste. Se não for, o estado é
+	 * igualado a FALHA do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioSucesso();
+
+	/**
+	 * Método para testar a classe em um cenário de falha.
+	 *
+	 * Esse método testa se os métodos da classe TipoAcomodacao estão
+	 * funcionando perfeitamente para um cenário em que a entrada
+	 * do exemplo deve ser falha. Se ela falhar, o estado é igualado
+	 * a SUCESSO do teste. Se não falhar, o estado é igualado a FALHA
+	 * do teste.
+	 *
+	 * @see TipoAcomodacao
+	 *
+	*/
+	void testarCenarioFalha();
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	*/
+	void tearDown();
+
+public:
+
+	// Definições de constantes para reportar resultado do teste.
+
+	const static int SUCESSO = 0; /**< índice inteiro que iguala o estado do teste a 0 se este for bem-sucedido */
+	const static int FALHA = -1; /**< índice inteiro que iguala o estado do teste a -1 se este for falhar */
+
+	/**
+	 * Método para destruir a classe que foi testada.
+	 *
+	 * Esse método destroi a classe que passou pelos testes unitários.
+	 *
+	 * @see TUCidade::setUp()
+	 * @see TUCidade::tearDown()
+	 * @see TUCidade::testarCenarioSucesso()
+	 * @see TUCidade::testarCenarioFalha()
+	 *
+	*/
+	int run();
 };
 
 #endif // TESTES_H_INCLUDED

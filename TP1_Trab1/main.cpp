@@ -1,6 +1,6 @@
 #include <iostream>
 #include "dominios.h"
-/*#include "entidades.h"*/
+#include "entidades.h"
 #include "testes.h"
 
 using namespace std;
@@ -81,22 +81,22 @@ int main()
                                 break;
     }
 
-    TUIdentificador testeIdentificador;
+    TUHorario testeIdentificador;
 
     switch(testeIdentificador.run()){
-        case TUIdentificador::SUCESSO: contador = SUCESSO;
+        case TUHorario::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUIdentificador::FALHA  : cout << "Identificador: FALHA\n";
+        case TUHorario::FALHA  : cout << "Identificador: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUNome testeNome;
+    TUPreco testeNome;
 
     switch(testeNome.run()){
-        case TUNome::SUCESSO: contador = SUCESSO;
+        case TUPreco::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUNome::FALHA  : cout << "Nome: FALHA\n";
+        case TUPreco::FALHA  : cout << "Nome: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
@@ -111,12 +111,12 @@ int main()
                                 break;
     }
 
-    TUNumeroContaCorrente testeNumeroContaCorrente;
+    TUNumeroSala testeNumeroContaCorrente;
 
     switch(testeNumeroContaCorrente.run()){
-        case TUNumeroContaCorrente::SUCESSO: contador = SUCESSO;
+        case TUNumeroSala::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUNumeroContaCorrente::FALHA  : cout << "NumeroContaCorrente: FALHA\n";
+        case TUNumeroSala::FALHA  : cout << "NumeroContaCorrente: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
@@ -131,12 +131,12 @@ int main()
                                 break;
     }
 
-    TUTipoAcomodacao testeTipoAcomodacao;
+    TUCidade testeTipoAcomodacao;
 
     switch(testeTipoAcomodacao.run()){
-        case TUTipoAcomodacao::SUCESSO: contador = SUCESSO;
+        case TUCidade::SUCESSO: contador = SUCESSO;
                                 break;
-        case TUTipoAcomodacao::FALHA  : cout << "TipoAcomodacao: FALHA\n";
+        case TUCidade::FALHA  : cout << "TipoAcomodacao: FALHA\n";
                                 contador = FALHA;
                                 break;
     }

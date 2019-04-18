@@ -419,7 +419,7 @@ public:
 	 * @see CodigoIngresso::validar()
 	*/
 
-	void setCodigoIngresso(string) throw(invalid_argument);
+	void setCodigoSeguranca(string) throw(invalid_argument);
 
 	/**
 	 * Método para o acesso ao código de segurança.
@@ -431,7 +431,7 @@ public:
 	 *
 	*/
 
-	string getCodigoIngresso() const {
+	string getCodigoSeguranca() const {
 		return codigo;
 	}
 };
@@ -820,12 +820,12 @@ class FaixaEtaria {
 class Horario {
 private:
 
-	int hr, min;
+	string horario;
 
 	const static int LIMITE_HR_MIN = 07, LIMITE_HR_MAX = 22;
 	array<int, 4> LIMITE_MIN = { 00,15,30,45 };
 
-	void validar(int, int) throw (invalid_argument);
+	void validar(string) throw (invalid_argument);
 
 public:
 	// Metodos de acesso
@@ -843,7 +843,7 @@ public:
 	 *
 	 * @see CodigoEvento::validar()
 	*/
-	void setHorario(int, int) throw (invalid_argument);
+	void setHorario(string) throw (invalid_argument);
 
 
 	/**
@@ -857,12 +857,7 @@ public:
 	*/
 
 	string getHorario() const {
-		string aux;
-		aux += hr;
-		aux += ":";
-		aux += min;
-
-		return aux;
+		return horario;
 
 	}
 };
