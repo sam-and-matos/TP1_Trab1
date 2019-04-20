@@ -41,6 +41,27 @@ bool checkLuhn(string numero);
 */
 bool checkNumero (string numero);
 
+/**
+* Funcao que checa se dado número está dentro de um  vetor de números.
+*
+* A função compara o número com todos os valores dentro do vetor, se esse valor
+* estiver dentro do vetor ela retorna True e se o vetor não contiver o valor retorna False .
+*
+* @param num int número o qual quer se verificar estar dentro do vetor.
+* @param vector int vetor de 4 número inteiros.
+*/
+bool checkPresent(int num, int vector[4]);
+
+/**
+* Funcao que checa se dado objeto tipo string é um cpf válido.
+*
+* A função analisa todos os caracteres da string e retorna True se
+* a string for um CPF válido e False caso contrário.
+*
+* @param string fornecida pelo usuário.
+*/
+bool checkCPF(string cpf);
+
 // Declaração de classes
 
 
@@ -53,9 +74,9 @@ bool checkNumero (string numero);
  */
 class Cidade {
 private:
-	string cidade; /**< string que contém o nome da cidade */
+	string cidade; 
 
-	const static int LIMITE = 15; /**< inteiro correspondente ao limite de caracteres da string cidade */
+	const static int LIMITE = 15; 
 
 	// Metodo de validacao
 
@@ -119,10 +140,10 @@ public:
 
 class ClasseEvento {
 private:
-	int classe; /**< string que contém o valor correspondente a classificação do evento */
+	int classe; 
 
-	const static int VALOR_MIN = 1; /**< inteiro com o valor minimo para classe de evento. */
-	const static int VALOR_MAX = 4;  /**< inteiro com o valor máximo para classe de evento. */
+	const static int VALOR_MIN = 1; 
+	const static int VALOR_MAX = 4; 
 
 	// Metodo de validacao
 
@@ -184,11 +205,9 @@ public:
 class CodigoEvento {
 	private:
 
-		string codigo; /**< string que contém o valor correspondente 
-		ao código do evento */
+		string codigo; 
 
-		const static int LIMITE = 3; /**< inteiro correspondente ao limite mínimo e máximo de 
-		digitos que a string codigo tem que ter. */
+		const static int LIMITE = 3; 
 
 		// Metodo de validacao
 		/**
@@ -249,11 +268,9 @@ class CodigoEvento {
 
 class CodigoApresentacao {
 	private:
-		string codigo; /**< string que contém o valor correspondente 
-		ao código da apresentação*/
+		string codigo; 
 
-		const static int LIMITE = 4; /**< inteiro correspondente ao limite mínimo e máximo de 
-		digitos que a string código tem que ter. */
+		const static int LIMITE = 4; 
 
 
 		// Metodo de validacao
@@ -313,11 +330,9 @@ class CodigoApresentacao {
 
 class CodigoIngresso {
 	private:
-		string codigo; /**< string que contém o valor correspondente 
-		ao código de ingresso */
+		string codigo; 
 
-		const static int LIMITE = 5;  /**< inteiro correspondente ao limite mínimo e máximo de 
-		digitos que a string código tem que ter. */
+		const static int LIMITE = 5;  
 
 		// Metodo de validacao
 
@@ -380,11 +395,9 @@ class CodigoIngresso {
 
 class CodigoSeguranca {
 private:
-	string codigo; /**< string que contém o valor correspondente
-	ao código de ingresso */
+	string codigo; 
 
-	const static int LIMITE = 3;  /**< inteiro correspondente ao limite mínimo e máximo de
-	digitos que a string código tem que ter. */
+	const static int LIMITE = 3;  
 
 	// Metodo de validacao
 
@@ -446,9 +459,7 @@ public:
 
 class CPF {
 private:
-	string cpf; /**< string que contém o nome da cidade */
-
-	const string REGEX_EXP = "^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$";
+	string cpf;
 	
 	// Metodo de validacao
 
@@ -456,13 +467,11 @@ private:
 	 * Método para validação do nome da cidade.
 	 *
 	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * nome da cidade. Se ele for inválido, é lançada a
-	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
-	 * será inválido se tiver mais que 15 caracteres, ter dois espaço seguidos,
-	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
-	 * de alfanúmericos,ponto(.) ou espaço.
+	 * cpf. Se ele for inválido, é lançada a exceção de argumento inválido. 
+	 * Se for válido, nada é feito. O valor será inválido se tiver fora do padrão
+	 * 000.000.000-00 e ainda se o valor do CPF não for válido.
 	 *
-	 * @param cidade string que contém o nome da cidade.
+	 * @param cpf string que contém o número de cpf.
 	 *
 	*/
 	void validar(string) throw(invalid_argument);
@@ -474,16 +483,14 @@ public:
 	/**
 	 * Método para criação do número da conta corrente.
 	 *
-	 * Esse método invoca o outro método Cidade::validar()
-	 * para validar o valor fornecido pelo usuário para a string numero.
-	 * Se ele for válido, o número da conta corrente é criado contendo
-	 * aquele valor específico. Se ele não for válido, o número da conta
-	 * corrente não é criado.
+	 * Esse método invoca o outro método CPF::validar()
+	 * para validar o valor fornecido pelo usuário para a string cpf.
+	 * Se ele for válido, o número de CPF é criado contendo
+	 * aquele valor específico. Se ele não for válido, o número de CPF não é criado.
 	 *
-	 * @param numero string que contém os números correspondente ao
-	 * número da conta corrente.
+	 * @param numero string que contém o número do CPF.
 	 *
-	 * @see Cidade::validar()
+	 * @see CPF::validar()
 	*/
 	void setCPF(string) throw(invalid_argument);
 
@@ -493,7 +500,7 @@ public:
 	 * Esse método acessa o número da conta corrente relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do número da conta corrente.
+	 * @return valor do número de CPF.
 	 *
 	*/
 	string getCPF() const {
@@ -510,23 +517,30 @@ public:
 
 class Data {
 	private:
-		string data; /**< string que corresponde a data no formato dd/mm/yy */
+		string data; 
 		
-		// Defincao dos limites para Dia e Ano
+		// Defincao de constantes limites para Dia, Mes e Ano
 
-		const string REGEX_EXP = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}$";
+		const static int DIA_MIN = 01;
+		const static int DIA_31 = 31;
+		const static int DIA_30 = 30;
+		const static int DIA_29 = 29;
+		const static int DIA_28 = 28;
+		const static int MES_MIN = 01;
+		const static int MES_MAX = 12;
+		const static int ANO_MIN = 00;
+		const static int ANO_MAX = 99;
+
 
 		// Metodo de validacao
 		/**
 		 * Método para validação da data.
 		 * 
 		 * Esse método analisa o valor fornecido pelo usuário para a string fornecida 
-		 * pelo usuário para a data. Se essa for invalida segundo a Regular Expression 
-		 * {^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$}, que representa a seguinte expressão:
-		 * dois digitos entre 1 e 31, dois digitos entre 1 e 12 e 2 digitos entre 00 e 99, é 
-		 * lançada a exceção de argumento inválido. Se for válido, nada é feito.
-		 * A data será válida se estiver no formado dd/mm/yy, onde dd é um valor entra 1 e 31
-		 * mm é um valor entre 1 e 12 e yy é um valor entre 00 e 99.
+		 * pelo usuário para a data. Se essa for invalida segundo a Regular Expression é 
+		 * lançada a exceção de argumento inválido. Se for válido, nada é feito. Há ainda verificação quanto
+		 * aos dias de cada mês, tendo este 28,29(ano bissexto), 30 ou 31. A data será válida se estiver no formado 
+		 * dd/mm/yy, onde dd é um valor entra 1 e 31, mm é um valor entre 1 e 12 e yy é um valor entre 00 e 99.
 		 * 
 		 * @param data string que corresponde a data no formato dd/mm/yy.
 		 * 		   
@@ -575,23 +589,20 @@ class Data {
 
 class DataValidade {
 	private:
-		string dt_validade; /**< inteiros que corresponde ao dia e ao ano */
+		string dt_validade;
 		
-		const string REGEX_EXP = "^(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}";
 		
 		// Metodos de validacao
 
 		/**
 		 * Método para validação da data de validade.
 		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para os inteiros
-		 * correspondentes ao mês e ao ano. Se esses parâmetros forem inválidos, 
-		 * é lançada a exceção de argumento inválido. Se for válido, nada é 
-		 * feito. O mês será inválido se for menor do que 1 e maior do que 12; 
+		 * Esse método analisa o valor fornecido pelo usuário para a string da data.
+		 * Se esses parâmetros forem inválidos,é lançada a exceção de argumento inválido.
+		 * Se for válido, nada é feito. O mês será inválido se for menor do que 1 e maior do que 12; 
 		 * o ano será inválido se for menor que 00 ou maior que 99.
 		 * 
-		 * @param mes inteiro que corresponde ao mês.
-		 * @param ano inteiro que corresponde ao ano.
+		 * @param dt_validade string que contém a data.
 		 * 		   
 		*/
 		void validar(string) throw(invalid_argument);
@@ -606,8 +617,7 @@ class DataValidade {
 		 * válidos, a data de validade é criada contendo aqueles valores específicos. 
 		 * Se não forem válidos, a data de validade não é criada. 
 		 * 
-		 * @param mes inteiro que corresponde ao mês.
-		 * @param ano inteiro que corresponde ao ano.
+		 * @param dt_validade string que contém a data.
 		 * 
 		 * @see DataValidade::validar()
 		*/
@@ -619,7 +629,7 @@ class DataValidade {
 		 * Esse método acessa a data de validade relacionada a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return valor da data de validade. 
+		 * @return dt_validade data de validade. 
 		 * 
 		*/
 		string getDataDeValidade() const {
@@ -636,10 +646,10 @@ class DataValidade {
 
 class Disponibilidade {
 private:
-	int disponibilidade; /**< string que contém o disponibilidade */
+	int disponibilidade; 
 
-	const static int LIMITE_MIN = 0; /**< inteiro correspondente ao limite minimo de disponibilidade */
-	const static int LIMITE_MAX = 250; /**< inteiro correspondente ao limite máximo de disponibilidade */
+	const static int LIMITE_MIN = 0; 
+	const static int LIMITE_MAX = 250; 
 
 
 	// Metodo de validacao
@@ -698,11 +708,11 @@ public:
 
 class Estado {
 	private:
-		string estado; /**< string que contém a sigla de um estado brasileiro */
+		string estado; 
 
 		// Limite de tamanho de estado
 
-		const static int LIMITE = 2; /**< inteiro correspondente ao limite de caracteres da string estado */
+		const static int LIMITE = 2; 
 
 		// Metodo de valdiacao
 
@@ -760,11 +770,11 @@ class Estado {
 
 class FaixaEtaria {
 	private:
-		string faixa_et; /**< string que contém o faixa étaria */
+		string faixa_et;
 
 		// Definicoes de limites para os caracteres do faixa étaria em codigo ASCII 
 
-		const string LIM_FAIXA[6] = { "L", "10", "12", "14", "16", "18" };
+		const string LIM_FAIXA_L= "L",LIM_FAIXA_10 = "10", LIM_FAIXA_12 = "12", LIM_FAIXA_14 = "14", LIM_FAIXA_16 = "16", LIM_FAIXA_18 = "18";
 
 		// Metodo de validacao
 		/**
@@ -823,8 +833,19 @@ private:
 	string horario;
 
 	const static int LIMITE_HR_MIN = 07, LIMITE_HR_MAX = 22;
-	array<int, 4> LIMITE_MIN = { 00,15,30,45 };
+	int LIMITE_MIN[4] = { 00, 15, 30, 45 };
 
+	/**
+	 * Método para validação do horário.
+	 *
+	 * Esse método analisa a string fornecida pelo usuário para o horário.
+	 * Se ele for inválido, é lançada a exceção de argumento inválido.
+	 * Se for válido, nada é feito. Será valido caso seja: das 7 às 22 hrs e os minutos
+	 * forem iguais a 00,15,30 ou 45.
+	 *
+	 * @param horario string que contém o horário.
+	 *
+	 */
 	void validar(string) throw (invalid_argument);
 
 public:
@@ -832,16 +853,16 @@ public:
 
 
 	/**
-	 * Método para criação do código de evento.
+	 * Método para criação do horário.
 	 *
-	 * Esse método invoca o outro método CodigoEvento::validar() para validar
-	 * o valor fornecido pelo usuário para a string código. Se ele for
-	 * válido, o código de evento é criado contendo aquele valor específico. Se
+	 * Esse método invoca o outro método Horario::validar() para validar
+	 * o valor fornecido pelo usuário para a string horario. Se ele for
+	 * válido, o horario de evento é criado contendo aquele valor específico. Se
 	 * ele não for válido, o código de evento não é criado.
 	 *
-	 * @param codigo string que contém os números correspondente ao código de evento.
+	 * @param horario string que contém os horario do evento.
 	 *
-	 * @see CodigoEvento::validar()
+	 * @see Horario::validar()
 	*/
 	void setHorario(string) throw (invalid_argument);
 
@@ -852,13 +873,12 @@ public:
 	 * Esse método acessa a evento relacionada a ele no
 	 * código principal e retorna o seu código.
 	 *
-	 * @return valor do código de evento.
+	 * @return horario string contendo o horário.
 	 *
 	*/
 
 	string getHorario() const {
 		return horario;
-
 	}
 };
 
@@ -872,25 +892,23 @@ public:
 
 class NomeEvento {
 private:
-	string nm_evento; /**< string que contém o nome da cidade */
+	string nm_evento;
 
-	const static int LIMITE = 20; /**< inteiro correspondente ao limite de caracteres da string cidade */
-	const string REGEX_EXP = "^((([A-Z]|[a-z]){1,}|[0-9]{1,})|((\\w{1}\\W{1}))|(([A-Z]*[a-z]*)[.]*))$"; /**< Expressão regular para checar se a string tem ao menos
-																											 1 letra, não há espaços seguidos, ponto é precido por letra./
+	const static int LIMITE = 20;
 
 	// Metodo de validacao
 
 	/**
-	 * Método para validação do nome da cidade.
+	 * Método para validação do nome do evento.
 	 *
 	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * nome da cidade. Se ele for inválido, é lançada a
+	 * nome do evento. Se ele for inválido, é lançada a
 	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
-	 * será inválido se tiver mais que 15 caracteres, ter dois espaço seguidos,
+	 * será inválido se tiver mais que 20 caracteres, ter dois espaço seguidos,
 	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
 	 * de alfanúmericos,ponto(.) ou espaço.
 	 *
-	 * @param cidade string que contém o nome da cidade.
+	 * @param nm_evento string que contém o nome do evento.
 	 *
 	*/
 	void validar(string) throw(invalid_argument);
@@ -902,7 +920,7 @@ public:
 	/**
 	 * Método para criação do número da conta corrente.
 	 *
-	 * Esse método invoca o outro método Cidade::validar()
+	 * Esse método invoca o outro método NomeEvento::validar()
 	 * para validar o valor fornecido pelo usuário para a string numero.
 	 * Se ele for válido, o número da conta corrente é criado contendo
 	 * aquele valor específico. Se ele não for válido, o número da conta
@@ -911,7 +929,7 @@ public:
 	 * @param numero string que contém os números correspondente ao
 	 * número da conta corrente.
 	 *
-	 * @see Cidade::validar()
+	 * @see NomeEvento::validar()
 	*/
 	void setNomeEvento(string) throw(invalid_argument);
 
@@ -921,7 +939,7 @@ public:
 	 * Esse método acessa o número da conta corrente relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do número da conta corrente.
+	 * @return nome do evento.
 	 *
 	*/
 	string getNomeEvento() const {
@@ -942,11 +960,21 @@ class NumeroSala {
 private:
 	int numero; 
 
-	
-
 	const static int LIMITE_MIN = 1; 
 	const static int LIMITE_MAX = 10; 
 
+	/**
+	 * Método para validação do nome do evento.
+	 *
+	 * Esse método analisa o valor fornecido pelo usuário para o int
+	 * numero. Se ele for inválido, é lançada a exceção de argumento inválido. 
+	 * Se for válido, nada é feito. O valor será inválido se tiver mais que 20 caracteres,
+	 * ter dois espaço seguidos, ponto não precedido por letra ou que a string contenha
+	 * caracteres diferentes de alfanúmericos,ponto(.) ou espaço.
+	 *
+	 * @param numero int que contém o número da sala.
+	 *
+	*/
 	void validar(int) throw (invalid_argument);
 
 public:
@@ -992,7 +1020,7 @@ public:
 
 class NumeroCartaoCredito {
 	private:
-		string numero; /**< string que contém o número do cartão de crédito */
+		string numero;
 
 		// Quantidade minima de numeros que o numero do cartao deve ter
 
@@ -1062,20 +1090,20 @@ class Preco {
 private:
 	string preco; 
 
-	const string PRECO_MIN = "0,00";
-	const string PRECO_MAX = "1000,00";
+	float PRECO_MIN = 0;
+	float PRECO_MAX = 1000;
 
 	// Metodo de validacao
 
 	/**
-	 * Método para validação do tipo de acomodação.
+	 * Método para validação do preço do evento.
 	 *
 	 * Esse método analisa a string fornecida pelo usuário para o tipo de
 	 * acomodação. Se ele for inválido, é lançada a exceção de argumento
 	 * inválido. Se for válido, nada é feito. O valor será inválido se
 	 * for diferente de "Apartamento", "Casa" ou "Flat".
 	 *
-	 * @param tipo string que contém o tipo de acomodação.
+	 * @param preco string que contém o preço.
 	*/
 	void validar(string) throw(invalid_argument);
 
@@ -1084,16 +1112,16 @@ public:
 	// Metodos de acesso
 
 	/**
-	 * Método para criação do tipo de acomodação.
+	 * Método para criação do preço.
 	 *
-	 * Esse método invoca o outro método TipoAcomodacao::validar()
-	 * para validar a string tipo. Se ela for válida, o tipo de
+	 * Esse método invoca o outro método Preco::validar()
+	 * para validar a string preco. Se ela for válida, o tipo de
 	 * acomodação é criado contendo aquela string específica. Se
 	 * ele não for válida, o tipo de acomodação não é criado.
 	 *
-	 * @param tipo string que contém o tipo de acomodação.
+	 * @param preco string que contém o preço.
 	 *
-	 * @see TipoAcomodacao::validar()
+	 * @see Preco::validar()
 	*/
 	void setPreco(string) throw(invalid_argument);
 
@@ -1103,7 +1131,7 @@ public:
 	 * Esse método acessa o tipo de acomodação relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do tipo de acomodação.
+	 * @return retorna o valor de preco.
 	 *
 	*/
 	string getPreco() const {
@@ -1120,7 +1148,7 @@ public:
 
 class Senha{
 	private:
-		string senha; /**< string que contém a senha */
+		string senha;
 		
 		const static int LIMITE = 6;
 
@@ -1134,7 +1162,7 @@ class Senha{
 		 * inválido. Se for válido, nada é feito. O valor será inválido se 
 		 * tiver mais ou menos do que 8 caracteres; se houver caracteres
 		 * repetidos; se não houver, pelo menos, uma letra maiúscula (A-Z), 
-		 * uma minúscula (a-z), um dígito (0 a 9) e um símbolo (! # $ % &).
+		 * uma minúscula (a-z), um dígito (0 a 9).
 		 * 
 		 * @param senha string que contém os caracteres correspondentes à senha. 
 		*/

@@ -809,8 +809,8 @@ class TUPreco {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO    = "100,00"; /**< string contendo um exemplo de valor válido */
-		string VALOR_VALIDO = "100.00"; /**< string contendo um exemplo de valor válido */
+        string VALOR_VALIDO = "100,00"; /**< string contendo um exemplo de valor válido */
+		string VALOR_VALIDO1 = "100.00"; /**< string contendo um exemplo de valor válido */
         string VALOR_INVALIDO1 = "1250,00"; /**< string contendo um exemplo de valor inválido */
         string VALOR_INVALIDO2 = "1250.00"; /**< string contendo um exemplo de valor inválido */
         
@@ -1203,8 +1203,8 @@ class TUCidade {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO   = "Casa"; /**< string contendo um exemplo de valor válido */
-        string VALOR_INVALIDO = "Teatro"; /**< string contendo um exemplo de valor inválido */
+        const string VALOR_VALIDO   = "Taguatinga"; /**< string contendo um exemplo de valor válido */
+        const string VALOR_INVALIDO = "Taguatinga.  .o"; /**< string contendo um exemplo de valor inválido */
 
         // Refer�ncia para o objeto a ser testado.
 

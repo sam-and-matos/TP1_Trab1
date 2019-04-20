@@ -24,21 +24,21 @@ using namespace std;
 class Usuario {
 
 	private:
-		CPF cpf; /**< classe que contém o cpf do usuário */
-		Senha senha; /**< classe que contém a senha do usuário */
+		CPF cpf; 
+		Senha senha; 
 
 	public:
 
 		// Metodos de acesso
 
 		/**
-		 * Método para criação da classe do nome.
+		 * Método para criação da classe do CPF.
 		 * 
-		 * Esse método cria uma classe Nome para o nome da entidade "Usuário".
+		 * Esse método cria uma classe CPF para o cpf da entidade "Usuário".
 		 * 
-		 * @param nome o ponteiro para a classe "nome" que será criada
+		 * @param nome o ponteiro para a classe "CPF" que será criada
 		 * 
-		 * @see Nome
+		 * @see CPF
 		 * 
 		*/
 		void setCPF(const CPF &cpf) {
@@ -98,12 +98,12 @@ class Usuario {
  */
 class Evento {
 	private:
-		CodigoEvento codigo; /**< classe que contém o identificador da acomodação */
-		NomeEvento nome; /**< classe que contém o tipo da acomodação */
-		Cidade cidade; /**< classe que contém a capacidade da acomodação */
-		ClasseEvento classe; /**< classe que contém a data de início da acomodação */
-		Estado estado; /**< classe que contém o estado brasileiro da acomodação */
-		FaixaEtaria faixa; /**< classe que contém a diária da acomodação */
+		CodigoEvento codigo; 
+		NomeEvento nome; 
+		Cidade cidade; 
+		ClasseEvento classe; 
+		Estado estado; 
+		FaixaEtaria faixa;
 
 	public:
 
@@ -258,9 +258,9 @@ class Evento {
  */
 class CartaoDeCredito {
 	private:
-		NumeroCartaoCredito numero; /**< classe que contém o número do cartão de crédito */
-		DataValidade data; /**< classe que contém a data de validade do cartão de crédito */
-		CodigoSeguranca codigo; /**< classe que contém a data de validade do cartão de crédito */
+		NumeroCartaoCredito numero;
+		DataValidade data; 
+		CodigoSeguranca codigo;
 
 	public:
 

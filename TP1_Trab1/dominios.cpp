@@ -1,8 +1,8 @@
-
 #include "dominios.h"
 #include <algorithm>
-#include <time.h>
+#include <ctime>
 #include <cctype>
+#include <array>
 
 using namespace std;
 
@@ -12,7 +12,7 @@ const static float DIARIA_PRECO_MAX = 10000.00;
 
 // Definicao de funcoes fora das classes
 
-bool checkLuhn(string numero){
+bool checkLuhn(string numero) {
 	int nSum = 0;
 	int nDigits = numero.size();
 	int nParity = (nDigits - 1) % 2;
@@ -32,31 +32,54 @@ bool checkLuhn(string numero){
 }
 
 bool checkNumero(string numero) {
-	return all_of(numero.begin (),numero.end (), ::isdigit);
+	for (string::iterator it = numero.begin(); it != numero.end(); it++) {
+		if (!isdigit(*it))
+			return false;
+	}
+
+	return true;
+}
+
+bool checkPresent(int num, int vector[4]) {
+	int pres = 0;
+	for (int i = 0; i < 4; i++) {
+		if (vector[i] == num)
+			pres++;
+	}
+
+	if (pres == 0)
+		return false;
+	else
+		return true;
 }
 
 bool checkCPF(string cpf) {
-	int aux_cpf = stoi(cpf);
-	string aux = to_string(aux_cpf);
-	string aux1 = to_string(aux_cpf);
-	aux1.resize(8);
-	int digito_1 = 10, digito_2 = 11, teste = 0, multiplicador = 10, mod = 11;
+	string aux1 = cpf.substr(0, 3), aux2 = cpf.substr(4, 3), aux3 = cpf.substr(8, 3), aux4 = cpf.substr(12);
+	string cpf_aux = aux1 + aux2 + aux3 + aux4;
+	int checka_digito = 0, digito1 = 10, digito2 = 11;
+	string cpf_aux1 = cpf_aux, cpf_aux2 = cpf_aux;
 
-	for (string::iterator it = aux1.begin(); it != aux1.end(); it++) {
-		teste += (*it) * digito_1;
-		digito_1--;
+	cpf_aux1.resize(9);
+
+	for (string::const_iterator it = cpf_aux1.begin(); it != cpf_aux1.end(); it++) {
+		checka_digito += ((*it - 48) * digito1);
+		digito1--;
 	}
+	int teste_digito = cpf_aux.at(9);
+	int exp1 = (checka_digito * 10) % 11;
+	int exp2 = (teste_digito - 48);
 
-	string aux2 = to_string(aux_cpf);
-	aux2.resize(9);
-	if (((teste * multiplicador) % mod) == aux2.at(9)) {
-		teste = 0;
-		for (string::iterator it = aux2.begin(); it != aux2.end(); it++)
-		{
-			teste += (*it) * digito_2;
-			digito_2--;
+	cpf_aux2.resize(10);
+	if (exp1 == exp2) {
+		checka_digito = 0;
+		for (string::const_iterator it = cpf_aux2.begin(); it != cpf_aux2.end(); it++) {
+			checka_digito += ((*it - 48) * digito1);
+			digito2--;
 		}
-		if (((teste * multiplicador) % mod) != aux.at(10))
+		int teste_digito2 = cpf_aux.at(10);
+		int exp3 = (checka_digito * 10) % 11;
+		int exp4 = (teste_digito2 - 48);
+		if (exp3 != exp4)
 			return false;
 	}
 	else
@@ -71,11 +94,11 @@ void Cidade::validar(string cidade) throw(invalid_argument) {
 	if (cidade.length() > LIMITE)
 		throw invalid_argument("Cidade invalida! Nome da cidade pode ter no máximo 15 caracteres.");
 	for (string::iterator it = cidade.begin(); it != cidade.end(); it++) {
-		if (!isalnum(*it) || !isspace(*it))
+		if (!isalpha(*it) && !isspace(*it) && !isdigit(*it))
 			throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
 		if (isspace(*it) && isspace(*(it + 1)))
 			throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
-		if (*it == '.' && isalpha(*(it - 1)))
+		if (*it == '.' && !isalpha(*(it - 1)))
 			throw invalid_argument("Cidade invalida! Nome da cidade tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
 	}
 }
@@ -86,7 +109,7 @@ void Cidade::setCidade(string cidade) {
 }
 
 void ClasseEvento::validar(int classe) throw(invalid_argument) {
-	if (classe <= VALOR_MIN || classe >= VALOR_MAX)
+	if (classe < VALOR_MIN || classe > VALOR_MAX)
 		throw invalid_argument("Clase do Evento invalida! Somento digitos de 1 a 4 são aceitos, onde: \n 1 - Teatro\n 2 - Esporte\n 3 - Show Nacional\n 4 - Show Internacional.");
 }
 
@@ -144,12 +167,12 @@ void CodigoSeguranca::setCodigoSeguranca(string cd_seguranca) throw (invalid_arg
 }
 
 void CPF::validar(string cpf) throw(invalid_argument) {
-	regex valida(REGEX_EXP);
+	regex valida("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$");
 
 	if (!regex_match(cpf,valida))
 		throw invalid_argument("CPF invalido! CPF tem que estar no seguinte formato: 000.000.000-00.");
 
-	if (!checkCPF)
+	if (!checkCPF(cpf))
 		throw invalid_argument("CPF invalido! Confira o CPF e tente novamente.");
 
 }
@@ -160,9 +183,77 @@ void CPF::setCPF(string cpf) throw (invalid_argument) {
 }
 
 void Data::validar(string data) throw (invalid_argument) {
-	regex valida (REGEX_EXP); // Método para criar um objeto regex.
-	if (!regex_match(data,valida))
+	regex r{ "((0[1-9]|[12]\\d)\\/(0[1-9]|1[0-2])|30\\/(0[13-9]|1[0-2])|31\\/(0[13578]|1[02]))\\/\\d{2}" };
+
+
+	if (!regex_match(data, r))
 		throw invalid_argument("Data inválida! Verificar formato, data precisa estar no formato DD/MM/YY");
+	
+	string aux_dia = data.substr(0, 1), aux_mes, aux_ano, aux_time;
+	size_t pos1 = data.find_first_of('/');
+	size_t pos2 = data.find_last_of('/');
+	aux_mes = data.substr(pos1 + 1, pos1 + 2);
+	aux_ano = data.substr(pos2 + 1, pos2 + 2);
+
+	size_t tam = data.length();
+
+
+	switch (stoi(aux_mes))
+	{
+	case 1:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para janeiro.");
+		break;
+	case 2:
+		if(stoi(aux_ano)% 4 == 0)
+			if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_29)
+				throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 29, para fevereiro em ano bissexto.");
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_28)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 28, para fevereiro em ano normal.");
+		break;
+	case 3:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para março.");
+		break;
+	case 4:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_30)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 30, para abril.");
+		break;
+	case 5:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para maio.");
+		break;
+	case 6:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_30)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para junho.");
+		break;
+	case 7:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para julho.");
+		break;
+	case 8:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para agosto.");
+		break;
+	case 9:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_30)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 30, para setembro.");
+		break;
+	case 10:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para outubro.");
+		break;
+	case 11:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_30)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 30, para novembro.");
+		break;
+	case 12:
+		if (stoi(aux_dia) < DIA_MIN || stoi(aux_dia) > DIA_31)
+			throw invalid_argument("Dia inválido! Dia deve estar entre 1 e 31, para dezembro.");
+		break;
+	default:
+		break;
+	}
 }
 
 void Data::setData(string data) throw (invalid_argument) {
@@ -171,7 +262,7 @@ void Data::setData(string data) throw (invalid_argument) {
 }
 
 void DataValidade::validar(string dt_validade) throw (invalid_argument) {
-	regex valida(REGEX_EXP); // Método para criar um objeto regex.
+	regex valida("^(0[135789]|1[02])\\/\\d{2}$"); // Método para criar um objeto regex.
 	if (!regex_match(dt_validade, valida))
 		throw invalid_argument("Data de validade invalida! Data deve estar no formato MM/YY  e ser válida, ser maior que a data atual.");
 }
@@ -192,8 +283,8 @@ void Disponibilidade::setDisponibilidade(int disponibilidade) throw (invalid_arg
 }
 
 void FaixaEtaria::validar(string faixa_et) throw (invalid_argument) {
-	if (!all_of(LIM_FAIXA->begin(), LIM_FAIXA->end(), faixa_et))
-		throw invalid_argument("Faixa étaria invalida! Valor só pode ser: L, 10, 12, 14, 16 ou 18.");
+	if (faixa_et != LIM_FAIXA_L && faixa_et != LIM_FAIXA_10 && faixa_et != LIM_FAIXA_12 && faixa_et != LIM_FAIXA_14 && faixa_et != LIM_FAIXA_16 && faixa_et != LIM_FAIXA_18)
+		throw invalid_argument("Faixa etária invalida! Faixa etária deve estar uma dessas: L, 10, 12, 14, 16, 18");
 }
 
 void FaixaEtaria::setFaixaEtaria(string faixa_et) throw (invalid_argument) {
@@ -242,16 +333,15 @@ void Estado::setEstado(string estado) throw (invalid_argument) {
 }
 
 void Horario::validar(string horario) throw (invalid_argument) {
-	int aux_horario = stoi(horario), int aux_hr, int aux_min;
+	string hr, min;
+	hr = horario.substr(0,2);
+	size_t pos = horario.find(":");
+	min = horario.substr(pos + 1, pos + 2);
 
-	aux_hr = aux_horario / 100;
-	aux_min = aux_horario % 100;
-
-
-	if (aux_hr < LIMITE_HR_MIN || aux_hr> LIMITE_HR_MAX)
+	if (stoi(hr) < LIMITE_HR_MIN || stoi(hr)> LIMITE_HR_MAX)
 		throw invalid_argument("Horario invalido! Somente são aceitos eventos das 07 as 22 hrs");
-	if (!all_of(LIMITE_MIN.begin(), LIMITE_MIN.end(), aux_min))
-		throw invalid_argument("Horario invalido! Somente são aceitos eventos com os seguintes minutos: 00, 15, 30 e 45");
+	if (!checkPresent(stoi(min),LIMITE_MIN))
+			throw invalid_argument("Horario invalido! Somente são aceitos eventos com os seguintes minutos: 00, 15, 30 e 45");
 }
 
 void Horario::setHorario(string horario) throw (invalid_argument) {
@@ -262,9 +352,14 @@ void Horario::setHorario(string horario) throw (invalid_argument) {
 void NomeEvento::validar(string nome) throw(invalid_argument) {
 	if (nome.length() > LIMITE)
 		throw invalid_argument("Nome do evento invalido! Nome do evento pode ter no máximo 20 caracteres.");
-	regex valida(REGEX_EXP);
-	if (!regex_match(nome, valida))
-		throw invalid_argument("Nome do evento invalido! Nome do evento tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+	for (string::iterator it = nome.begin(); it != nome.end(); it++) {
+		if (!isalpha(*it) && !isspace(*it) && !isdigit(*it))
+			throw invalid_argument("Nome do evento invalido! Nome do evento tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+		if (isspace(*it) && isspace(*(it + 1)))
+			throw invalid_argument("Nome do evento invalido! Nome do evento tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+		if (*it == '.' && !isalpha(*(it - 1)))
+			throw invalid_argument("Nome do evento invalido! Nome do evento tem que ter ao menos uma letra, ponto só pode ser precedido de letra, espaço não pode ser seguido por espaço e tem que começar com uma letra.");
+	}
 }
 
 void NomeEvento::setNomeEvento(string nome) {
@@ -296,7 +391,7 @@ void NumeroCartaoCredito::setNumero(string numero) throw (invalid_argument) {
 }
 
 void Preco::validar(string preco) throw (invalid_argument) {
-	if (stof(preco) < stof(PRECO_MIN) || stof(preco) > stof(PRECO_MAX))
+	if (stof(preco) < PRECO_MIN || stof(preco) > PRECO_MAX)
 		throw invalid_argument("Preço invalido! Preço deve estar entre 0,00 e 1000,00");
 }
 
@@ -361,5 +456,3 @@ void Senha::setSenha(string senha) throw (invalid_argument) {
 	validar(senha);
 	this->senha = senha;
 }
-
-

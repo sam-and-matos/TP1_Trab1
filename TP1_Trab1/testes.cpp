@@ -329,6 +329,14 @@ void TUPreco::testarCenarioSucesso(){
     catch(invalid_argument excecao){
         estado = FALHA;
     }
+	try {
+		preco->setPreco(VALOR_VALIDO1);
+		if (preco->getPreco() != VALOR_VALIDO1)
+			estado = FALHA;
+	}
+	catch (invalid_argument excecao) {
+		estado = FALHA;
+	}
 }
 
 void TUPreco::testarCenarioFalha(){
@@ -536,45 +544,6 @@ int TUDisponibilidade::run(){
     return estado;
 }
 
-
-void TUDisponibilidade::setUp() {
-	disponibilidade = new Disponibilidade();
-	estado = SUCESSO;
-}
-
-void TUDisponibilidade::tearDown() {
-	delete disponibilidade;
-}
-
-void TUDisponibilidade::testarCenarioSucesso() {
-	try {
-		disponibilidade->setDisponibilidade(VALOR_VALIDO);
-		if (disponibilidade->getDisponibilidade() != VALOR_VALIDO)
-			estado = FALHA;
-	}
-	catch (invalid_argument excecao) {
-		estado = FALHA;
-	}
-}
-
-void TUDisponibilidade::testarCenarioFalha() {
-	try {
-		disponibilidade->setDisponibilidade(VALOR_INVALIDO);
-		estado = FALHA;
-	}
-	catch (invalid_argument excecao) {
-		return;
-	}
-}
-
-int TUDisponibilidade::run() {
-	setUp();
-	testarCenarioSucesso();
-	testarCenarioFalha();
-	tearDown();
-	return estado;
-}
-
 void TUClasseEvento::setUp(){
     classe = new ClasseEvento();
     estado = SUCESSO;
@@ -682,6 +651,44 @@ void TUCPF::testarCenarioFalha() {
 }
 
 int TUCPF::run() {
+	setUp();
+	testarCenarioSucesso();
+	testarCenarioFalha();
+	tearDown();
+	return estado;
+}
+
+void TUCidade::setUp() {
+	cidade = new Cidade();
+	estado = SUCESSO;
+}
+
+void TUCidade::tearDown() {
+	delete cidade;
+}
+
+void TUCidade::testarCenarioSucesso() {
+	try {
+		cidade->setCidade(VALOR_VALIDO);
+		if (cidade->getCidade() != VALOR_VALIDO)
+			estado = FALHA;
+	}
+	catch (invalid_argument excecao) {
+		estado = FALHA;
+	}
+}
+
+void TUCidade::testarCenarioFalha() {
+	try {
+		cidade->setCidade(VALOR_INVALIDO);
+		estado = FALHA;
+	}
+	catch (invalid_argument excecao) {
+		return;
+	}
+}
+
+int TUCidade::run() {
 	setUp();
 	testarCenarioSucesso();
 	testarCenarioFalha();

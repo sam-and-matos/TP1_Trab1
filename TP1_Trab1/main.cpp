@@ -11,42 +11,46 @@ int main()
     const static int SUCESSO =  0;
     const static int FALHA   = -1;
 
-    TUCodigoEvento testeAgencia;
+    TUCodigoEvento testeCodigoEvento;
 
-    switch(testeAgencia.run()){
-        case TUCodigoEvento::SUCESSO: contador = SUCESSO;
+    switch(testeCodigoEvento.run()){
+        case TUCodigoEvento::SUCESSO: cout << "CodigoEvento: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
         case TUCodigoEvento::FALHA  : cout << "CodigoEvento: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUCodigoApresentacao testeBanco;
+    TUCodigoApresentacao testeCodigoApresentacao;
 
-    switch(testeBanco.run()){
-        case TUCodigoApresentacao::SUCESSO: contador = SUCESSO;
+    switch(testeCodigoApresentacao.run()){
+        case TUCodigoApresentacao::SUCESSO: cout << "CodigoApresentacao: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUCodigoApresentacao::FALHA  : cout << "Codigo de Apresentacao: FALHA\n";
+        case TUCodigoApresentacao::FALHA  : cout << "CodigoApresentacao: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUCodigoIngresso testeCapacidadeAcomodacao;
+    TUCodigoIngresso testeCodigoIngresso;
 
-    switch(testeCapacidadeAcomodacao.run()){
-        case TUCodigoIngresso::SUCESSO: contador = SUCESSO;
+    switch(testeCodigoIngresso.run()){
+        case TUCodigoIngresso::SUCESSO: cout << "CodigoIngresso: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUCodigoIngresso::FALHA  : cout << "Codigo de Ingresso: FALHA\n";
+        case TUCodigoIngresso::FALHA  : cout << "CodigoIngresso: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUNomeEvento testeDiaria;
+    TUNomeEvento testeNomeEvento;
 
-    switch(testeDiaria.run()){
-        case TUNomeEvento::SUCESSO: contador = SUCESSO;
+    switch(testeNomeEvento.run()){
+        case TUNomeEvento::SUCESSO: cout << "NomeEvento: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUNomeEvento::FALHA  : cout << "Nome do Evento: FALHA\n";
+        case TUNomeEvento::FALHA  : cout << "NomeEvento: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
@@ -54,7 +58,8 @@ int main()
     TUData testeData;
 
     switch(testeData.run()){
-        case TUData::SUCESSO: contador = SUCESSO;
+        case TUData::SUCESSO: cout << "Data: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
         case TUData::FALHA  : cout << "Data: FALHA\n";
                                 contador = FALHA;
@@ -64,7 +69,8 @@ int main()
    TUDataValidade testeDataValidade;
 
     switch(testeDataValidade.run()){
-        case TUDataValidade::SUCESSO: contador = SUCESSO;
+        case TUDataValidade::SUCESSO: cout << "DataValidade: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
         case TUDataValidade::FALHA  : cout << "DataValidade: FALHA\n";
                                 contador = FALHA;
@@ -74,29 +80,32 @@ int main()
     TUEstado testeEstado;
 
     switch(testeEstado.run()){
-        case TUEstado::SUCESSO: contador = SUCESSO;
+        case TUEstado::SUCESSO: cout << "Estado: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
         case TUEstado::FALHA  : cout << "Estado: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUHorario testeIdentificador;
+    TUHorario testeHorario;
 
-    switch(testeIdentificador.run()){
-        case TUHorario::SUCESSO: contador = SUCESSO;
+    switch(testeHorario.run()){
+        case TUHorario::SUCESSO: cout << "Horario: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUHorario::FALHA  : cout << "Identificador: FALHA\n";
+        case TUHorario::FALHA  : cout << "Horario: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUPreco testeNome;
+    TUPreco testePreco;
 
-    switch(testeNome.run()){
-        case TUPreco::SUCESSO: contador = SUCESSO;
+    switch(testePreco.run()){
+        case TUPreco::SUCESSO: cout << "Preco: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUPreco::FALHA  : cout << "Nome: FALHA\n";
+        case TUPreco::FALHA  : cout << "Preco: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
@@ -104,19 +113,21 @@ int main()
     TUNumeroCartaoCredito testeNumeroCartaoCredito;
 
     switch(testeNumeroCartaoCredito.run()){
-        case TUNumeroCartaoCredito::SUCESSO: contador = SUCESSO;
+        case TUNumeroCartaoCredito::SUCESSO: cout << "NumeroCartaoCredito: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
         case TUNumeroCartaoCredito::FALHA  : cout << "NumeroCartaoCredito: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUNumeroSala testeNumeroContaCorrente;
+    TUNumeroSala testeNumeroSala;
 
-    switch(testeNumeroContaCorrente.run()){
-        case TUNumeroSala::SUCESSO: contador = SUCESSO;
+    switch(testeNumeroSala.run()){
+        case TUNumeroSala::SUCESSO: cout << "NumeroSala: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUNumeroSala::FALHA  : cout << "NumeroContaCorrente: FALHA\n";
+        case TUNumeroSala::FALHA  : cout << "NumeroSala: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
@@ -124,22 +135,79 @@ int main()
     TUSenha testeSenha;
 
     switch(testeSenha.run()){
-        case TUSenha::SUCESSO: contador = SUCESSO;
+        case TUSenha::SUCESSO: cout << "Senha: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
         case TUSenha::FALHA  : cout << "Senha: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
 
-    TUCidade testeTipoAcomodacao;
+    TUCidade testeCidade;
 
-    switch(testeTipoAcomodacao.run()){
-        case TUCidade::SUCESSO: contador = SUCESSO;
+    switch(testeCidade.run()){
+        case TUCidade::SUCESSO: cout << "Cidade: SUCESSO\n";
+								contador = SUCESSO;
                                 break;
-        case TUCidade::FALHA  : cout << "TipoAcomodacao: FALHA\n";
+        case TUCidade::FALHA  : cout << "Cidade: FALHA\n";
                                 contador = FALHA;
                                 break;
     }
+
+	TUDisponibilidade testeDisponibilidade;
+
+	switch (testeDisponibilidade.run()) {
+		case TUDisponibilidade::SUCESSO: cout << "Disponibilidade: SUCESSO\n";
+								contador = SUCESSO;
+								break;
+		case TUDisponibilidade::FALHA: cout << "Disponibilidade: FALHA\n";
+								contador = FALHA;
+								break;
+	}
+
+	TUClasseEvento testeClasseEvento;
+
+	switch (testeClasseEvento.run()) {
+		case TUClasseEvento::SUCESSO: cout << "ClasseEvento: SUCESSO\n";
+								contador = SUCESSO;
+								break;
+		case TUClasseEvento::FALHA: cout << "ClasseEvento: FALHA\n";
+								contador = FALHA;
+								break;
+	}
+
+	TUFaixaEtaria testeFaixaEtaria;
+
+	switch (testeFaixaEtaria.run()) {
+		case TUFaixaEtaria::SUCESSO: cout << "FaixaEtaria: SUCESSO\n";
+								contador = SUCESSO;
+								break;
+		case TUFaixaEtaria::FALHA: cout << "FaixaEtaria: FALHA\n";
+								contador = FALHA;
+								break;
+	}
+
+	TUCPF testeCPF;
+
+	switch (testeCPF.run()) {
+		case TUCPF::SUCESSO: cout << "CPF: SUCESSO\n";
+								contador = SUCESSO;
+								break;
+		case TUCPF::FALHA: cout << "CPF: FALHA\n";
+								contador = FALHA;
+								break;
+	}
+
+	TUCodigoSeguranca testeCodigoSeguranca;
+
+	switch (testeCodigoSeguranca.run()) {
+		case TUCodigoSeguranca::SUCESSO: cout << "CodigoSeguranca: SUCESSO\n";
+								contador = SUCESSO;
+								break;
+		case TUCodigoSeguranca::FALHA: cout << "CodigoSeguranca: FALHA\n";
+								contador = FALHA;
+								break;
+	}
 
     if (contador == 0)
     {
