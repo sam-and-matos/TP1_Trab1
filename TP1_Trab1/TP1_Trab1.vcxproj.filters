@@ -24,6 +24,12 @@
     <ClInclude Include="testes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="controladoras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dominios.cpp">
