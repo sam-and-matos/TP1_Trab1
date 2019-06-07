@@ -519,7 +519,7 @@ class TUDataValidade {
         // Definições de constantes para evitar numeros m�gicos.
 
 		const string VALOR_VALIDO = "09/21";
-		const string VALOR_INVALIDO = "09/18";
+		const string VALOR_INVALIDO = "13/18";
 
         // Refer�ncia para o objeto a ser testado.
 
@@ -1103,7 +1103,7 @@ class TUSenha {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        string VALOR_VALIDO    = "Ab0!Cd1&"; /**< string contendo um exemplo de valor válido */
+        string VALOR_VALIDO    = "Ab02Cd"; /**< string contendo um exemplo de valor válido */
         string VALOR_INVALIDO1 = "0$Invalido"; /**< string contendo um exemplo de valor inválido */
         string VALOR_INVALIDO2 = "&!!234Ab"; /**< string contendo um exemplo de valor inválido */
         string VALOR_INVALIDO3 = "Tg2#"; /**< string contendo um exemplo de valor inválido */
@@ -1188,10 +1188,10 @@ class TUSenha {
 };
 
 /** 
- *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *  Classe de Teste de Unidade da Cidade.
  *  
- *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e 
- *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores 
+ *  A classe descreve o teste de unidade de um objeto tipo Cidade. Seus métodos criam e 
+ *  destroem esse objeto. Seus métodos também apresentam exemplos de valores 
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de 
  *  falha.
@@ -1203,8 +1203,8 @@ class TUCidade {
 
         // Definições de constantes para evitar numeros m�gicos.
 
-        const string VALOR_VALIDO   = "Taguatinga"; /**< string contendo um exemplo de valor válido */
-        const string VALOR_INVALIDO = "Taguatinga.  .o"; /**< string contendo um exemplo de valor inválido */
+        string VALOR_VALIDO   = "Taguatinga"; /**< string contendo um exemplo de valor válido */
+        string VALOR_INVALIDO = "Taguatinga.  .o"; /**< string contendo um exemplo de valor inválido */
 
         // Refer�ncia para o objeto a ser testado.
 
@@ -1285,10 +1285,10 @@ class TUCidade {
 };
 
 /**
- *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *  Classe de Teste de Unidade da Disponibilidade.
  *
- *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
- *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  A classe descreve o teste de unidade de um objeto Disponibilidade. Seus métodos criam e
+ *  destroem esse objeto. Seus métodos também apresentam exemplos de valores
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
  *  falha.
@@ -1372,20 +1372,20 @@ public:
 	 *
 	 * Esse método destroi a classe que passou pelos testes unitários.
 	 *
-	 * @see TUCidade::setUp()
-	 * @see TUCidade::tearDown()
-	 * @see TUCidade::testarCenarioSucesso()
-	 * @see TUCidade::testarCenarioFalha()
+	 * @see TUDisponibilidade::setUp()
+	 * @see TUDisponibilidade::tearDown()
+	 * @see TUDisponibilidade::testarCenarioSucesso()
+	 * @see TUDisponibilidade::testarCenarioFalha()
 	 *
 	*/
 	int run();
 };
 
 /**
- *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *  Classe de Teste de Unidade da Classe do Evento.
  *
- *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
- *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  A classe descreve o teste de unidade de um objeto ClasseEvento. Seus métodos criam e
+ *  destroem esse objeto. Seus métodos também apresentam exemplos de valores
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
  *  falha.
@@ -1469,20 +1469,20 @@ public:
 	 *
 	 * Esse método destroi a classe que passou pelos testes unitários.
 	 *
-	 * @see TUCidade::setUp()
-	 * @see TUCidade::tearDown()
-	 * @see TUCidade::testarCenarioSucesso()
-	 * @see TUCidade::testarCenarioFalha()
+	 * @see TUClasseEvento::setUp()
+	 * @see TUClasseEvento::tearDown()
+	 * @see TUClasseEvento::testarCenarioSucesso()
+	 * @see TUClasseEvento::testarCenarioFalha()
 	 *
 	*/
 	int run();
 };
 
 /**
- *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *  Classe de Teste de Unidade da Faixa Etária.
  *
- *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
- *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  A classe descreve o teste de unidade de um objeto FaixaEtaria. Seus métodos criam e
+ *  destroem esse objeto. Seus métodos também apresentam exemplos de valores
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
  *  falha.
@@ -1566,20 +1566,20 @@ public:
 	 *
 	 * Esse método destroi a classe que passou pelos testes unitários.
 	 *
-	 * @see TUCidade::setUp()
-	 * @see TUCidade::tearDown()
-	 * @see TUCidade::testarCenarioSucesso()
-	 * @see TUCidade::testarCenarioFalha()
+	 * @see TUFaixaEtaria::setUp()
+	 * @see TUFaixaEtaria::tearDown()
+	 * @see TUFaixaEtaria::testarCenarioSucesso()
+	 * @see TUFaixaEtaria::testarCenarioFalha()
 	 *
 	*/
 	int run();
 };
 
 /**
- *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *  Classe de Teste de Unidade do CPF.
  *
- *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
- *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  A classe descreve o teste de unidade de um obejto CPF. Seus métodos criam e
+ *  destroem esse objeto. Seus métodos também apresentam exemplos de valores
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
  *  falha.
@@ -1591,8 +1591,9 @@ private:
 
 	// Definições de constantes para evitar numeros m�gicos.
 
-	string VALOR_VALIDO = "544.628.796-48"; /**< string contendo um exemplo de valor válido */
+	string VALOR_VALIDO = "544.628.796-78"; /**< string contendo um exemplo de valor válido */
 	string VALOR_INVALIDO = "544.628.796-54"; /**< string contendo um exemplo de valor inválido */
+	string VALOR_INVALIDO2 = "54462879654";
 
 	// Refer�ncia para o objeto a ser testado.
 
@@ -1663,20 +1664,20 @@ public:
 	 *
 	 * Esse método destroi a classe que passou pelos testes unitários.
 	 *
-	 * @see TUCidade::setUp()
-	 * @see TUCidade::tearDown()
-	 * @see TUCidade::testarCenarioSucesso()
-	 * @see TUCidade::testarCenarioFalha()
+	 * @see TUCPF::setUp()
+	 * @see TUCPF::tearDown()
+	 * @see TUCPF::testarCenarioSucesso()
+	 * @see TUCPF::testarCenarioFalha()
 	 *
 	*/
 	int run();
 };
 
 /**
- *  Classe de Teste de Unidade do Tipo de Acomodação.
+ *  Classe de Teste de Unidade do Codigo de Segurança.
  *
- *  A classe descreve o teste de unidade de um tipo de acomodação. Seus métodos criam e
- *  destroem esse tipo de acomodação. Seus métodos também apresentam exemplos de valores
+ *  A classe descreve o teste de unidade de um obejto CodigoSeguranca. Seus métodos criam e
+ *  destroem esse objeto. Seus métodos também apresentam exemplos de valores
  *  válidos e inválidos para esse domínio, checando se os valores válidos passam
  *  cenários de sucesso e se os inválidos têm exceção lançada nos cenários de
  *  falha.
@@ -1760,10 +1761,10 @@ public:
 	 *
 	 * Esse método destroi a classe que passou pelos testes unitários.
 	 *
-	 * @see TUCidade::setUp()
-	 * @see TUCidade::tearDown()
-	 * @see TUCidade::testarCenarioSucesso()
-	 * @see TUCidade::testarCenarioFalha()
+	 * @see TUCodigoSeguranca::setUp()
+	 * @see TUCodigoSeguranca::tearDown()
+	 * @see TUCodigoSeguranca::testarCenarioSucesso()
+	 * @see TUCodigoSeguranca::testarCenarioFalha()
 	 *
 	*/
 	int run();

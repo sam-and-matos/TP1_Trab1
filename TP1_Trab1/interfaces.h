@@ -1,43 +1,52 @@
 #ifndef INTERFACES_H_INCLUDED
 #define INTERFACES_H_INCLUDED
 
-#include "dominios.h"
 #include "entidades.h"
+#include "dominios.h"
 
 class InterfaceApresentacaoAutenticacao {
 public:
-	virtual bool exectuar();
-
+	virtual bool autenticar(CPF) throw(invalid_argument);
 };
 
-class IntefaceApresentacaoUsuario {
+class InterfaceApresentacaoUsuario {
 public:
-	virtual bool executar();
-	virtual bool validar(const CPF &);
-	virtual bool cadastrar(const CPF &, const Senha &);
+	virtual void executar(CPF) throw(invalid_argument);
+	virtual void executar() throw(invalid_argument);
 };
 
-class InterfaceApresentacaoEvento {
-
+class InterfaceApresentacaoEventos {
+public:
+	virtual void executar(CPF) throw(invalid_argument);
+	virtual void executar() throw(invalid_argument);
 };
 
 class InterfaceApresentacaoVendas {
-
+public:
+	virtual void executar(CPF) throw(invalid_argument);
 };
 
-class InterfaceServicoAuteticacao {
-
+class InterfaceServicoAutenticacao {
+public:
+	virtual bool autenticar(CPF, Senha);
 };
 
 class InterfaceServicoUsuario {
-
+public:
+	virtual bool cadastrar(CPF, Senha);
+	virtual bool excluir(CPF);
 };
 
 class InterfaceServicoEvento {
-
+public:
+	virtual Evento cadatrar(CPF);
+	virtual bool alterar(Evento, CPF);
+	virtual bool excluir(Evento, CPF);
 };
 
 class InterfaceServicoVendas {
-
+public:
+	virtual float vendas(Evento);
 };
+
 #endif

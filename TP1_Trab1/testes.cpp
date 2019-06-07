@@ -473,21 +473,18 @@ void TUSenha::testarCenarioFalha(){
         estado = FALHA;
     }
     catch(invalid_argument excecao){
-        return;
     }
     try{
         senha->setSenha(VALOR_INVALIDO2);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
-        return;
     }
     try{
         senha->setSenha(VALOR_INVALIDO3);
         estado = FALHA;
     }
     catch(invalid_argument excecao){
-        return;
     }
     try{
         senha->setSenha(VALOR_INVALIDO4);
@@ -643,6 +640,12 @@ void TUCPF::testarCenarioSucesso() {
 void TUCPF::testarCenarioFalha() {
 	try {
 		cpf->setCPF(VALOR_INVALIDO);
+		estado = FALHA;
+	}
+	catch (invalid_argument excecao) {
+	}
+	try {
+		cpf->setCPF(VALOR_INVALIDO2);
 		estado = FALHA;
 	}
 	catch (invalid_argument excecao) {

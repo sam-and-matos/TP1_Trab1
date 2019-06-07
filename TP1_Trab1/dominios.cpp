@@ -12,7 +12,7 @@ const static float DIARIA_PRECO_MAX = 10000.00;
 
 // Definicao de funcoes fora das classes
 
-bool checkLuhn(string numero) {
+bool NumeroCartaoCredito::checkLuhn(string numero) {
 	int nSum = 0;
 	int nDigits = numero.size();
 	int nParity = (nDigits - 1) % 2;
@@ -31,7 +31,7 @@ bool checkLuhn(string numero) {
 	return 0 == nSum % 10;
 }
 
-bool checkNumero(string numero) {
+bool ChecaNumero::checkNumero(string numero) {
 	for (string::iterator it = numero.begin(); it != numero.end(); it++) {
 		if (!isdigit(*it))
 			return false;
@@ -40,7 +40,7 @@ bool checkNumero(string numero) {
 	return true;
 }
 
-bool checkPresent(int num, int vector[4]) {
+bool ChecaPresente::checkPresent(int num, int vector[4]) {
 	int pres = 0;
 	for (int i = 0; i < 4; i++) {
 		if (vector[i] == num)
@@ -53,7 +53,7 @@ bool checkPresent(int num, int vector[4]) {
 		return true;
 }
 
-bool checkCPF(string cpf) {
+bool CPF::checkCPF(string cpf) {
 	string aux1 = cpf.substr(0, 3), aux2 = cpf.substr(4, 3), aux3 = cpf.substr(8, 3), aux4 = cpf.substr(12);
 	string cpf_aux = aux1 + aux2 + aux3 + aux4;
 	int checka_digito = 0, digito1 = 10, digito2 = 11;
@@ -87,8 +87,8 @@ bool checkCPF(string cpf) {
 
 	return true;
 }
-	
-// Definições dos m�todos
+
+// Definições dos métodos
 
 void Cidade::validar(string cidade) throw(invalid_argument) {
 	if (cidade.length() > LIMITE)
@@ -103,7 +103,7 @@ void Cidade::validar(string cidade) throw(invalid_argument) {
 	}
 }
 
-void Cidade::setCidade(string cidade) {
+void Cidade::setCidade(string cidade) throw(invalid_argument){
 	validar(cidade);
 	this->cidade = cidade;
 }
@@ -188,7 +188,7 @@ void Data::validar(string data) throw (invalid_argument) {
 
 	if (!regex_match(data, r))
 		throw invalid_argument("Data inválida! Verificar formato, data precisa estar no formato DD/MM/YY");
-	
+
 	string aux_dia = data.substr(0, 1), aux_mes, aux_ano, aux_time;
 	size_t pos1 = data.find_first_of('/');
 	size_t pos2 = data.find_last_of('/');
@@ -295,7 +295,7 @@ void FaixaEtaria::setFaixaEtaria(string faixa_et) throw (invalid_argument) {
 void Estado::validar(string estado) throw (invalid_argument) {
 	if (estado.size() != LIMITE)
 		throw invalid_argument("Estado invalido! Somente as siglas do estado são aceitas.");
-	
+
 	if (estado == "AC");
 	else if (estado == "AL");
 	else if (estado == "AP");
@@ -362,7 +362,7 @@ void NomeEvento::validar(string nome) throw(invalid_argument) {
 	}
 }
 
-void NomeEvento::setNomeEvento(string nome) {
+void NomeEvento::setNomeEvento(string nome) throw(invalid_argument){
 	validar(nome);
 	this->nm_evento = nome;
 }

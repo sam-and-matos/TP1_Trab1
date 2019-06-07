@@ -28,8 +28,11 @@ using namespace std;
  * 
  *  @param numero string que contém o número informado pelo usuário.  
  */
-bool checkLuhn(string numero);
 
+
+
+class ChecaNumero {
+public:
 /**
 * Funcao que checa se dada string é composta só por números.
 *
@@ -39,31 +42,13 @@ bool checkLuhn(string numero);
 *
 * @param string fornecida pelo usuário.
 */
-bool checkNumero (string numero);
+	bool checkNumero(string);
+};
 
-/**
-* Funcao que checa se dado número está dentro de um  vetor de números.
-*
-* A função compara o número com todos os valores dentro do vetor, se esse valor
-* estiver dentro do vetor ela retorna True e se o vetor não contiver o valor retorna False .
-*
-* @param num int número o qual quer se verificar estar dentro do vetor.
-* @param vector int vetor de 4 número inteiros.
-*/
-bool checkPresent(int num, int vector[4]);
-
-/**
-* Funcao que checa se dado objeto tipo string é um cpf válido.
-*
-* A função analisa todos os caracteres da string e retorna True se
-* a string for um CPF válido e False caso contrário.
-*
-* @param string fornecida pelo usuário.
-*/
-bool checkCPF(string cpf);
-
-// Declaração de classes
-
+class ChecaPresente {
+public:
+	bool checkPresent(int num, int vector[4]);
+};
 
 /**
  *  Classe da cidade.
@@ -79,20 +64,6 @@ private:
 	const static int LIMITE = 15; 
 
 	// Metodo de validacao
-
-	/**
-	 * Método para validação do nome da cidade.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * nome da cidade. Se ele for inválido, é lançada a
-	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
-	 * será inválido se tiver mais que 15 caracteres, ter dois espaço seguidos,
-	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
-	 * de alfanúmericos,ponto(.) ou espaço.
-	 *
-	 * @param cidade string que contém o nome da cidade.
-	 *
-	*/
 	void validar(string) throw(invalid_argument);
 
 public:
@@ -100,28 +71,24 @@ public:
 	// Metodos de acesso
 
 	/**
-	 * Método para criação do número da conta corrente.
+	 * Método para criação da cidade.
 	 *
-	 * Esse método invoca o outro método Cidade::validar()
-	 * para validar o valor fornecido pelo usuário para a string numero.
-	 * Se ele for válido, o número da conta corrente é criado contendo
-	 * aquele valor específico. Se ele não for válido, o número da conta
-	 * corrente não é criado.
+	 * Esse método invoca o outro método para validar o valor fornecido pelo usuário para a string cidade.
+	 * Se ele for válido, a Cidade com o nome da string cidade é criada contendo
+	 * aquele valor específico. Se ele não for válido, se for invalido não é criada.
 	 *
-	 * @param numero string que contém os números correspondente ao
-	 * número da conta corrente.
+	 * @param cidade string que contém nome da cidade.
 	 *
-	 * @see Cidade::validar()
 	*/
 	void setCidade(string) throw(invalid_argument);
 
 	/**
-	 * Método para o acesso ao número da conta corrente.
+	 * Método para o acesso ao nome da cidade.
 	 *
 	 * Esse método acessa o número da conta corrente relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do número da conta corrente.
+	 * @return cidade string com o nome da cidade.
 	 *
 	*/
 	string getCidade() const {
@@ -146,18 +113,6 @@ private:
 	const static int VALOR_MAX = 4; 
 
 	// Metodo de validacao
-
-	/**
-	 * Método para validação da classificação do evento.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * correspondente a classificação do evento. Se ele for inválido, é
-	 * lançada a exceção de argumento inválido. Se for válido, nada é
-	 * feito. O valor será inválido se não tiver 5 digitos.
-	 *
-	 * @param classe string correspondente ao classificação do evento.
-	*/
-
 	void validar(int) throw(invalid_argument);
 
 public:
@@ -167,15 +122,13 @@ public:
 	/**
 	 * Método para criação do classificação do evento
 	 *
-	 * Esse método invoca o outro método CodigoIngresso::validar()
-	 * para validar o valor fornecido pelo usuário para a string
+	 * Esse método invoca o outro método para validar o valor fornecido pelo usuário para a string
 	 * correspondente a classificação do evento. Se ele for válido, o
 	 * classificação do evento é criado contendo aquele valor específico.
 	 * Se ela não for válido, o classificação do evento não é criado.
 	 *
-	 * @param classe string correspondente ao classificação do evento.
+	 * @param classe int que correspondente ao classificação do evento.
 	 *
-	 * @see CodigoIngresso::validar()
 	*/
 
 	void setClasseEvento(int) throw(invalid_argument);
@@ -186,7 +139,7 @@ public:
 	 * Esse método acessa o classificação do evento relacionado a ele no
 	 * programa e retorna o seu valor.
 	 *
-	 * @return codigo número do classificação do evento.
+	 * @return classe int com o número do classificação do evento.
 	 *
 	*/
 
@@ -202,7 +155,7 @@ public:
  *  criam esse código e retornam o código criado ao usuário.  
  */
 
-class CodigoEvento {
+class CodigoEvento: public ChecaNumero{
 	private:
 
 		string codigo; 
@@ -210,16 +163,6 @@ class CodigoEvento {
 		const static int LIMITE = 3; 
 
 		// Metodo de validacao
-		/**
-		 * Método para validação do código do evento.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * código. Se ele for inválido, é lançada a exceção de argumento 
-		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * tiver mais ou menos do que 3 digitos.
-		 * 
-		 * @param codigo string que contém o código correspondente ao evento. 
-		*/
 		void validar(string) throw (invalid_argument); 
 
 	public:
@@ -229,14 +172,13 @@ class CodigoEvento {
 		/**
 		 * Método para criação do código de evento.
 		 * 
-		 * Esse método invoca o outro método CodigoEvento::validar() para validar
+		 * Esse método invoca o outro método para validar
 		 * o valor fornecido pelo usuário para a string código. Se ele for 
 		 * válido, o código de evento é criado contendo aquele valor específico. Se 
 		 * ele não for válido, o código de evento não é criado. 
 		 * 
 		 * @param codigo string que contém os números correspondente ao código de evento. 
 		 * 
-		 * @see CodigoEvento::validar()
 		*/
 		void setCodigoEvento(string) throw (invalid_argument);
 
@@ -247,7 +189,7 @@ class CodigoEvento {
 		 * Esse método acessa a evento relacionada a ele no 
 		 * código principal e retorna o seu código. 
 		 * 
-		 * @return valor do código de evento. 
+		 * @return codigo string com o valor do código de evento. 
 		 * 
 		*/
 
@@ -266,25 +208,14 @@ class CodigoEvento {
  *  ao usuário.  
  */
 
-class CodigoApresentacao {
+class CodigoApresentacao:public ChecaNumero {
 	private:
 		string codigo; 
 
 		const static int LIMITE = 4; 
 
-
 		// Metodo de validacao
 		
-		/**
-		 * Método para validação do código da apresentação.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * código. Se ele for inválido, é lançada a exceção de argumento 
-		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * tiver mais ou menos do que 4 digitos.
-		 * 
-		 * @param codigo string que contém os números correspondente ao código da apresentação. 
-		*/
 		void validar(string) throw (invalid_argument);
 
 	public:
@@ -294,14 +225,13 @@ class CodigoApresentacao {
 		/**
 		 * Método para criação do código de aparesentação.
 		 * 
-		 * Esse método invoca o outro método CodigoApresentacao::validar() para validar
+		 * Esse método invoca o outro método para validar
 		 * o valor fornecido pelo usuário para a string código. Se ele for 
 		 * válido, o objeto com o número do código de apresentação é criada contendo aquele 
 		 * valor específico. Se ele não for válido, o objeto não é criada. 
 		 * 
 		 * @param codigo string que contém os números correspondente ao banco. 
 		 * 
-		 * @see CodigoApresentacao::validar()
 		*/
 		void setCodigoApresentacao(string) throw (invalid_argument);
 
@@ -311,7 +241,7 @@ class CodigoApresentacao {
 		 * Esse método acessa o número do código de apresentação relacionado a ele no 
 		 * código principal passado e retorna o seu valor. 
 		 * 
-		 * @return valor do código da apresentação. 
+		 * @return codigo string que contém o valor do código da apresentação. 
 		 * 
 		*/
 		string getCodigoApresentacao() const {
@@ -328,25 +258,13 @@ class CodigoApresentacao {
  *  o string criada ao usuário.   
  */
 
-class CodigoIngresso {
+class CodigoIngresso :public ChecaNumero {
 	private:
 		string codigo; 
 
 		const static int LIMITE = 5;  
 
 		// Metodo de validacao
-
-		/**
-		 * Método para validação do código do ingresso.
-		 *
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * correspondente ao código do ingresso. Se ele for inválido, é
-		 * lançada a exceção de argumento inválido. Se for válido, nada é
-		 * feito. O valor será inválido se não tiver 5 digitos.
-		 *
-		 * @param codigo string correspondente ao código do ingresso.
-		*/
-
 		void validar(string) throw(invalid_argument);
 
 	public:
@@ -356,15 +274,13 @@ class CodigoIngresso {
 		/**
 		 * Método para criação do código do ingresso
 		 * 
-		 * Esse método invoca o outro método CodigoIngresso::validar() 
-		 * para validar o valor fornecido pelo usuário para a string 
-		 * correspondente ao código do ingresso. Se ele for válido, o 
-		 * código do ingresso é criado contendo aquele valor específico. 
+		 * Esse método invoca o outro método para validar o valor fornecido pelo
+		 * usuário para a string correspondente ao código do ingresso. Se ele for válido,
+		 * o código do ingresso é criado contendo aquele valor específico. 
 		 * Se ela não for válido, o código do ingresso não é criado. 
 		 * 
 		 * @param codigo string correspondente ao código do ingresso. 
 		 * 
-		 * @see CodigoIngresso::validar()
 		*/
 
 		void setCodigoIngresso(string) throw(invalid_argument);
@@ -393,25 +309,13 @@ class CodigoIngresso {
  *  o string criada ao usuário.
  */
 
-class CodigoSeguranca {
+class CodigoSeguranca :public ChecaNumero {
 private:
 	string codigo; 
 
 	const static int LIMITE = 3;  
 
 	// Metodo de validacao
-
-	/**
-	 * Método para validação do código de segurança.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * correspondente ao código de segurança. Se ele for inválido, é
-	 * lançada a exceção de argumento inválido. Se for válido, nada é
-	 * feito. O valor será inválido se não tiver 5 digitos.
-	 *
-	 * @param codigo string correspondente ao código de segurança.
-	*/
-
 	void validar(string) throw(invalid_argument);
 
 public:
@@ -421,15 +325,13 @@ public:
 	/**
 	 * Método para criação do código de segurança
 	 *
-	 * Esse método invoca o outro método CodigoIngresso::validar()
-	 * para validar o valor fornecido pelo usuário para a string
+	 * Esse método invoca o outro método para validar o valor fornecido pelo usuário para a string
 	 * correspondente ao código de segurança. Se ele for válido, o
 	 * código de segurança é criado contendo aquele valor específico.
 	 * Se ela não for válido, o código de segurança não é criado.
 	 *
 	 * @param codigo string correspondente ao código de segurança.
 	 *
-	 * @see CodigoIngresso::validar()
 	*/
 
 	void setCodigoSeguranca(string) throw(invalid_argument);
@@ -452,9 +354,9 @@ public:
 /**
  *  Classe do CPF.
  *
- *  A classe descreve o nome de uma cidade. Seus
+ *  A classe descreve um CPF. Seus
  *  métodos validam o nome da cidade, criam
- *  essa cidade e retornam o nome da cidade ao usuário.
+ *  esse CPF e retornam o nome da cidade ao usuário.
  */
 
 class CPF {
@@ -463,44 +365,31 @@ private:
 	
 	// Metodo de validacao
 
-	/**
-	 * Método para validação do nome da cidade.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * cpf. Se ele for inválido, é lançada a exceção de argumento inválido. 
-	 * Se for válido, nada é feito. O valor será inválido se tiver fora do padrão
-	 * 000.000.000-00 e ainda se o valor do CPF não for válido.
-	 *
-	 * @param cpf string que contém o número de cpf.
-	 *
-	*/
 	void validar(string) throw(invalid_argument);
-
+	bool checkCPF(string);
 public:
 
 	// Metodos de acesso
 
 	/**
-	 * Método para criação do número da conta corrente.
+	 * Método para criação do número do cpf.
 	 *
-	 * Esse método invoca o outro método CPF::validar()
-	 * para validar o valor fornecido pelo usuário para a string cpf.
-	 * Se ele for válido, o número de CPF é criado contendo
-	 * aquele valor específico. Se ele não for válido, o número de CPF não é criado.
+	 * Esse método invoca o outro método para validar o valor fornecido pelo usuário para a string cpf.
+	 * Se ele for válido, o número de CPF é criado contendo aquele valor específico. Se ele não for válido,
+	 * o número de CPF não é criado.
 	 *
-	 * @param numero string que contém o número do CPF.
+	 * @param cpf string que contém o número do CPF.
 	 *
-	 * @see CPF::validar()
 	*/
 	void setCPF(string) throw(invalid_argument);
 
 	/**
-	 * Método para o acesso ao número da conta corrente.
+	 * Método para o acesso ao número do cpf.
 	 *
 	 * Esse método acessa o número da conta corrente relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do número de CPF.
+	 * @return cpf string contendo o número de CPF.
 	 *
 	*/
 	string getCPF() const {
@@ -533,18 +422,6 @@ class Data {
 
 
 		// Metodo de validacao
-		/**
-		 * Método para validação da data.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string fornecida 
-		 * pelo usuário para a data. Se essa for invalida segundo a Regular Expression é 
-		 * lançada a exceção de argumento inválido. Se for válido, nada é feito. Há ainda verificação quanto
-		 * aos dias de cada mês, tendo este 28,29(ano bissexto), 30 ou 31. A data será válida se estiver no formado 
-		 * dd/mm/yy, onde dd é um valor entra 1 e 31, mm é um valor entre 1 e 12 e yy é um valor entre 00 e 99.
-		 * 
-		 * @param data string que corresponde a data no formato dd/mm/yy.
-		 * 		   
-		*/
 		void validar(string) throw(invalid_argument);
 
 	public:
@@ -553,7 +430,7 @@ class Data {
 		/**
 		 * Método para criação da data.
 		 * 
-		 * Esse método invoca o método Data::validar() para validar
+		 * Esse método invoca o método para validar
 		 * o valor fornecido pelo usuário para a string data.
 		 * Se a string for válida, a data é criada contendo 
 		 * a string. Se eles não forem válidos, a data 
@@ -561,7 +438,6 @@ class Data {
 		 * 
 		 * @param data string que corresponde a data no formato dd/mm/yy.
 		 * 
-		 * @see Data::validar()
 		*/
 		void setData(string) throw (invalid_argument);
 
@@ -571,7 +447,7 @@ class Data {
 		 * Esse método acessa a data relacionada a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return string com o a data. 
+		 * @return data string com o a data. 
 		 * 
 		*/
 		string getData() const {
@@ -591,20 +467,7 @@ class DataValidade {
 	private:
 		string dt_validade;
 		
-		
 		// Metodos de validacao
-
-		/**
-		 * Método para validação da data de validade.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string da data.
-		 * Se esses parâmetros forem inválidos,é lançada a exceção de argumento inválido.
-		 * Se for válido, nada é feito. O mês será inválido se for menor do que 1 e maior do que 12; 
-		 * o ano será inválido se for menor que 00 ou maior que 99.
-		 * 
-		 * @param dt_validade string que contém a data.
-		 * 		   
-		*/
 		void validar(string) throw(invalid_argument);
 
 	public:
@@ -612,14 +475,13 @@ class DataValidade {
 		/**
 		 * Método para criação da data de validade.
 		 * 
-		 * Esse método invoca o outro método DataValidade::validar() para validar
+		 * Esse método invoca o outro método para validar
 		 * os inteiros de dia e de ano fornecidos pelo usuário para . Se eles forem 
 		 * válidos, a data de validade é criada contendo aqueles valores específicos. 
 		 * Se não forem válidos, a data de validade não é criada. 
 		 * 
 		 * @param dt_validade string que contém a data.
 		 * 
-		 * @see DataValidade::validar()
 		*/
 		void setDataDeValidade(string) throw(invalid_argument);
 
@@ -653,18 +515,7 @@ private:
 
 
 	// Metodo de validacao
-	/**
-	 * Método para validação do disponibilidade.
-	 *
-	 * Esse método analisa a string fornecida pelo usuário para o
-	 * disponibilidade. Se ele for inválido, é lançada a exceção de
-	 * argumento inválido. Se for válido, nada é feito. O valor será
-	 * inválido se tiver caracteres diferentes dos de "a" até "z" na
-	 * tabela ASCII, e também se tiver um número de caracteres diferente
-	 * de 5 caracteres.
-	 *
-	 * @param disponibilidade int entre 0 e 250 correspondendo a disponibilidade.
-	*/
+
 	void validar(int) throw(invalid_argument);
 
 public:
@@ -673,14 +524,12 @@ public:
 	/**
 	 * Método para criação da disponibilidade.
 	 *
-	 * Esse método invoca o outro método Disponibilidade::validar() para
-	 * validar o inteiro fornecido pelo usuário para a disponibilidade. Se
-	 * ela for válida, a disponibilidade é criada contendo o valor forneciso.
-	 * Se o valor não for valido, a disponibilidade não é criada.
+	 * Esse método invoca o outro método para validar o inteiro fornecido pelo
+	 * usuário para a disponibilidade. Se ela for válida, a disponibilidade é criada
+	 * contendo o valor forneciso. Se o valor não for valido, a disponibilidade não é criada.
 	 *
-	 * @param disponibilidade int enrta 0 e 250 correspondendo a disponibilidade.
+	 * @param disponibilidade int entre 0 e 250 correspondendo a disponibilidade.
 	 *
-	 * @see Disponibilidade::validar()
 	*/
 	void setDisponibilidade(int) throw(invalid_argument);
 
@@ -690,7 +539,7 @@ public:
 	 * Esse método acessa o disponibilidade relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do disponibilidade.
+	 * @return disponibilidade int contendo o valor da disponibilidade.
 	 *
 	*/
 	int getDisponibilidade() const {
@@ -716,18 +565,6 @@ class Estado {
 
 		// Metodo de valdiacao
 
-		/**
-		 * Método para validação do estado.
-		 * 
-		 * Esse método analisa a string fornecido pelo usuário para corresponder
-		 * à sigla de um estado do Brasil. Se ele for inválido, é lançada a 
-		 * exceção de argumento inválido. Se for válido, nada é feito. O valor 
-		 * será inválido se for diferente de "AC", "AL", "AP", "AM", "BA", "CE",
-		 * "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI",
-		 * "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO".
-		 * 
-		 * @param estado string que contém a sigla de um estado brasileiro. 
-		*/
 		void validar(string) throw(invalid_argument);
 
 	public:
@@ -736,14 +573,13 @@ class Estado {
 		/**
 		 * Método para criação do estado.
 		 * 
-		 * Esse método invoca o outro método Estado::validar() para validar
+		 * Esse método invoca o outro método para validar
 		 * a string com a sigla do estado fornecida pelo usuário. Se ela for 
 		 * válida, o estado é criado contendo aquela string específica. Se 
 		 * ela não for válida, o estado não é criada. 
 		 * 
 		 * @param estado string que contém a sigla de um estado brasileiro. 
 		 * 
-		 * @see Estado::validar()
 		*/
 		void setEstado(string) throw(invalid_argument);
 
@@ -762,57 +598,48 @@ class Estado {
 };
 
 /** 
- *  Classe da faixa étaria.
+ *  Classe da faixa etária.
  *  
- *  A classe descreve um faixa étaria. Seus métodos validam o faixa étaria,
- *  criam esse faixa étaria e retornam o faixa étaria criado ao usuário.  
+ *  A classe descreve um faixa etária. Seus métodos validam o faixa etária,
+ *  criam esse faixa etária e retornam o faixa etária criado ao usuário.  
  */
 
 class FaixaEtaria {
 	private:
 		string faixa_et;
 
-		// Definicoes de limites para os caracteres do faixa étaria em codigo ASCII 
+		// Definicoes de limites para os caracteres do faixa etária em codigo ASCII 
 
 		const string LIM_FAIXA_L= "L",LIM_FAIXA_10 = "10", LIM_FAIXA_12 = "12", LIM_FAIXA_14 = "14", LIM_FAIXA_16 = "16", LIM_FAIXA_18 = "18";
 
 		// Metodo de validacao
-		/**
-		 * Método para validação do faixa étaria.
-		 * 
-		 * Esse método analisa a string fornecida pelo usuário para a faixa étaria. 
-		 * Se ele for inválido, é lançada a exceção de argumento inválido. 
-		 * Se for válido, nada é feito. Será valido caso seja: {L,10,12,14,16 e 18}. 
-		 * 
-		 * @param faixa_et string que contém a faixa étaria. 
-		 * 	
-		 */
+
 		void validar(string) throw(invalid_argument);
+		
 
 	public:
 		// Metodos de acesso
 
 		/**
-		 * Método para criação do faixa étaria.
+		 * Método para criação do faixa etária.
 		 * 
-		 * Esse método invoca o outro método FaixaEtaria::validar() para validar
-		 * a string faixa étaria fornecida pelo usuário. Se ela for válida, a faixa étaria
+		 * Esse método invoca o outro método para validar
+		 * a string faixa etária fornecida pelo usuário. Se ela for válida, a faixa etária
 		 * é criada contendo aquela string específica. Se ele não for válida, 
-		 * o faixa étaria não é criada. 
+		 * o faixa etária não é criada. 
 		 * 
-		 * @param faixa_et string que contém a faixa étaria. 
+		 * @param faixa_et string que contém a faixa etária. 
 		 * 
-		 * @see FaixaEtaria::validar()
 		*/
 		void setFaixaEtaria(string) throw(invalid_argument);
 
 		/**
-		 * Método para o acesso ao faixa étaria.
+		 * Método para o acesso ao faixa etária.
 		 * 
-		 * Esse método acessa o faixa étaria relacionado a ele no 
+		 * Esse método acessa o faixa etária relacionado a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return valor do faixa étaria. 
+		 * @return faixa_et string que contém a faixa etária. 
 		 * 
 		*/
 		string getFaixaEtaria() const {
@@ -827,7 +654,7 @@ class FaixaEtaria {
  *  criam essa data e retornam a data criada ao usuário.
  */
 
-class Horario {
+class Horario:public ChecaPresente {
 private:
 
 	string horario;
@@ -835,17 +662,6 @@ private:
 	const static int LIMITE_HR_MIN = 07, LIMITE_HR_MAX = 22;
 	int LIMITE_MIN[4] = { 00, 15, 30, 45 };
 
-	/**
-	 * Método para validação do horário.
-	 *
-	 * Esse método analisa a string fornecida pelo usuário para o horário.
-	 * Se ele for inválido, é lançada a exceção de argumento inválido.
-	 * Se for válido, nada é feito. Será valido caso seja: das 7 às 22 hrs e os minutos
-	 * forem iguais a 00,15,30 ou 45.
-	 *
-	 * @param horario string que contém o horário.
-	 *
-	 */
 	void validar(string) throw (invalid_argument);
 
 public:
@@ -855,14 +671,13 @@ public:
 	/**
 	 * Método para criação do horário.
 	 *
-	 * Esse método invoca o outro método Horario::validar() para validar
+	 * Esse método invoca o outro método para validar
 	 * o valor fornecido pelo usuário para a string horario. Se ele for
 	 * válido, o horario de evento é criado contendo aquele valor específico. Se
 	 * ele não for válido, o código de evento não é criado.
 	 *
 	 * @param horario string que contém os horario do evento.
 	 *
-	 * @see Horario::validar()
 	*/
 	void setHorario(string) throw (invalid_argument);
 
@@ -898,19 +713,6 @@ private:
 
 	// Metodo de validacao
 
-	/**
-	 * Método para validação do nome do evento.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para a string
-	 * nome do evento. Se ele for inválido, é lançada a
-	 * exceção de argumento inválido. Se for válido, nada é feito. O valor
-	 * será inválido se tiver mais que 20 caracteres, ter dois espaço seguidos,
-	 * ponto não precedido por letra ou que a string contenha caracteres diferentes
-	 * de alfanúmericos,ponto(.) ou espaço.
-	 *
-	 * @param nm_evento string que contém o nome do evento.
-	 *
-	*/
 	void validar(string) throw(invalid_argument);
 
 public:
@@ -920,16 +722,13 @@ public:
 	/**
 	 * Método para criação do número da conta corrente.
 	 *
-	 * Esse método invoca o outro método NomeEvento::validar()
-	 * para validar o valor fornecido pelo usuário para a string numero.
-	 * Se ele for válido, o número da conta corrente é criado contendo
-	 * aquele valor específico. Se ele não for válido, o número da conta
-	 * corrente não é criado.
+	 * Esse método invoca o outro método para validar o valor fornecido pelo usuário para a string numero.
+	 * Se ele for válido, o número da conta corrente é criado contendo aquele valor específico. Se ele não for válido,
+	 * o número da conta corrente não é criado.
 	 *
 	 * @param numero string que contém os números correspondente ao
 	 * número da conta corrente.
 	 *
-	 * @see NomeEvento::validar()
 	*/
 	void setNomeEvento(string) throw(invalid_argument);
 
@@ -963,18 +762,6 @@ private:
 	const static int LIMITE_MIN = 1; 
 	const static int LIMITE_MAX = 10; 
 
-	/**
-	 * Método para validação do nome do evento.
-	 *
-	 * Esse método analisa o valor fornecido pelo usuário para o int
-	 * numero. Se ele for inválido, é lançada a exceção de argumento inválido. 
-	 * Se for válido, nada é feito. O valor será inválido se tiver mais que 20 caracteres,
-	 * ter dois espaço seguidos, ponto não precedido por letra ou que a string contenha
-	 * caracteres diferentes de alfanúmericos,ponto(.) ou espaço.
-	 *
-	 * @param numero int que contém o número da sala.
-	 *
-	*/
 	void validar(int) throw (invalid_argument);
 
 public:
@@ -990,7 +777,6 @@ public:
 	 *
 	 * @param numero int número correspondente ao número da sala.
 	 *
-	 * @see NumeroSala::validar()
 	*/
 	void setNumero(int) throw(invalid_argument);
 
@@ -1000,7 +786,7 @@ public:
 	 * Esse método acessa o número da sala relacionado a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return valor do número da sala.
+	 * @return numero int do número da sala.
 	 *
 	*/
 	int getNumero() const {
@@ -1027,21 +813,9 @@ class NumeroCartaoCredito {
 		const static int LIMITE = 16; /**< inteiro correspondente ao limite de caracteres da string numero */
 
 		// Metodo de validacao
-		/**
-		 * Método para validação do número do cartão de crédito.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * do número do cartão de crédito. Se ele for inválido, é lançada a 
-		 * exceção de argumento inválido. Se for válido, nada é feito. O valor 
-		 * será inválido se não obedecer ao algoritmo de Luhn, implementado
-		 * na função checkLuhn().
-		 * 
-		 * @param numero string que contém os números correspondente ao 
-		 * número do cartão de crédito. 
-		 * 
-		 * @see checkLuhn()
-		*/
+
 		void validar(string) throw (invalid_argument);
+		bool checkLuhn(string numero);
 
 	public:
 
@@ -1050,16 +824,15 @@ class NumeroCartaoCredito {
 		/**
 		 * Método para criação do número do cartão de crédito.
 		 * 
-		 * Esse método invoca o outro método NumeroCartaoCredito::validar() 
-		 * para validar o valor fornecido pelo usuário para a string numero. 
-		 * Se ele for válido, o número do cartão de crédito é criado contendo 
-		 * aquele valor específico. Se ele não for válido, o número do cartão
+		 * Esse método invoca o outro método para validar o valor fornecido pelo
+		 * usuário para a string numero.Se ele for válido, o número do cartão de crédito
+		 * é criado contendo aquele valor específico. Se ele não for válido, o número do cartão
 		 * de crédito não é criado. 
 		 * 
 		 * @param numero string que contém os números correspondente ao 
 		 * número do cartão de crédito. 
 		 * 
-		 * @see NumeroCartaoCredito::validar()
+		 * @see checkLuhn()
 		*/
 		void setNumero(string) throw(invalid_argument);
 
@@ -1069,7 +842,7 @@ class NumeroCartaoCredito {
 		 * Esse método acessa o número do cartão de crédito relacionado a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return valor do número do cartão de crédito. 
+		 * @return numero string contendo o número do cartão de crédito. 
 		 * 
 		*/
 		string getNumero() const {
@@ -1095,16 +868,6 @@ private:
 
 	// Metodo de validacao
 
-	/**
-	 * Método para validação do preço do evento.
-	 *
-	 * Esse método analisa a string fornecida pelo usuário para o tipo de
-	 * acomodação. Se ele for inválido, é lançada a exceção de argumento
-	 * inválido. Se for válido, nada é feito. O valor será inválido se
-	 * for diferente de "Apartamento", "Casa" ou "Flat".
-	 *
-	 * @param preco string que contém o preço.
-	*/
 	void validar(string) throw(invalid_argument);
 
 public:
@@ -1114,14 +877,12 @@ public:
 	/**
 	 * Método para criação do preço.
 	 *
-	 * Esse método invoca o outro método Preco::validar()
-	 * para validar a string preco. Se ela for válida, o tipo de
-	 * acomodação é criado contendo aquela string específica. Se
-	 * ele não for válida, o tipo de acomodação não é criado.
+	 * Esse método invoca o outro método para validar a string preco.
+	 * Se ela for válida, o tipo de acomodação é criado contendo aquela string específica.
+	 * Se ele não for válida, o tipo de acomodação não é criado.
 	 *
 	 * @param preco string que contém o preço.
 	 *
-	 * @see Preco::validar()
 	*/
 	void setPreco(string) throw(invalid_argument);
 
@@ -1131,7 +892,7 @@ public:
 	 * Esse método acessa o tipo de acomodação relacionada a ele no
 	 * código principal e retorna o seu valor.
 	 *
-	 * @return retorna o valor de preco.
+	 * @return preco string contendo o valor do preço.
 	 *
 	*/
 	string getPreco() const {
@@ -1151,21 +912,8 @@ class Senha{
 		string senha;
 		
 		const static int LIMITE = 6;
-
-
+		
 		// Metodo para validacao
-		/**
-		 * Método para validação da senha.
-		 * 
-		 * Esse método analisa o valor fornecido pelo usuário para a string
-		 * da senha. Se ele for inválido, é lançada a exceção de argumento 
-		 * inválido. Se for válido, nada é feito. O valor será inválido se 
-		 * tiver mais ou menos do que 8 caracteres; se houver caracteres
-		 * repetidos; se não houver, pelo menos, uma letra maiúscula (A-Z), 
-		 * uma minúscula (a-z), um dígito (0 a 9).
-		 * 
-		 * @param senha string que contém os caracteres correspondentes à senha. 
-		*/
 		void validar(string) throw(invalid_argument);
 	public:
 
@@ -1174,14 +922,13 @@ class Senha{
 		/**
 		 * Método para criação da senha.
 		 * 
-		 * Esse método invoca o outro método Senha::validar() para validar
+		 * Esse método invoca o outro método para validar
 		 * o valor fornecido pelo usuário para a string senha. Se ele for 
 		 * válido, a senha é criada contendo aquele valor específico. Se 
 		 * ele não for válido, a senha não é criada. 
 		 * 
 		 * @param senha string que contém os números correspondente à senha. 
 		 * 
-		 * @see Senha::validar()
 		*/
 		void setSenha(string) throw(invalid_argument);
 
@@ -1191,7 +938,7 @@ class Senha{
 		 * Esse método acessa a senha relacionada a ele no 
 		 * código principal e retorna o seu valor. 
 		 * 
-		 * @return valor da senha. 
+		 * @return senha string contendo a senha. 
 		 * 
 		*/
 		string getSenha() const {
