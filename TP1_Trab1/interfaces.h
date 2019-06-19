@@ -4,6 +4,30 @@
 #include "entidades.h"
 #include "dominios.h"
 
+
+class ErroBanco {
+private:
+	string mensagem;
+public:
+	ErroBanco(string);
+	string what();
+};
+
+class ElementoResultado {
+private:
+	string nomeColuna;
+	string valorColuna;
+public:
+	void setNomeColuna(const string&);
+	string getNomeColuna() const {
+		return nomeColuna;
+	};
+	void setValorColuna(const string&);
+	string getValorColuna() const {
+		return valorColuna;
+	};
+};
+
 class InterfaceApresentacaoAutenticacao {
 public:
 	virtual bool autenticar(CPF) throw(invalid_argument);

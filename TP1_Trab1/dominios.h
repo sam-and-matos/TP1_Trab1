@@ -610,7 +610,7 @@ class FaixaEtaria {
 
 		// Definicoes de limites para os caracteres do faixa etária em codigo ASCII 
 
-		const string LIM_FAIXA_L= "L",LIM_FAIXA_10 = "10", LIM_FAIXA_12 = "12", LIM_FAIXA_14 = "14", LIM_FAIXA_16 = "16", LIM_FAIXA_18 = "18";
+		string LIM_FAIXA_L= "L",LIM_FAIXA_10 = "10", LIM_FAIXA_12 = "12", LIM_FAIXA_14 = "14", LIM_FAIXA_16 = "16", LIM_FAIXA_18 = "18";
 
 		// Metodo de validacao
 
@@ -642,7 +642,7 @@ class FaixaEtaria {
 		 * @return faixa_et string que contém a faixa etária. 
 		 * 
 		*/
-		string getFaixaEtaria() const {
+		string getFaixaEtaria(){
 			return faixa_et;
 		}
 };

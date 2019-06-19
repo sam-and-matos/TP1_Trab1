@@ -119,16 +119,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="controladoras.h" />
+    <ClInclude Include="curses.h" />
     <ClInclude Include="dominios.h" />
     <ClInclude Include="entidades.h" />
     <ClInclude Include="interfaces.h" />
+    <ClInclude Include="sqlite3.h" />
     <ClInclude Include="testes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="controladoras.cpp" />
     <ClCompile Include="dominios.cpp" />
     <ClCompile Include="entidades.cpp" />
+    <ClCompile Include="interfaces.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="testes.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="pdcurses.lib" />
+    <Library Include="sqlite3.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -170,6 +170,36 @@ class Evento {
 		}
 
 		/**
+		 * Método para criação da classe do estado da acomodação.
+		 *
+		 * Esse método cria uma classe Estado correspondente ao estado brasileiro
+		 * da acomodação para a entidade "Acomodacao".
+		 *
+		 * @param estado o ponteiro para a classe "estado" que será criada
+		 *
+		 * @see Estado
+		 *
+		*/
+		void setFaixaEtaria(const FaixaEtaria& faixa) {
+			this->faixa = faixa;
+		}
+
+		/**
+		 * Método para criação da classe do estado da acomodação.
+		 *
+		 * Esse método cria uma classe Estado correspondente ao estado brasileiro
+		 * da acomodação para a entidade "Acomodacao".
+		 *
+		 * @param estado o ponteiro para a classe "estado" que será criada
+		 *
+		 * @see Estado
+		 *
+		*/
+		void setClasseEvento(const ClasseEvento& classe) {
+			this->classe = classe;
+		}
+
+		/**
 		 * Método para o acesso à classe do identificador.
 		 * 
 		 * Esse método acessa a classe do identificador relacionada a ele no 
@@ -243,7 +273,7 @@ class Evento {
 		 * @return a classe da diária.
 		 *
 		*/
-		FaixaEtaria getFaixaEtaria() const {
+		FaixaEtaria getFaixaEtaria(){
 			return faixa;
 		}
 
