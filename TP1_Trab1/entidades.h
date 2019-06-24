@@ -14,78 +14,6 @@
 
 using namespace std;
 
-/** 
- *  Classe do Usuário.
- *  
- *  A classe descreve um usuário, composto pelas seguintes classes de
- *  domínios: Nome, Identificador e Senha. Seus métodos criam os domínios 
- *  e o retornam se necessário.  
- */
-class Usuario {
-
-	private:
-		CPF cpf; 
-		Senha senha; 
-
-	public:
-
-		// Metodos de acesso
-
-		/**
-		 * Método para criação da classe do CPF.
-		 * 
-		 * Esse método cria uma classe CPF para o cpf da entidade "Usuário".
-		 * 
-		 * @param nome o ponteiro para a classe "CPF" que será criada
-		 * 
-		 * @see CPF
-		 * 
-		*/
-		void setCPF(const CPF &cpf) {
-			this->cpf = cpf;
-		}
-
-		/**
-		 * Método para criação da classe da senha.
-		 * 
-		 * Esse método cria uma classe Senha para a senha da entidade "Usuário".
-		 * 
-		 * @param senha o ponteiro para a classe "senha" que será criada
-		 * 
-		 * @see Senha
-		 * 
-		*/
-		void setSenha(const Senha &senha) {
-			this->senha = senha;
-		}
-
-		/**
-		 * Método para o acesso à classe da senha.
-		 * 
-		 * Esse método acessa a classe da senha relacionada a ele no 
-		 * código principal e retorna essa classe. 
-		 * 
-		 * @return a classe da senha. 
-		 * 
-		*/
-		Senha getSenha() const {
-			return senha;
-		}
-
-		/**
-		 * Método para o acesso à classe do nome.
-		 * 
-		 * Esse método acessa a classe do nome relacionado a ele no 
-		 * código principal e retorna essa classe. 
-		 * 
-		 * @return a classe do nome. 
-		 * 
-		*/
-		CPF getCPF() const {
-			return cpf;
-		}
-
-};
 
 /** 
  *  Classe da Acomodação.
@@ -170,6 +98,36 @@ class Evento {
 		}
 
 		/**
+		 * Método para criação da classe do estado da acomodação.
+		 *
+		 * Esse método cria uma classe Estado correspondente ao estado brasileiro
+		 * da acomodação para a entidade "Acomodacao".
+		 *
+		 * @param estado o ponteiro para a classe "estado" que será criada
+		 *
+		 * @see Estado
+		 *
+		*/
+		void setFaixaEtaria(const FaixaEtaria& faixa) {
+			this->faixa = faixa;
+		}
+
+		/**
+		 * Método para criação da classe do estado da acomodação.
+		 *
+		 * Esse método cria uma classe Estado correspondente ao estado brasileiro
+		 * da acomodação para a entidade "Acomodacao".
+		 *
+		 * @param estado o ponteiro para a classe "estado" que será criada
+		 *
+		 * @see Estado
+		 *
+		*/
+		void setClasseEvento(const ClasseEvento& classe) {
+			this->classe = classe;
+		}
+
+		/**
 		 * Método para o acesso à classe do identificador.
 		 * 
 		 * Esse método acessa a classe do identificador relacionada a ele no 
@@ -243,7 +201,7 @@ class Evento {
 		 * @return a classe da diária.
 		 *
 		*/
-		FaixaEtaria getFaixaEtaria() const {
+		FaixaEtaria getFaixaEtaria(){
 			return faixa;
 		}
 
@@ -352,6 +310,107 @@ class CartaoDeCredito {
 		CodigoSeguranca getCodigoSeguranca() const {
 			return codigo;
 		}
+
+};
+
+/**
+ *  Classe do Usuário.
+ *
+ *  A classe descreve um usuário, composto pelas seguintes classes de
+ *  domínios: Nome, Identificador e Senha. Seus métodos criam os domínios
+ *  e o retornam se necessário.
+ */
+class Usuario {
+
+private:
+	CPF cpf;
+	Senha senha;
+	CartaoDeCredito cartao;
+
+public:
+
+	// Metodos de acesso
+
+	/**
+	 * Método para criação da classe do CPF.
+	 *
+	 * Esse método cria uma classe CPF para o cpf da entidade "Usuário".
+	 *
+	 * @param nome o ponteiro para a classe "CPF" que será criada
+	 *
+	 * @see CPF
+	 *
+	*/
+	void setCPF(const CPF& cpf) {
+		this->cpf = cpf;
+	}
+
+	/**
+	 * Método para criação da classe da senha.
+	 *
+	 * Esse método cria uma classe Senha para a senha da entidade "Usuário".
+	 *
+	 * @param senha o ponteiro para a classe "senha" que será criada
+	 *
+	 * @see Senha
+	 *
+	*/
+	void setSenha(const Senha& senha) {
+		this->senha = senha;
+	}
+
+	/**
+	 * Método para criação da classe da senha.
+	 *
+	 * Esse método cria uma classe Senha para a senha da entidade "Usuário".
+	 *
+	 * @param senha o ponteiro para a classe "senha" que será criada
+	 *
+	 * @see Senha
+	 *
+	*/
+	void setCartaoCredito(const CartaoDeCredito& cartao) {
+		this->cartao = cartao;
+	}
+
+	/**
+	 * Método para o acesso à classe da senha.
+	 *
+	 * Esse método acessa a classe da senha relacionada a ele no
+	 * código principal e retorna essa classe.
+	 *
+	 * @return a classe da senha.
+	 *
+	*/
+	Senha getSenha() const {
+		return senha;
+	}
+
+	/**
+	 * Método para o acesso à classe do nome.
+	 *
+	 * Esse método acessa a classe do nome relacionado a ele no
+	 * código principal e retorna essa classe.
+	 *
+	 * @return a classe do nome.
+	 *
+	*/
+	CPF getCPF() const {
+		return cpf;
+	}
+
+	/**
+	 * Método para o acesso à classe do nome.
+	 *
+	 * Esse método acessa a classe do nome relacionado a ele no
+	 * código principal e retorna essa classe.
+	 *
+	 * @return a classe do nome.
+	 *
+	*/
+	CartaoDeCredito getCartaoCredito() const {
+		return cartao;
+	}
 
 };
 

@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1554940934 source:d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\entidades.cpp
+	"entidades.h"
+
+1561058295 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\entidades.h
+	"dominios.h"
+
+1561058135 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\dominios.h
+	<stdexcept>
+	<string>
+	<array>
+	<regex>
+
+1561211511 source:d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\main.cpp
+	<iostream>
+	"dominios.h"
+	"entidades.h"
+	"controladoras.h"
+	"curses.h"
+
+1556632920 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\testes.h
+	"dominios.h"
+	<iostream>
+	<string>
+
+1556633285 source:d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\testes.cpp
+	"testes.h"
+	"dominios.h"
+	"entidades.h"
+	<iostream>
+	<stdlib.h>
+
+1559917195 source:d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\dominios.cpp
+	"dominios.h"
+	<algorithm>
+	<ctime>
+	<cctype>
+	<array>
+
+1561068051 source:d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\interfaces.cpp
+	"interfaces.h"
+
+1561163817 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\interfaces.h
+	"entidades.h"
+	"dominios.h"
+	<list>
+	"curses.h"
+
+1561211504 source:d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\controladoras.cpp
+	"controladoras.h"
+	<iostream>
+	<string.h>
+
+1561163823 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\controladoras.h
+	"interfaces.h"
+	"dominios.h"
+	"sqlite3.h"
+	<list>
+
+1134992270 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\sqlite3.h
+	<stdarg.h>
+
+1559914876 d:\backup\backup-2019\unb\tecnicas de programação 1\trabalho\trab_2019_1\trabalho\trabalho\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+
